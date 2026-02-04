@@ -1,20 +1,66 @@
 // Objektinis.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+#include<iostream>
+#include <string>
+#include <vector>
+#include<algorithm>
+struct Studentas {
+	std::string vardas;
+	std::string pavarde;
+	//int* pazymiai;
+	std::vector<int> pazymiai;
+	int egzaminas;
+	double rezultatas;
+};
 
 #include <iostream>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Studentas A;
+	std::cout << "Iveskite varda ir pavarde: ";
+	std::cin >> A.vardas >> A.pavarde;
+	std::cout << "Kiek pazymiu ivesite? ";
+	int n, temp;
+	double average = 0;
+	int total = 0;
+	double median = 0;
+	std:: cin >> n;
+	for (int i = 0; i < n ; i++)
+	{
+		std::cout << "Iveskite pazymi\n";
+		std::cin >> temp;
+		A.pazymiai.push_back(temp);
+		total += temp;
+		
+	}
+	sort(A.pazymiai.begin(), A.pazymiai.end());
+
+	if(n%2 == 1)
+	{
+		median = A.pazymiai[n / 2];
+		std::cout << "Mediana: " << median << "\n";
+	}
+	else
+	{
+		median = (A.pazymiai[n / 2 - 1] + A.pazymiai[n / 2]) / 2.0;
+		std::cout << "Mediana: " << median << "\n";
+	}
+	std::cout << "Iveskite egzamino rezultata: ";
+	std::cin >> A.egzaminas;
+
+	average = total / n;
+	std::cout << "Vardas: " << A.vardas << "\nPavarde: " << A.pavarde << "\n";
+	std::cout << "Atsakymai:\n";
+
+	for (auto b : A.pazymiai)
+		std::cout << b << " ";
+	std::cout << "\nVidurkis: " << average << "\n";
+
+	A.rezultatas = 0.4 * average + 0.6 * A.egzaminas;
+	std::cout << "Galutinis rezultatas: " << A.rezultatas << "\n";
+	A.rezultatas = 0.4 * median + 0.6 * A.egzaminas;
+	std::cout << "Galutinis rezultatas (mediana): " << A.rezultatas << "\n";
+	
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
