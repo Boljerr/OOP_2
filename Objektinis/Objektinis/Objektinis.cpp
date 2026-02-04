@@ -53,7 +53,7 @@ int main()
 	std::cout << "Iveskite egzamino rezultata: ";
 	std::cin >> A.egzaminas;
 
-	average = total / n;
+	average =(double) total / n;
 //	std::cout << "Atsakymai:\n";
 		
 //	for (auto b : A.pazymiai)
