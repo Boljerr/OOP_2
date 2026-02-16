@@ -3,6 +3,8 @@
 //ReSharper disable All
 // Objektinis.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+#include <cstdlib>
+#include <ctime>
 #include <limits>
 #include<iostream>
 #include<string>
@@ -13,6 +15,7 @@
 
 int main()
 {
+	std::srand(std::time(nullptr));
 	int pasirinkimas;
 	do {
 		std::cout << "\n=============MENIU=============\n";
@@ -98,65 +101,44 @@ int main()
 				std::cin >> testi;
 			} while (testi == 't' || testi == 'T');
 
-			int skaiciavimoTipas;
+			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
 
-			do
-			{
-				std::cout << "Ar rezultata skaiciuojama su mediana ar su vidurkiu\n";
-				std::cout << "1 - vidurkis\n";
-				std::cout << "2 - mediana\n";
-				std::cout << "Pasirinkite: ";
-
-				std::cin >> skaiciavimoTipas;
-
-				if (std::cin.fail())
-				{
-					std::cout << "Ivestis turi buti skaicius, bandykite dar karta\n";
-					std::cin.clear(); // isvalo klaidos busena
-					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignoruoja netinkama ivesti iki naujos eilutes
-					skaiciavimoTipas = -1; // i neigiamas kad loop eitu vel
-				}
-				else if (skaiciavimoTipas != 1 && skaiciavimoTipas != 2)
-				{
-					std::cout << "Neteisingas pasirinkimas, bandykite dar karta\n";
-				}
-
-			} while (skaiciavimoTipas != 1 && skaiciavimoTipas != 2);
-
-			std::string rez = (skaiciavimoTipas == 1) ? "Galutinis (Vid.)" : "Galutinis (Med.)";
-
-
-			for (int i = 0; i < studentai.size(); ++i)
-			{
-				double nd;
-				if (skaiciavimoTipas == 1)
-				{
-					nd = calculateAverage(studentai[i].pazymiai);
-				}
-				else
-				{
-					nd = calculateMedian(studentai[i].pazymiai);
-				}
-				studentai[i].rezultatas = calculateFinal(nd, studentai[i].egzaminas);
-
-			}
-			std::cout << std::left << std::setw(15) << "Pavarde"
-				<< std::setw(15) << "Vardas"
-				<< std::setw(20) << rez << "\n";
-
-
-			for (int i = 0; i < studentai.size(); ++i)
-			{
-				std::cout << std::setw(15) << studentai[i].pavarde
-					<< std::setw(15) << studentai[i].vardas
-					<< std::fixed << std::setprecision(2) << studentai[i].rezultatas << "\n";
-
-			}
+			skaicuotiRezultatus(studentai, skaiciavimoTipas);
+			isvestiRezultatus(studentai, skaiciavimoTipas);
+			
 			break;
 		}
 		case 2:
 			{
-				std::cout << "pazymiu gen";
+			std::vector<Studentas> studentai;
+			char testi;
+
+				do
+				{
+					Studentas studentas;
+					std::cout << "Iveskite varda ir pavarde: ";
+					std::cin >> studentas.vardas >> studentas.pavarde;
+
+					int kiekis = 0;
+					std::cout << "Kiek generuoti namu darbu pazymiu?";
+					std::cin >> kiekis;
+
+					for (int i = 0; i < kiekis; ++i)
+					{
+						int paz = std::rand() % 10 + 1;
+						studentas.pazymiai.push_back(paz);
+					}
+					studentas.egzaminas = std::rand() % 10 + 1;
+					
+					studentai.push_back(studentas);
+					
+					std::cout << "Ar generuoti dar viena studenta? (t/n): ";
+					std::cin >> testi;
+				
+				} while (testi == 't' || testi == 'T');
+
+				int skaiciavimoTipas;
+
 				break;
 			}
 		case 3:

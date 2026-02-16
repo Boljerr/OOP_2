@@ -14,3 +14,6 @@ struct Studentas {
 double calculateAverage(const std::vector<int>& grade);
 double calculateMedian(std::vector<int> grade);
 double calculateFinal(double ndReiksme, int egzaminas);
+int pasirinktiSkaiciavimoTipa();
+void skaicuotiRezultatus(std::vector<Studentas>& studentai, int skaiciavimoTipas);
+void isvestiRezultatus(const std::vector<Studentas>& studentai, int skaiciavimoTipas);
