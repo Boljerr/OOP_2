@@ -12,67 +12,92 @@
 struct Studentas {
 	std::string vardas;
 	std::string pavarde;
-	//int* pazymiai;
 	std::vector<int> pazymiai;
 	int egzaminas;
 	double Rezultatas;
 };
 
-
-int main()
+double calculateAverage(const std::vector<int>& grade) // Cia reference tiesiog nes tipo nereikia nieko keisti
 {
-	Studentas A;
-	std::cout << "Iveskite varda ir pavarde: ";
-	std::cin >> A.vardas >> A.pavarde;
-	std::cout << "Kiek pazymiu ivesite? ";
-	int n, temp;
-	double average = 0;
-	int total = 0;
-	double median = 0;
-	std:: cin >> n;
-	for (int i = 0; i < n ; i++)
-	{
-		std::cout << "Iveskite pazymi\n";
-		std::cin >> temp;
-		A.pazymiai.push_back(temp);
-		total += temp;
-		
-	}
-	sort(A.pazymiai.begin(), A.pazymiai.end());
+	if (grade.empty()) return 0.0;
 
-	if(n%2 == 1)
+	int suma = 0;
+	for (int i = 0; i < grade.size(); i++)
 	{
-		median = A.pazymiai[n / 2];
-	//	std::cout << "Mediana: " << median << "\n";
+		suma += grade[i];
+	}
+
+	return (double)suma / grade.size();
+}
+
+double calculateMedian(std::vector<int> grade) // cia kopija nes tipo sortini
+{
+	if (grade.empty()) return 0.0;
+
+	std::sort(grade.begin(), grade.end());
+
+	int n = grade.size();
+
+	if (n % 2 == 1)
+	{
+		return grade[n / 2];
 	}
 	else
 	{
-		median = (A.pazymiai[n / 2 - 1] + A.pazymiai[n / 2]) / 2.0;
-		//std::cout << "Mediana: " << median << "\n";
+		return (grade[n / 2 - 1] + grade[n / 2]) / 2.0;
 	}
-	std::cout << "Iveskite egzamino rezultata: ";
-	std::cin >> A.egzaminas;
+}
+double calculateFinal(double ndReiksme, int egzaminas)
+{
+	return 0.4 * ndReiksme + 0.6 * egzaminas;
+}
 
-	average =(double) total / n;
-//	std::cout << "Atsakymai:\n";
-		
-//	for (auto b : A.pazymiai)
-	//	std::cout << b << " ";
+
+
+int main()
+{
+	Studentas studentas;
+
+	std::cout << "Iveskite varda ir pavarde: ";
+	std::cin >> studentas.vardas >> studentas.pavarde;
+
+	std::cout << "Kiek pazymiu ivesite? ";
+	int n;
+	std::cin >> n;
+
+	for (int i = 0; i < n ; i++)
+	{
+		int temp;
+		std::cout << "Iveskite pazymi\n";
+		std::cin >> temp;
+		studentas.pazymiai.push_back(temp);
+	}
+	
+	double average = calculateAverage(studentas.pazymiai);
+	double median = calculateMedian(studentas.pazymiai);
+
+
+	std::cout << "Iveskite egzamino rezultata: ";
+	std::cin >> studentas.egzaminas;
+
 	std::cout << "Ar rezultata skaiciuojama su mediana ar su vidurkiu\n";
 	std::cout << "1 - vidurkis\n";
 	std::cout << "2 - mediana\n";
+
 	int choice;
 	std::string rez = "";
+	
 	std::cin >> choice;
+
 	if (choice == 1)
 	{
-		A.Rezultatas = 0.4 * average + 0.6 * A.egzaminas;
+		studentas.Rezultatas = calculateFinal(average, studentas.egzaminas);
 		rez = "Galutinis (Vid.)";
 		
 	}
 	else if (choice == 2)
 	{
-		A.Rezultatas = 0.4 * median + 0.6 * A.egzaminas;
+		studentas.Rezultatas = calculateFinal(median, studentas.egzaminas);
 		rez = "Galutinis (Med.)";
 	}
 	else
@@ -81,7 +106,7 @@ int main()
 		return 0;
 	}
 	std::cout << "Pavarde " << "Vardas " << rez	<< "\n";
-	std::cout << A.pavarde << " " << A.vardas << "	   " << std::fixed << std::setprecision(2) << A.Rezultatas << "\n";
+	std::cout << studentas	.pavarde << " " << studentas.vardas << "	   " << std::fixed << std::setprecision(2) << studentas.Rezultatas << "\n";
 	
 }
 
