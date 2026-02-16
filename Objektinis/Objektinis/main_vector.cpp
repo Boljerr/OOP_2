@@ -21,49 +21,36 @@ int main()
 		std::cout << "Iveskite varda ir pavarde: ";
 		std::cin >> studentas.vardas >> studentas.pavarde;
 
-		int n;
-		do {
-			std::cout << "Kiek pazymiu ivesite? ";
-
-			std::cin >> n;
+		int temp;
+		std::cout << "Iveskite pazymi (0 - 10). Baigti -1\n";
+		
+		while (true) 
+		{
+			std::cout << "Pazymys: ";
+			std::cin >> temp;
 
 			if (std::cin.fail())
 			{
 				std::cout << "Ivestis turi buti skaicius, bandykite dar karta\n";
 				std::cin.clear(); // isvalo klaidos busena
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignoruoja netinkama ivesti iki naujos eilutes
-				n = -1; // i neigiamas kad loop eitu vel
-
-			}
-			else if (n <= 0)
-			{
-				std::cout << "Pazymiu skaicius turi buti teigiamas, bandykite dar karta\n";
-			}
-		} while (n <= 0);
-
-
-		for (int i = 0; i < n; i++)
-		{
-			int temp;
-
-			do {
-				std::cout << "Iveskite pazymi (0 - 10)\n";
-				std::cin >> temp;
-
-				if (std::cin.fail())
-				{
-					std::cout << "Ivestis turi buti skaicius, bandykite dar karta\n";
-					std::cin.clear(); // isvalo klaidos busena
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignoruoja netinkama ivesti iki naujos eilutes
-					temp = -1; // i neigiamas kad loop eitu velj
-				}
-				else if (temp < 0 || temp > 10)
-				{
-					std::cout << "Pazymys turi buti tarp 0 ir 10, bandykite dar karta\n";
-				}
-			} while (temp < 0 || temp > 10);
+				continue;
+			}
+			if (temp == -1)
+			{
+				break; // baigia ivesti pazymius
+			}
 
+			else if (temp < 0 || temp > 10)
+			{
+				std::cout << "Pazymys turi buti tarp 0 ir 10, bandykite dar karta\n";
+				continue;
+			}
 			studentas.pazymiai.push_back(temp);
+		}
+		if (studentas.pazymiai.empty())
+		{
+			std::cout << "Nerasta pazymiu, galutinis bus skaiciuojamas tik is egzamino\n";
 		}
 
 		do
@@ -85,18 +72,14 @@ int main()
 			}
 
 		} while (studentas.egzaminas < 0 || studentas.egzaminas > 10);
-
 		studentai.push_back(studentas);
 
 		std::cout << "Ar norite ivesti kito studento duomenis? (t/n) ";
 		std::cin >> testi;
 	} while (testi == 't' || testi == 'T');
 
-
-
 	int choice;
-	std::string rez = "";
-
+	
 	do
 	{
 		std::cout << "Ar rezultata skaiciuojama su mediana ar su vidurkiu\n";
@@ -120,27 +103,26 @@ int main()
 
 	} while (choice != 1 && choice != 2);
 
+	std::string rez = (choice == 1) ? "Galutinis (Vid.)" : "Galutinis (Med.)";
+
+
 	for (int i = 0; i < studentai.size(); ++i)
 	{
-
+		double nd;
 		if (choice == 1)
 		{
-			double average = calculateAverage(studentai[i].pazymiai);
-			studentai[i].rezultatas = calculateFinal(average, studentai[i].egzaminas);
-			rez = "Galutinis (Vid.)";
-
+			nd = calculateAverage(studentai[i].pazymiai);
 		}
 		else
 		{
-			double median = calculateMedian(studentai[i].pazymiai);
-			studentai[i].rezultatas = calculateFinal(median, studentai[i].egzaminas);
-			rez = "Galutinis (Med.)";
+			nd = calculateMedian(studentai[i].pazymiai);
 		}
+		studentai[i].rezultatas = calculateFinal(nd, studentai[i].egzaminas);
 
 	}
 	std::cout << std::left << std::setw(15) << "Pavarde"
 		<< std::setw(15) << "Vardas"
-		<< rez << "\n";
+		<<std::setw(20)<< rez << "\n";
 
 
 	for (int i = 0; i < studentai.size(); ++i)
