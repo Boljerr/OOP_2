@@ -61,15 +61,18 @@ int main()
 	std::cout << "Iveskite varda ir pavarde: ";
 	std::cin >> studentas.vardas >> studentas.pavarde;
 
-	std::cout << "Kiek pazymiu ivesite? ";
 	int n;
-	std::cin >> n;
 
-	if (n < 0)
-	{
-		std::cout << "Neteisingas pazymiu skaicius, bandykite dar karta\n";
-		return 0;
-	}
+	do {
+		std::cout << "Kiek pazymiu ivesite? ";
+
+		std::cin >> n;
+		if (n < 0)
+		{
+			std::cout << "Pazymiu skaicius turi buti teigiamas, bandykite dar karta\n";
+		}
+	} while (n < 0);
+
 
 	for (int i = 0; i < n ; i++)
 	{
@@ -120,8 +123,12 @@ int main()
 	}
 
 
-	std::cout << "Pavarde " << "Vardas " << rez	<< "\n";
-	std::cout << studentas	.pavarde << " " << studentas.vardas << "	   " << std::fixed << std::setprecision(2) << studentas.Rezultatas << "\n";
+	std::cout <<std::left <<std::setw(15)<< "Pavarde " 
+		<< std::setw(15)<< "Vardas " 
+		<< rez	<< "\n";
+	std::cout <<std::setw(15)<< studentas.pavarde
+	<< std::setw(15) << studentas.vardas
+	<< std::fixed << std::setprecision(2) << studentas.Rezultatas << "\n";
 	
 }
 
