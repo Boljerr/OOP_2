@@ -3,6 +3,7 @@
 //ReSharper disable All
 // Objektinis.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+#include <limits>
 #include<iostream>
 #include<string>
 #include<vector>
@@ -14,7 +15,7 @@ struct Studentas {
 	std::string pavarde;
 	std::vector<int> pazymiai;
 	int egzaminas;
-	double Rezultatas;
+	double rezultatas;
 };
 
 double calculateAverage(const std::vector<int>& grade) // Cia reference tiesiog nes tipo nereikia nieko keisti
@@ -67,27 +68,70 @@ int main()
 		std::cout << "Kiek pazymiu ivesite? ";
 
 		std::cin >> n;
-		if (n < 0)
+
+		if (std::cin.fail())
+		{
+			std::cout << "Ivestis turi buti skaicius, bandykite dar karta\n";
+			std::cin.clear(); // isvalo klaidos busena
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignoruoja netinkama ivesti iki naujos eilutes
+			n = -1; // i neigiamas kad loop eitu vel
+
+		}
+		else if (n <= 0)
 		{
 			std::cout << "Pazymiu skaicius turi buti teigiamas, bandykite dar karta\n";
 		}
-	} while (n < 0);
+	} while (n <= 0);
 
 
-	for (int i = 0; i < n ; i++)
+	for (int i = 0; i < n; i++)
 	{
 		int temp;
-		std::cout << "Iveskite pazymi\n";
-		std::cin >> temp;
+
+		do {
+			std::cout << "Iveskite pazymi (0 - 10)\n";
+			std::cin >> temp;
+			
+			if (std::cin.fail())
+			{
+				std::cout << "Ivestis turi buti skaicius, bandykite dar karta\n";
+				std::cin.clear(); // isvalo klaidos busena
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignoruoja netinkama ivesti iki naujos eilutes
+				temp = -1; // i neigiamas kad loop eitu velj
+			}
+			else if (temp < 0 || temp > 10)
+			{
+				std::cout << "Pazymys turi buti tarp 0 ir 10, bandykite dar karta\n";
+			}
+		} while (temp < 0 || temp > 10);
+
 		studentas.pazymiai.push_back(temp);
-	}
-	
-	double average = calculateAverage(studentas.pazymiai);
-	double median = calculateMedian(studentas.pazymiai);
+ 	}
+
+	do
+	{
+
+		std::cout << "Iveskite egzamino rezultata: ";
+		std::cin >> studentas.egzaminas;
+
+		if (std::cin.fail())
+		{
+			std::cout << "Ivestis turi buti skaicius, bandykite dar karta\n";
+			std::cin.clear(); // isvalo klaidos busena
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignoruoja netinkama ivesti iki naujos eilutes
+			studentas.egzaminas = -1; // i neigiamas kad loop eitu vel
+		}
+		else if (studentas.egzaminas < 0 || studentas.egzaminas > 10)
+		{
+			std::cout << "Egzamino rezultatas turi buti tarp 0 ir 10, bandykite dar karta\n";
+		}
+		
+	} while (studentas.egzaminas < 0 || studentas.egzaminas > 10);
 
 
-	std::cout << "Iveskite egzamino rezultata: ";
-	std::cin >> studentas.egzaminas;
+	//double average = calculateAverage(studentas.pazymiai);
+	//double median = calculateMedian(studentas.pazymiai);
+
 
 
 	int choice;
@@ -102,7 +146,14 @@ int main()
 
 		std::cin >> choice;
 
-		if (choice != 1 && choice !=2)
+		if (std::cin.fail())
+		{
+			std::cout << "Ivestis turi buti skaicius, bandykite dar karta\n";
+			std::cin.clear(); // isvalo klaidos busena
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignoruoja netinkama ivesti iki naujos eilutes
+			choice = -1; // i neigiamas kad loop eitu vel
+		}
+		else if (choice != 1 && choice !=2)
 		{
 			std::cout << "Neteisingas pasirinkimas, bandykite dar karta\n";
 		}
@@ -112,13 +163,15 @@ int main()
 
 	if (choice == 1)
 	{
-		studentas.Rezultatas = calculateFinal(average, studentas.egzaminas);
+		double average = calculateAverage(studentas.pazymiai);
+		studentas.rezultatas = calculateFinal(average, studentas.egzaminas);
 		rez = "Galutinis (Vid.)";
 		
 	}
 	else
 	{
-		studentas.Rezultatas = calculateFinal(median, studentas.egzaminas);
+		double median = calculateMedian(studentas.pazymiai);
+		studentas.rezultatas = calculateFinal(median, studentas.egzaminas);
 		rez = "Galutinis (Med.)";
 	}
 
@@ -128,7 +181,7 @@ int main()
 		<< rez	<< "\n";
 	std::cout <<std::setw(15)<< studentas.pavarde
 	<< std::setw(15) << studentas.vardas
-	<< std::fixed << std::setprecision(2) << studentas.Rezultatas << "\n";
+	<< std::fixed << std::setprecision(2) << studentas.rezultatas << "\n";
 	
 }
 
