@@ -62,7 +62,6 @@ int main()
 	std::cin >> studentas.vardas >> studentas.pavarde;
 
 	int n;
-
 	do {
 		std::cout << "Kiek pazymiu ivesite? ";
 
@@ -123,8 +122,8 @@ int main()
 	}
 
 
-	std::cout <<std::left <<std::setw(15)<< "Pavarde " 
-		<< std::setw(15)<< "Vardas " 
+	std::cout <<std::left <<std::setw(15)<< "Pavarde" 
+		<< std::setw(15)<< "Vardas" 
 		<< rez	<< "\n";
 	std::cout <<std::setw(15)<< studentas.pavarde
 	<< std::setw(15) << studentas.vardas

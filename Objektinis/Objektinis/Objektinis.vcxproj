@@ -127,7 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="generator.cpp" />
     <ClCompile Include="Objektinis.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="struktura.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
