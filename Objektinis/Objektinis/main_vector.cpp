@@ -9,51 +9,7 @@
 #include<vector>
 #include<algorithm>
 #include<iomanip>
-
-struct Studentas {
-	std::string vardas;
-	std::string pavarde;
-	std::vector<int> pazymiai;
-	int egzaminas;
-	double rezultatas;
-};
-
-double calculateAverage(const std::vector<int>& grade) // Cia reference tiesiog nes tipo nereikia nieko keisti
-{
-	if (grade.empty()) return 0.0;
-
-	int suma = 0;
-	for (int i = 0; i < grade.size(); i++)
-	{
-		suma += grade[i];
-	}
-
-	return (double)suma / grade.size();
-}
-
-double calculateMedian(std::vector<int> grade) // cia kopija nes tipo sortini
-{
-	if (grade.empty()) return 0.0;
-
-	std::sort(grade.begin(), grade.end());
-
-	int n = grade.size();
-
-	if (n % 2 == 1)
-	{
-		return grade[n / 2];
-	}
-	else
-	{
-		return (grade[n / 2 - 1] + grade[n / 2]) / 2.0;
-	}
-}
-double calculateFinal(double ndReiksme, int egzaminas)
-{
-	return 0.4 * ndReiksme + 0.6 * egzaminas;
-}
-
-
+#include "Studentas_vector.h"
 
 int main()
 {
@@ -182,12 +138,13 @@ int main()
 		}
 
 	}
+	std::cout << std::left << std::setw(15) << "Pavarde"
+		<< std::setw(15) << "Vardas"
+		<< rez << "\n";
+
 
 	for (int i = 0; i < studentai.size(); ++i)
 	{
-		std::cout << std::left << std::setw(15) << "Pavarde"
-			<< std::setw(15) << "Vardas"
-			<< rez << "\n";
 		std::cout << std::setw(15) << studentai[i].pavarde
 			<< std::setw(15) << studentai[i].vardas
 			<< std::fixed << std::setprecision(2) << studentai[i].rezultatas << "\n";
