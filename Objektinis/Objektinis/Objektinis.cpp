@@ -65,6 +65,12 @@ int main()
 	int n;
 	std::cin >> n;
 
+	if (n < 0)
+	{
+		std::cout << "Neteisingas pazymiu skaicius, bandykite dar karta\n";
+		return 0;
+	}
+
 	for (int i = 0; i < n ; i++)
 	{
 		int temp;
@@ -80,14 +86,26 @@ int main()
 	std::cout << "Iveskite egzamino rezultata: ";
 	std::cin >> studentas.egzaminas;
 
-	std::cout << "Ar rezultata skaiciuojama su mediana ar su vidurkiu\n";
-	std::cout << "1 - vidurkis\n";
-	std::cout << "2 - mediana\n";
 
 	int choice;
 	std::string rez = "";
-	
-	std::cin >> choice;
+
+	do
+	{
+		std::cout << "Ar rezultata skaiciuojama su mediana ar su vidurkiu\n";
+		std::cout << "1 - vidurkis\n";
+		std::cout << "2 - mediana\n";
+		std::cout << "Pasirinkite: ";
+
+		std::cin >> choice;
+
+		if (choice != 1 && choice !=2)
+		{
+			std::cout << "Neteisingas pasirinkimas, bandykite dar karta\n";
+		}
+		
+	} while (choice != 1 && choice != 2);
+
 
 	if (choice == 1)
 	{
@@ -95,16 +113,13 @@ int main()
 		rez = "Galutinis (Vid.)";
 		
 	}
-	else if (choice == 2)
+	else
 	{
 		studentas.Rezultatas = calculateFinal(median, studentas.egzaminas);
 		rez = "Galutinis (Med.)";
 	}
-	else
-	{
-		std::cout << "Neteisingas pasirinkimas\n";
-		return 0;
-	}
+
+
 	std::cout << "Pavarde " << "Vardas " << rez	<< "\n";
 	std::cout << studentas	.pavarde << " " << studentas.vardas << "	   " << std::fixed << std::setprecision(2) << studentas.Rezultatas << "\n";
 	
