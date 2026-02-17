@@ -17,3 +17,5 @@ double calculateFinal(double ndReiksme, int egzaminas);
 int pasirinktiSkaiciavimoTipa();
 void skaicuotiRezultatus(std::vector<Studentas>& studentai, int skaiciavimoTipas);
 void isvestiRezultatus(const std::vector<Studentas>& studentai, int skaiciavimoTipas);
+int ivestiIntSuValidacija(const std::string& zinute, int min, int max);
+std::string ivestiVardaArPavarde(const std::string& zinute);

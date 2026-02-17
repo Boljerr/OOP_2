@@ -41,34 +41,20 @@ int main()
 
 			do {
 				Studentas studentas;
-				std::cout << "Iveskite varda ir pavarde: ";
-				std::cin >> studentas.vardas >> studentas.pavarde;
+				studentas.vardas = ivestiVardaArPavarde("Iveskite varda: ");
+				studentas.pavarde = ivestiVardaArPavarde("Iveskite pavarde: ");
 
-				int temp;
 				std::cout << "Iveskite pazymi (0 - 10). Baigti -1\n";
 
 				while (true)
 				{
-					std::cout << "Pazymys: ";
-					std::cin >> temp;
-
-					if (std::cin.fail())
-					{
-						std::cout << "Ivestis turi buti skaicius, bandykite dar karta\n";
-						std::cin.clear(); // isvalo klaidos busena
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignoruoja netinkama ivesti iki naujos eilutes
-						continue;
-					}
+					int temp = ivestiIntSuValidacija("Pazymys: ", -1, 10);
+					
 					if (temp == -1)
 					{
 						break; // baigia ivesti pazymius
 					}
 
-					else if (temp < 0 || temp > 10)
-					{
-						std::cout << "Pazymys turi buti tarp 0 ir 10, bandykite dar karta\n";
-						continue;
-					}
 					studentas.pazymiai.push_back(temp);
 				}
 				if (studentas.pazymiai.empty())
@@ -76,29 +62,13 @@ int main()
 					std::cout << "Nerasta pazymiu, galutinis bus skaiciuojamas tik is egzamino\n";
 				}
 
-				do
-				{
+				studentas.egzaminas = ivestiIntSuValidacija("Iveskite egzamino rezultata (0-10): ", 0, 10);
 
-					std::cout << "Iveskite egzamino rezultata: ";
-					std::cin >> studentas.egzaminas;
-
-					if (std::cin.fail())
-					{
-						std::cout << "Ivestis turi buti skaicius, bandykite dar karta\n";
-						std::cin.clear(); // isvalo klaidos busena
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignoruoja netinkama ivesti iki naujos eilutes
-						studentas.egzaminas = -1; // i neigiamas kad loop eitu vel
-					}
-					else if (studentas.egzaminas < 0 || studentas.egzaminas > 10)
-					{
-						std::cout << "Egzamino rezultatas turi buti tarp 0 ir 10, bandykite dar karta\n";
-					}
-
-				} while (studentas.egzaminas < 0 || studentas.egzaminas > 10);
 				studentai.push_back(studentas);
 
 				std::cout << "Ar norite ivesti kito studento duomenis? (t/n) ";
 				std::cin >> testi;
+
 			} while (testi == 't' || testi == 'T');
 
 			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();

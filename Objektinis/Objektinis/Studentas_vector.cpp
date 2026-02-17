@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
+#include <cctype>
+#include <limits>
 
 double calculateAverage(const std::vector<int>& grade) // Cia reference tiesiog nes tipo nereikia nieko keisti
 {
@@ -79,5 +81,63 @@ void isvestiRezultatus(const std::vector<Studentas>& studentai, int skaiciavimoT
 		std::cout << std::setw(15) << studentai[i].pavarde
 			<< std::setw(15) << studentai[i].vardas
 			<< std::fixed << std::setprecision(2) << studentai[i].rezultatas << "\n";
+	}
+}
+
+int ivestiIntSuValidacija(const std::string& zinute, int min, int max)
+{
+	int value;
+	while (true)
+	{
+		std::cout << zinute;
+		std::cin >> value;
+		if (std::cin.fail())
+		{
+			std::cout << "Ivestis turi buti skaicius, bandykite dar karta\n";
+			std::cin.clear(); // isvalo klaidos busena
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignoruoja netinkama ivesti iki naujos eilutes
+			continue;
+		}
+		else if (value < min || value > max)
+		{
+			std::cout << "Ivestis turi buti tarp " << min << " ir " << max << ", bandykite dar karta\n";
+			continue;
+		}
+		else
+		{
+			return value;
+		}
+	}
+}
+
+std::string ivestiVardaArPavarde(const std::string& zinute)
+{
+	std::string tekstas;
+	while (true)
+	{
+		std::cout << zinute;
+		std::cin >> tekstas;
+		if (tekstas.empty())
+		{
+			std::cout << "Ivestis negali buti tuscia, bandykite dar karta\n";
+			continue;
+		}
+		bool teisingas = true;
+			
+		for (char c : tekstas)
+		{
+				if (!std::isalpha(c))
+				{
+					teisingas = false;
+					break;
+				}
+		}
+		if (!teisingas)
+		{
+			std::cout << "Ivestis turi buti sudaryta tik is raidziu, bandykite dar karta\n";
+			continue;
+		}
+		return tekstas;
+		
 	}
 }
