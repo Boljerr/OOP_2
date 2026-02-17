@@ -11,7 +11,7 @@ int main()
 	int pasirinkimas;
 
 	do {
-		std::cout << "\n=============PASRRINIKITE VERSIJA=============\n";
+		std::cout << "\n=============PASIRINKITE VERSIJA=============\n";
 		std::cout << "1 - Vector versija\n";
 		std::cout << "2 - Array versija \n";
 		std::cout << "3 - Baigti\n";

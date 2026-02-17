@@ -67,16 +67,10 @@ double calculateFinalA(double ndReiksme, int egzaminas)
 
 int pasirinktiSkaiciavimoTipaA()
 {
-	int skaiciavimoTipas;
-	do
-	{
-		std::cout << "Ar rezultata skaiciuojama su mediana ar su vidurkiu\n";
-		std::cout << "1 - vidurkis\n";
-		std::cout << "2 - mediana\n";
-		std::cout << "Pasirinkite: ";
-		std::cin >> skaiciavimoTipas;
-	} while (skaiciavimoTipas != 1 && skaiciavimoTipas != 2);
-	return  skaiciavimoTipas;
+	std::cout << "Ar rezultata skaiciuojama su mediana ar su vidurkiu\n";
+	std::cout << "1 - vidurkis\n";
+	std::cout << "2 - mediana\n";
+		return ivestiIntSuValidacijaA("Pasirinkite: ", 1, 2);
 }
 void skaicuotiRezultatusA(StudentasA* studentai, int kiekis, int skaiciavimoTipas)
 {

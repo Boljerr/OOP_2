@@ -129,8 +129,7 @@ void paleistiVectorVersija()
 
 					for (int j = 0; j < ndKiekis; ++j)
 					{
-						int paz = std::rand() % 10 + 1;
-						studentas.pazymiai.push_back(paz);
+						studentas.pazymiai.push_back(gen().paz);
 					}
 
 					studentas.egzaminas = std::rand() % 10 + 1;
@@ -140,6 +139,7 @@ void paleistiVectorVersija()
 
 				skaicuotiRezultatus(studentai, skaiciavimoTipas);
 				isvestiRezultatus(studentai, skaiciavimoTipas);
+				break;
 			}
 		case 4:
 			{
@@ -149,6 +149,7 @@ void paleistiVectorVersija()
 		default:
 			{
 				std::cout << "Neteisingas pasirinkimas";
+				break;
 			}
 		}
 

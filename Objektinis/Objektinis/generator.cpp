@@ -36,7 +36,7 @@ zmogus gen() {
         case 4: a.pavarde = "Pavardaite5"; break;
         }
         break;
-    };
+    }
     a.paz = rand() % 10 + 1;
     return a;
 }

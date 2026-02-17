@@ -5,6 +5,8 @@
 #include<iostream>
 #include<string>
 #include<iomanip>
+
+#include "struktura.h"
 #include "Studentas_array.h"
 
 void paleistiArrayVersija()
@@ -60,7 +62,7 @@ void paleistiArrayVersija()
 						std::cin >> testi;
 					} while (testi == 't' || testi == 'T');
 
-					if (studentuKiekis > 0);
+					if (studentuKiekis > 0)
 					{
 					int tipas = pasirinktiSkaiciavimoTipaA();
 					
@@ -120,13 +122,46 @@ void paleistiArrayVersija()
 
 			case 3:
 			{
-				std::cout << "Generuoti studentus ir pazymius dar neivesta\n";
+				StudentasA* studentai = nullptr;
+				int studentuKiekis = 0;
+
+				int studentuSkaicius = ivestiIntSuValidacijaA("Kiek generuoti studentu? ", 1, INT_MAX - 1);
+					int ndKiekis = ivestiIntSuValidacijaA("Kiek generuoti namu darbu pazymiu kiekvienam? ", 1, INT_MAX - 1);
+					
+					for (int i = 0; i < studentuSkaicius; ++i)
+					{
+						StudentasA studentas;
+
+						zmogus z = gen();
+						studentas.vardas = z.vardas;
+						studentas.pavarde = z.pavarde;
+
+						for (int j = 0; j < ndKiekis; ++j)
+						{
+							pridetiPazymi(studentas, gen().paz);
+						}
+
+						studentas.egzaminas = std::rand() % 10 + 1;
+
+						pridetiStudentaA(studentai, studentuKiekis, studentas);
+					}
+					int tipas = pasirinktiSkaiciavimoTipaA();
+
+					skaicuotiRezultatusA(studentai, studentuKiekis, tipas);
+
+					isvestiRezultatusA(studentai, studentuKiekis, tipas);
+
+					atlaisvinti(studentai, studentuKiekis);
 				break;
 			}
 			case 4:
 			{
 				std::cout << "Programa baigiama.\n";
 				break;
+			}
+			default:
+			{
+				std::cout << "Neteisingas pasirinkimas";
 			}
 
 

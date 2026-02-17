@@ -1,6 +1,5 @@
 ﻿  Studentas_array.cpp
-  main_array.cpp
-C:\Users\ignas\source\repos\Objektinis\Objektinis\Objektinis\main_array.cpp(12,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\ignas\source\repos\Objektinis\Objektinis\Objektinis\main_array.cpp(63,29): warning C4390: ';': empty controlled statement found; is this the intent?
+  Studentas_vector.cpp
+C:\Users\ignas\source\repos\Objektinis\Objektinis\Objektinis\Studentas_vector.cpp(25,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
   Objektinis.vcxproj -> C:\Users\ignas\source\repos\Objektinis\Objektinis\x64\Debug\Objektinis.exe
