@@ -1,3 +1,6 @@
-﻿  main_vector.cpp
+﻿  main.cpp
+  main_array.cpp
+  main_vector.cpp
 C:\Users\ignas\source\repos\Objektinis\Objektinis\Objektinis\main_vector.cpp(17,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
   Objektinis.vcxproj -> C:\Users\ignas\source\repos\Objektinis\Objektinis\x64\Debug\Objektinis.exe

@@ -12,7 +12,7 @@
 #include "struktura.h"
 #include "Studentas_vector.h"
 
-int main()
+void paleistiVectorVersija()
 {
 	std::srand(std::time(nullptr));
 	int pasirinkimas;
@@ -115,7 +115,7 @@ int main()
 		case 3:
 			{
 			std::vector<Studentas> studentai;
-
+				
 			int studentuKiekis = ivestiIntSuValidacija("Kiek generuoti studentu? ", 1, INT_MAX - 1);
 			int ndKiekis = ivestiIntSuValidacija("Kiek generuoti namu darbu pazymiu kiekvienam? ", 1, INT_MAX - 1);
 

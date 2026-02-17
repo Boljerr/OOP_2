@@ -128,12 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="generator.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="main_array.cpp" />
     <ClCompile Include="main_vector.cpp" />
     <ClCompile Include="Studentas_vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="struktura.h" />
+    <ClInclude Include="Studentas_array.h" />
     <ClInclude Include="Studentas_vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
