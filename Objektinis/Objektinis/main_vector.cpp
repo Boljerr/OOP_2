@@ -52,7 +52,7 @@ int main()
 					
 					if (temp == -1)
 					{
-						break; // baigia ivesti pazymius
+						break;
 					}
 
 					studentas.pazymiai.push_back(temp);
@@ -83,21 +83,21 @@ int main()
 			std::vector<Studentas> studentai;
 			char testi;
 
-				do
+			do
+			{
+				Studentas studentas;
+				studentas.vardas = ivestiVardaArPavarde("Iveskite varda: ");
+				studentas.pavarde = ivestiVardaArPavarde("Iveskite pavarde: ");
+
+				int kiekis = ivestiIntSuValidacija("Kiek generuoti namu darbu pazymiu? ", 1, 10000000);
+
+
+				for (int i = 0; i < kiekis; ++i)
 				{
-					Studentas studentas;
-					std::cout << "Iveskite varda ir pavarde: ";
-					std::cin >> studentas.vardas >> studentas.pavarde;
+					int paz = std::rand() % 10 + 1;
+					studentas.pazymiai.push_back(paz);
+				}
 
-					int kiekis = 0;
-					std::cout << "Kiek generuoti namu darbu pazymiu?";
-					std::cin >> kiekis;
-
-					for (int i = 0; i < kiekis; ++i)
-					{
-						int paz = std::rand() % 10 + 1;
-						studentas.pazymiai.push_back(paz);
-					}
 					studentas.egzaminas = std::rand() % 10 + 1;
 					
 					studentai.push_back(studentas);
@@ -107,7 +107,9 @@ int main()
 				
 				} while (testi == 't' || testi == 'T');
 
-				int skaiciavimoTipas;
+			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
+			skaicuotiRezultatus(studentai, skaiciavimoTipas);
+			isvestiRezultatus(studentai, skaiciavimoTipas);
 
 				break;
 			}
