@@ -74,9 +74,50 @@ void paleistiArrayVersija()
 			}
 			case 2:
 			{
-				std::cout << "Generuoti tik pazymius dar neivesta\n";
-				break;
+				StudentasA* studentai = nullptr;
+				int studentuKiekis = 0;
+				char testi;
+					
+				do {
+
+					StudentasA studentas;
+
+
+					studentas.vardas = ivestiVardaArPavardeA("Iveskite varda: ");
+
+					studentas.pavarde = ivestiVardaArPavardeA("Iveskite pavarde: ");
+
+					int kiekis = ivestiIntSuValidacijaA("Kiek generuoti namu darbu pazymiu? ", 1, INT_MAX - 1);
+
+					for (int i = 0; i < kiekis; ++i)
+
+					{
+						int paz = std::rand() % 10 + 1;
+						pridetiPazymi(studentas, paz);
+					}
+
+					studentas.egzaminas = std::rand() % 10 + 1;
+
+					pridetiStudentaA(studentai, studentuKiekis, studentas);
+
+					std::cout << "Ar norite ivesti kito studento duomenis? (t/n) ";
+					std::cin >> testi;
+				} while (testi == 't' || testi == 'T');
+					
+					if (studentuKiekis > 0)
+					{
+						int tipas = pasirinktiSkaiciavimoTipaA();
+
+						skaicuotiRezultatusA(studentai, studentuKiekis, tipas);
+
+						isvestiRezultatusA(studentai, studentuKiekis, tipas);
+					}
+					
+					atlaisvinti(studentai, studentuKiekis);
+				
+					break;
 			}
+
 			case 3:
 			{
 				std::cout << "Generuoti studentus ir pazymius dar neivesta\n";
