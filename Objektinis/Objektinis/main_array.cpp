@@ -31,11 +31,45 @@ void paleistiArrayVersija()
 			{
 				StudentasA* studentai = nullptr;
 				int studentuKiekis = 0;
-				//char testi;
-				//	do
-				//	{
+				char testi;
+					do
+					{
+						StudentasA studentas;
+
+						studentas.vardas = ivestiVardaArPavardeA("Iveskite varda: ");
+						studentas.pavarde = ivestiVardaArPavardeA("Iveskite pavarde: ");
 						
-				//	} while (testi == 't' || testi == 'T');
+						std::cout << "Iveskite pazymi (0 - 10). Baigti -1\n";
+						while (true)
+						{
+							int paz = ivestiIntSuValidacijaA("Pazymys: ", -1, 10);
+							
+							if (paz == -1)
+							{
+								break;
+							}
+
+							pridetiPazymi(studentas, paz);
+						}
+						
+						studentas.egzaminas = ivestiIntSuValidacijaA("Iveskite egzamino rezultata (0-10): ", 0, 10);
+						
+						pridetiStudentaA(studentai, studentuKiekis, studentas);
+
+						std::cout << "Ar norite ivesti kito studento duomenis? (t/n) ";
+						std::cin >> testi;
+					} while (testi == 't' || testi == 'T');
+
+					if (studentuKiekis > 0);
+					{
+					int tipas = pasirinktiSkaiciavimoTipaA();
+					
+					skaicuotiRezultatusA(studentai, studentuKiekis, tipas);
+
+					isvestiRezultatusA(studentai, studentuKiekis, tipas);
+					}
+					
+					atlaisvinti(studentai, studentuKiekis);
 				break;
 			}
 			case 2:
