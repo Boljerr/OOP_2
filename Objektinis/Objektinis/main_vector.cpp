@@ -1,8 +1,5 @@
-//ReSharper disable CommentTypo
-//ReSharper disable IdentifierTypo
 //ReSharper disable All
-// Objektinis.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+
 #include <cstdlib>
 #include <ctime>
 #include <limits>
@@ -11,6 +8,8 @@
 #include<vector>
 #include<algorithm>
 #include<iomanip>
+
+#include "struktura.h"
 #include "Studentas_vector.h"
 
 int main()
@@ -89,7 +88,7 @@ int main()
 				studentas.vardas = ivestiVardaArPavarde("Iveskite varda: ");
 				studentas.pavarde = ivestiVardaArPavarde("Iveskite pavarde: ");
 
-				int kiekis = ivestiIntSuValidacija("Kiek generuoti namu darbu pazymiu? ", 1, 10000000);
+				int kiekis = ivestiIntSuValidacija("Kiek generuoti namu darbu pazymiu? ", 1, INT_MAX - 1);
 
 
 				for (int i = 0; i < kiekis; ++i)
@@ -115,8 +114,32 @@ int main()
 			}
 		case 3:
 			{
-				std::cout << "studentu+ paz";
-				break;
+			std::vector<Studentas> studentai;
+
+			int studentuKiekis = ivestiIntSuValidacija("Kiek generuoti studentu? ", 1, INT_MAX - 1);
+			int ndKiekis = ivestiIntSuValidacija("Kiek generuoti namu darbu pazymiu kiekvienam? ", 1, INT_MAX - 1);
+
+				for (int i = 0; i < studentuKiekis; i++)
+				{
+					zmogus z = gen();
+					
+					Studentas studentas;
+					studentas.vardas = z.vardas;
+					studentas.pavarde = z.pavarde;
+
+					for (int j = 0; j < ndKiekis; ++j);
+					{
+						int paz = std::rand() % 10 + 1;
+						studentas.pazymiai.push_back(paz);
+					}
+
+					studentas.egzaminas = std::rand() % 10 + 1;
+					studentai.push_back(studentas);
+				}
+				int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
+
+				skaicuotiRezultatus(studentai, skaiciavimoTipas);
+				isvestiRezultatus(studentai, skaiciavimoTipas);
 			}
 		case 4:
 			{
