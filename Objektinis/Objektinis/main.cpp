@@ -1,5 +1,7 @@
 //ReSharper disable all
 #include <iostream>
+#include <limits>
+
 
 void paleistiVectorVersija();
 void paleistiArrayVersija();
@@ -19,6 +21,7 @@ int main()
 			std::cout << "Ivestis turi buti skaicius.\n";
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
 		}
 		switch (pasirinkimas)
 		{

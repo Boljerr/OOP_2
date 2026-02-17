@@ -131,6 +131,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_array.cpp" />
     <ClCompile Include="main_vector.cpp" />
+    <ClCompile Include="Studentas_array.cpp" />
     <ClCompile Include="Studentas_vector.cpp" />
   </ItemGroup>
   <ItemGroup>

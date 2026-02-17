@@ -127,7 +127,7 @@ void paleistiVectorVersija()
 					studentas.vardas = z.vardas;
 					studentas.pavarde = z.pavarde;
 
-					for (int j = 0; j < ndKiekis; ++j);
+					for (int j = 0; j < ndKiekis; ++j)
 					{
 						int paz = std::rand() % 10 + 1;
 						studentas.pazymiai.push_back(paz);
