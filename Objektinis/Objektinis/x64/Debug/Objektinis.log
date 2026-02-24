@@ -1,5 +1,3 @@
-﻿  Studentas_array.cpp
-  Studentas_vector.cpp
-C:\Users\ignas\source\repos\Objektinis\Objektinis\Objektinis\Studentas_vector.cpp(25,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
-  Objektinis.vcxproj -> C:\Users\ignas\source\repos\Objektinis\Objektinis\x64\Debug\Objektinis.exe
+﻿  main_vector.cpp
+C:\Users\User\Objektinis\Objektinis\Objektinis\main_vector.cpp(17,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Objektinis.vcxproj -> C:\Users\User\Objektinis\Objektinis\x64\Debug\Objektinis.exe

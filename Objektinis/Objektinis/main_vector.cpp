@@ -21,7 +21,8 @@ void paleistiVectorVersija()
 		std::cout << "1 - Rankinis ivedimas\n";
 		std::cout << "2 - Generuoti tik pazymius \n";
 		std::cout << "3 - Generuoti studentus ir pazymius\n";
-		std::cout << "4 - Baigti\n";
+		std::cout << "4 - Nuskaityti is failo\n";
+		std::cout << "5- Baigti\n";
 		std::cin >> pasirinkimas;
 		if (std::cin.fail())
 		{
@@ -48,7 +49,7 @@ void paleistiVectorVersija()
 				while (true)
 				{
 					int temp = ivestiIntSuValidacija("Pazymys: ", -1, 10);
-					
+
 					if (temp == -1)
 					{
 						break;
@@ -74,11 +75,11 @@ void paleistiVectorVersija()
 
 			skaicuotiRezultatus(studentai, skaiciavimoTipas);
 			isvestiRezultatus(studentai, skaiciavimoTipas);
-			
+
 			break;
 		}
 		case 2:
-			{
+		{
 			std::vector<Studentas> studentai;
 			char testi;
 
@@ -97,51 +98,56 @@ void paleistiVectorVersija()
 					studentas.pazymiai.push_back(paz);
 				}
 
-					studentas.egzaminas = std::rand() % 10 + 1;
-					
-					studentai.push_back(studentas);
-					
-					std::cout << "Ar generuoti dar viena studenta? (t/n): ";
-					std::cin >> testi;
-				
-				} while (testi == 't' || testi == 'T');
+				studentas.egzaminas = std::rand() % 10 + 1;
+
+				studentai.push_back(studentas);
+
+				std::cout << "Ar generuoti dar viena studenta? (t/n): ";
+				std::cin >> testi;
+
+			} while (testi == 't' || testi == 'T');
 
 			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
 			skaicuotiRezultatus(studentai, skaiciavimoTipas);
 			isvestiRezultatus(studentai, skaiciavimoTipas);
 
-				break;
-			}
+			break;
+		}
 		case 3:
-			{
+		{
 			std::vector<Studentas> studentai;
-				
+
 			int studentuKiekis = ivestiIntSuValidacija("Kiek generuoti studentu? ", 1, INT_MAX - 1);
 			int ndKiekis = ivestiIntSuValidacija("Kiek generuoti namu darbu pazymiu kiekvienam? ", 1, INT_MAX - 1);
 
-				for (int i = 0; i < studentuKiekis; i++)
+			for (int i = 0; i < studentuKiekis; i++)
+			{
+				zmogus z = gen();
+
+				Studentas studentas;
+				studentas.vardas = z.vardas;
+				studentas.pavarde = z.pavarde;
+
+				for (int j = 0; j < ndKiekis; ++j)
 				{
-					zmogus z = gen();
-					
-					Studentas studentas;
-					studentas.vardas = z.vardas;
-					studentas.pavarde = z.pavarde;
-
-					for (int j = 0; j < ndKiekis; ++j)
-					{
-						studentas.pazymiai.push_back(gen().paz);
-					}
-
-					studentas.egzaminas = std::rand() % 10 + 1;
-					studentai.push_back(studentas);
+					studentas.pazymiai.push_back(gen().paz);
 				}
-				int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
 
-				skaicuotiRezultatus(studentai, skaiciavimoTipas);
-				isvestiRezultatus(studentai, skaiciavimoTipas);
-				break;
+				studentas.egzaminas = std::rand() % 10 + 1;
+				studentai.push_back(studentas);
 			}
+			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
+
+			skaicuotiRezultatus(studentai, skaiciavimoTipas);
+			isvestiRezultatus(studentai, skaiciavimoTipas);
+			break;
+		}
 		case 4:
+			{
+			std::cout << "Iveskite failo pavadinima: ";
+			}
+			break;
+		case 5:
 			{
 				std::cout << "Programa baigiama. \n";
 				break;
