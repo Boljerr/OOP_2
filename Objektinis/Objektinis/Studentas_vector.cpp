@@ -4,6 +4,9 @@
 #include <iostream>
 #include <cctype>
 #include <limits>
+#include <fstream>
+#include <sstream>
+#include <chrono>
 
 double calculateAverage(const std::vector<int>& grade) // Cia reference tiesiog nes tipo nereikia nieko keisti
 {
