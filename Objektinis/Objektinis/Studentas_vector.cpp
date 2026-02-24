@@ -138,3 +138,50 @@ std::string ivestiVardaArPavarde(const std::string& zinute)
 		
 	}
 }
+
+void skaitytiIsFailo(const std::string& failoPavadinimas, std::vector<Studentas>& studentai)
+{
+	std::ifstream in(failoPavadinimas);
+
+	if (!in.is_open())
+	{
+		std::cerr << "Nepavyko atidaryti failo: " << failoPavadinimas << "\n";
+		return;
+	}
+
+	std::string eilute;
+
+	std::getline(in, eilute); // praleidzia antra eilute su antraste
+	
+	while (std::getline(in, eilute))
+	{
+		std::stringstream ss(eilute);
+		Studentas studentas;
+
+		ss >> studentas.vardas >> studentas.pavarde;
+
+		int paz;
+		std::vector<int> visiPaz;
+
+		while (ss >> paz)
+		{
+			visiPaz.push_back(paz);
+		}
+
+		if (!visiPaz.empty())
+		{
+			studentas.egzaminas = visiPaz.back();
+			visiPaz.pop_back();
+			studentas.pazymiai = visiPaz;
+		}
+		studentai.push_back(studentas);
+	}
+	in.close();
+}
+
+void compareByVardas(const Studentas& a, const Studentas& b);
+void compareByPavarde(const Studentas& a, const Studentas& b);
+void compareByRezultatas(const Studentas& a, const Studentas& b);
+
+void rusiuotiStudentus(std::vector<Studentas>& studentai, int pasirinkimas);
+int pasirinktiRusiavimoTipa();
