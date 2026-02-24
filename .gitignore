@@ -426,3 +426,7 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+studentai10000.txt
+studentai100000.txt
+studentai1000000.txt

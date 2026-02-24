@@ -8,6 +8,7 @@
 #include<vector>
 #include<algorithm>
 #include<iomanip>
+#include<filesystem>
 
 #include "struktura.h"
 #include "Studentas_vector.h"
@@ -22,7 +23,7 @@ void paleistiVectorVersija()
 		std::cout << "2 - Generuoti tik pazymius \n";
 		std::cout << "3 - Generuoti studentus ir pazymius\n";
 		std::cout << "4 - Nuskaityti is failo\n";
-		std::cout << "5- Baigti\n";
+		std::cout << "5 - Baigti\n";
 		std::cin >> pasirinkimas;
 		if (std::cin.fail())
 		{
@@ -143,23 +144,58 @@ void paleistiVectorVersija()
 			break;
 		}
 		case 4:
-			{
+		{
+			std::cout << "Working directory: "
+				<< std::filesystem::current_path()
+				<< std::endl;
+			std::vector<Studentas> studentai;
+
+			std::string failas;
 			std::cout << "Iveskite failo pavadinima: ";
+			std::cin >> failas;
+
+			auto start = std::chrono::high_resolution_clock::now();
+			skaitytiIsFailo(failas, studentai);
+
+			if (studentai.empty())
+			{
+				std::cout << "Nerasta studentu duomenu faile arba failas tuscias.\n";
+				break;
+			}
+
+			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
+			skaicuotiRezultatus(studentai, skaiciavimoTipas);
+
+			int rusiavimoTipas = pasirinktiRusiavimoTipa();
+			rusiuotiStudentus(studentai, rusiavimoTipas);
+
+			auto end = std::chrono::high_resolution_clock::now();
+			std::chrono::duration<double> diff = end - start;
+			std::cout << "Laikas: " << diff.count() << " sekundes\n";
+
+			//spausdinu tik maza kieki nes su 1m lines uztrunka 10 min
+			if (studentai.size() <= 10000) {
+				isvestiRezultatus(studentai, skaiciavimoTipas);
 			}
 			break;
+		}
 		case 5:
-			{
-				std::cout << "Programa baigiama. \n";
-				break;
-			}
+		{
+			std::cout << "Programa baigiama. \n";
+			break;
+		}
 		default:
-			{
-				std::cout << "Neteisingas pasirinkimas";
-				break;
-			}
+		{
+			std::cout << "Neteisingas pasirinkimas";
+			break;
+		}
 		}
 
 	} while (pasirinkimas != 4);
 }
+
+
+
+
 
 
