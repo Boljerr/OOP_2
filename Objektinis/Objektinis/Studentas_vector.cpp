@@ -179,9 +179,42 @@ void skaitytiIsFailo(const std::string& failoPavadinimas, std::vector<Studentas>
 	in.close();
 }
 
-void compareByVardas(const Studentas& a, const Studentas& b);
-void compareByPavarde(const Studentas& a, const Studentas& b);
-void compareByRezultatas(const Studentas& a, const Studentas& b);
-
-void rusiuotiStudentus(std::vector<Studentas>& studentai, int pasirinkimas);
-int pasirinktiRusiavimoTipa();
+bool compareByVardas(const Studentas& a, const Studentas& b)
+{
+	return a.vardas < b.vardas;
+}
+bool compareByPavarde(const Studentas& a, const Studentas& b)
+{
+	return a.pavarde < b.pavarde;
+}
+bool compareByRezultatas(const Studentas& a, const Studentas& b)
+{
+	return a.rezultatas < b.rezultatas;
+}
+void rusiuotiStudentus(std::vector<Studentas>& studentai, int pasirinkimas)
+{
+switch (pasirinkimas)
+	{
+	case 1:
+		std::sort(studentai.begin(), studentai.end(), compareByVardas);
+		break;
+	case 2:
+		std::sort(studentai.begin(), studentai.end(), compareByPavarde);
+		break;
+	case 3:
+		std::sort(studentai.begin(), studentai.end(), compareByRezultatas);
+		break;
+	default:
+		std::cout << "Neteisingas pasirinkimas, rusiuojama pagal varda\n";
+		std::sort(studentai.begin(), studentai.end(), compareByVardas);
+		break;
+}
+}
+int pasirinktiRusiavimoTipa()
+{
+	std::cout << "Pasirinkite rusiavimo tipa:\n";
+	std::cout << "1 - pagal varda\n";
+	std::cout << "2 - pagal pavarde\n";
+	std::cout << "3 - pagal rezultata\n";
+	return ivestiIntSuValidacija("Pasirinkite: ", 1, 3);
+}

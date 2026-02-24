@@ -23,9 +23,9 @@ std::string ivestiVardaArPavarde(const std::string& zinute);
 
 void skaitytiIsFailo(const std::string& failoPavadinimas, std::vector<Studentas>& studentai);
 
-void compareByVardas(const Studentas& a, const Studentas& b);
-void compareByPavarde(const Studentas& a, const Studentas& b);
-void compareByRezultatas(const Studentas& a, const Studentas& b);
+bool compareByVardas(const Studentas& a, const Studentas& b);
+bool compareByPavarde(const Studentas& a, const Studentas& b);
+bool compareByRezultatas(const Studentas& a, const Studentas& b);
 
 void rusiuotiStudentus(std::vector<Studentas>& studentai, int pasirinkimas);
 int pasirinktiRusiavimoTipa();
