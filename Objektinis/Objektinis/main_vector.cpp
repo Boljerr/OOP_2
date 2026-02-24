@@ -154,6 +154,11 @@ void paleistiVectorVersija()
 			std::cout << "Iveskite failo pavadinima: ";
 			std::cin >> failas;
 
+			studentai.clear();
+
+			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
+			int rusiavimoTipas = pasirinktiRusiavimoTipa();
+
 			auto start = std::chrono::high_resolution_clock::now();
 			skaitytiIsFailo(failas, studentai);
 
@@ -163,20 +168,18 @@ void paleistiVectorVersija()
 				break;
 			}
 
-			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
+	
 			skaicuotiRezultatus(studentai, skaiciavimoTipas);
-
-			int rusiavimoTipas = pasirinktiRusiavimoTipa();
 			rusiuotiStudentus(studentai, rusiavimoTipas);
 
 			auto end = std::chrono::high_resolution_clock::now();
 			std::chrono::duration<double> diff = end - start;
-			std::cout << "Laikas: " << diff.count() << " sekundes\n";
 
 			//spausdinu tik maza kieki nes su 1m lines uztrunka 10 min
-			if (studentai.size() <= 10000) {
+			if (studentai.size() <= 1000) {
 				isvestiRezultatus(studentai, skaiciavimoTipas);
 			}
+			std::cout << "Laikas: " << diff.count() << " sekundes\n";
 			break;
 		}
 		case 5:
