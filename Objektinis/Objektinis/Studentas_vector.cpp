@@ -271,8 +271,35 @@ void generuotiStudentuFaila(const std::string& failoPavadinimas, int studentuKie
 
 	for (int i = 1; i <= ndKiekis; ++i)
 	{
-		out << "ND" << i << " ";
+		out << "ND" << std::to_string(i) << " ";
 	}
-	out << ""
+	out << "Egz." << '\n';
 
+	for (int i = 1; i <= studentuKiekis; i++)
+	{
+		out << std::left << std::setw(15) << ("Vardas" + std::to_string(i))
+			<< std::setw(15) << ("Pavarde" + std::to_string(i));
+
+		for (int j = 0; j < ndKiekis; j++)
+		{
+			out << (std::rand() % 10 + 1) << " ";
+		}
+		out << (std::rand() % 10 + 1) << "\n";
+	}
+	out.close();
+}
+
+void padalintiStudentus(std::vector<Studentas>& studentai, std::vector<Studentas>& nuskriaustieji, std::vector<Studentas>& kietiakiai)
+{
+	for (int i = 0; i < studentai.size(); i ++)
+	{
+		if (studentai[i].rezultatas < 5.0)
+		{
+			nuskriaustieji.push_back(studentai[i]);
+		}
+		else
+		{
+			kietiakiai.push_back(studentai[i]);
+		}
+	}
 }
