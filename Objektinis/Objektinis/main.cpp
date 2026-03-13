@@ -24,7 +24,10 @@ int main()
 		std::cout << "2 - Generuoti tik pazymius \n";
 		std::cout << "3 - Generuoti studentus ir pazymius\n";
 		std::cout << "4 - Nuskaityti is failo\n";
-		std::cout << "5 - Baigti\n";
+		std::cout << "5 - Generuoti studentu faila\n";
+		std::cout << "6 - Atlikti failo kurimo tyrima\n";
+		std::cout << "7 - Atlikti duomenu apdorojimo tyrima\n";
+		std::cout << "8 - Baigti\n";
 		std::cin >> pasirinkimas;
 		if (std::cin.fail())
 		{
@@ -209,6 +212,18 @@ int main()
 				break;
 		}
 		case 5:
+			{
+			break;
+			}
+		case 6:
+			{
+			break;
+			}
+		case 7:
+			{
+			break;
+			}
+		case 8:
 		{
 			std::cout << "Programa baigiama. \n";
 			break;
@@ -220,7 +235,7 @@ int main()
 		}
 		}
 
-	} while (pasirinkimas != 5);
+	} while (pasirinkimas != 8);
 }
 
 
