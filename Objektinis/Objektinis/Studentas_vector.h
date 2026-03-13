@@ -29,3 +29,4 @@ bool compareByRezultatas(const Studentas& a, const Studentas& b);
 
 void rusiuotiStudentus(std::vector<Studentas>& studentai, int pasirinkimas);
 int pasirinktiRusiavimoTipa();
+void isvestiRezultatusIFaila(const std::vector<Studentas>& studentai, int skaiciavimoTipas, const std::string& failoPavadinimas);

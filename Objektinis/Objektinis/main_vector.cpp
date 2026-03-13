@@ -13,7 +13,7 @@
 #include "struktura.h"
 #include "Studentas_vector.h"
 
-void paleistiVectorVersija()
+int main()
 {
 	std::srand(std::time(nullptr));
 	int pasirinkimas;
@@ -152,6 +152,7 @@ void paleistiVectorVersija()
 
 			std::string failas;
 			std::cout << "Iveskite failo pavadinima: ";
+			system("dir *.txt");
 			std::cin >> failas;
 
 			studentai.clear();
@@ -175,11 +176,27 @@ void paleistiVectorVersija()
 			auto end = std::chrono::high_resolution_clock::now();
 			std::chrono::duration<double> diff = end - start;
 
-			//spausdinu tik maza kieki nes su 1m lines uztrunka 10 min
-			if (studentai.size() <= 1000) {
-				isvestiRezultatus(studentai, skaiciavimoTipas);
-			}
-			std::cout << "Laikas: " << diff.count() << " sekundes\n";
+			char pasirinkimasIsvesties;
+			std::cout << "Kur norite isvesti rezultatus?\n";
+			std::cout << "1 - i ekrana\n";
+			std::cout << "2 - i faila\n";
+
+			int isvestiesTipas = ivestiIntSuValidacija("Pasirinkite: ", 1, 2);
+				if (isvestiesTipas == 1)
+				{
+					if (studentai.size() <= 10000)
+					{
+						isvestiRezultatus(studentai, skaiciavimoTipas);
+					}
+					else
+					{
+						std::cout << "Per didelis duomenu kiekis isvedimui i konsole. \n";
+					}
+				}
+				else
+				{
+					isvestiRezultatusIFaila(studentai, skaiciavimoTipas, "rezultatai.txt");
+				}
 			break;
 		}
 		case 5:
@@ -194,7 +211,7 @@ void paleistiVectorVersija()
 		}
 		}
 
-	} while (pasirinkimas != 4);
+	} while (pasirinkimas != 5);
 }
 
 

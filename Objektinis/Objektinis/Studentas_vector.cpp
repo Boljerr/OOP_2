@@ -1,3 +1,4 @@
+//ReSharper disable all
 #include "Studentas_vector.h"
 #include <algorithm>
 #include <iomanip>
@@ -151,7 +152,7 @@ void skaitytiIsFailo(const std::string& failoPavadinimas, std::vector<Studentas>
 
 	std::string eilute;
 
-	std::getline(in, eilute); // praleidzia antra eilute su antraste
+	std::getline(in, eilute); // praleidzia pirma eilute su antraste
 	
 	while (std::getline(in, eilute))
 	{
@@ -205,10 +206,10 @@ switch (pasirinkimas)
 		std::sort(studentai.begin(), studentai.end(), compareByRezultatas);
 		break;
 	default:
-		std::cout << "Neteisingas pasirinkimas, rusiuojama pagal varda\n";
-		std::sort(studentai.begin(), studentai.end(), compareByVardas);
+		//std::cout << "Neteisingas pasirinkimas, rusiuojama pagal varda\n";
+		//std::sort(studentai.begin(), studentai.end(), compareByVardas);
 		break;
-}
+	}
 }
 int pasirinktiRusiavimoTipa()
 {
@@ -217,4 +218,33 @@ int pasirinktiRusiavimoTipa()
 	std::cout << "2 - pagal pavarde\n";
 	std::cout << "3 - pagal rezultata\n";
 	return ivestiIntSuValidacija("Pasirinkite: ", 1, 3);
+}
+
+void isvestiRezultatusIFaila(const std::vector<Studentas>& studentai, int skaiciavimoTipas, const std::string& failoPavadinimas)
+{
+	std::ofstream out(failoPavadinimas);
+
+	if (!out.is_open())
+	{
+		std::cout << " Nepavyko sukurti rezultatu failo.\n";
+		return;
+	}
+
+	std::string rez = (skaiciavimoTipas == 1) ? "Galutinis (Vid.)" : "Galutinis (Med.)";
+
+	out << std::left << std::setw(15) << "Pavarde"
+		<< std::setw(15) << "Vardas"
+		<< std::setw(20) << rez << "\n";
+	out << "--------------------------------------------------\n";
+	
+		for (int i = 0; i < studentai.size(); i++ )
+		{
+			out << std::setw(15) << studentai[i].pavarde
+				<< std::setw(15) << studentai[i].vardas
+				<< std::setw(20) << std::setprecision(2) << studentai[i].rezultatas << "\n";
+		}
+
+		out.close();
+		std::cout << "Rezultatai issaugoti faile: " << failoPavadinimas << "\n";
+
 }

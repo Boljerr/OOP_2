@@ -42,13 +42,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -128,15 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="generator.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="main_array.cpp" />
     <ClCompile Include="main_vector.cpp" />
-    <ClCompile Include="Studentas_array.cpp" />
     <ClCompile Include="Studentas_vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="struktura.h" />
-    <ClInclude Include="Studentas_array.h" />
     <ClInclude Include="Studentas_vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
