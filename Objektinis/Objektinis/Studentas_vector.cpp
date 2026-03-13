@@ -257,3 +257,22 @@ void isvestiRezultatusIFaila(const std::vector<Studentas>& studentai, int skaici
 		std::cout << "Rezultatai issaugoti faile: " << failoPavadinimas << "\n";
 
 }
+
+void generuotiStudentuFaila(const std::string& failoPavadinimas, int studentuKiekis, int ndKiekis)
+{
+	std::ofstream out(failoPavadinimas);
+
+	if (!out.is_open())
+	{
+		throw std::runtime_error("Nepavyko sukurti failo: " + failoPavadinimas);
+	}
+	out << std::left << std::setw(15) << "Pavarde"
+		<< std::setw(15) << "Vardas";
+
+	for (int i = 1; i <= ndKiekis; ++i)
+	{
+		out << "ND" << i << " ";
+	}
+	out << ""
+
+}
