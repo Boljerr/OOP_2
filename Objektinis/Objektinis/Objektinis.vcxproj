@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="generator.cpp" />
-    <ClCompile Include="main_vector.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Studentas_vector.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -303,3 +303,16 @@ void padalintiStudentus(std::vector<Studentas>& studentai, std::vector<Studentas
 		}
 	}
 }
+
+void atliktiFailoKurimoTyrima(const std::string& failoPavadinimas, int studentuKiekis, int ndKiekis)
+{
+	
+	auto start = std::chrono::high_resolution_clock::now();
+	
+	generuotiStudentuFaila(failoPavadinimas, studentuKiekis, ndKiekis);
+
+	auto end = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double> diff = end - start;
+
+	std::cout << "Failo " << failoPavadinimas << " kurimo laikas: " << diff.count() << " s\n";
+}
