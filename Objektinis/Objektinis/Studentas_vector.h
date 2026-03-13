@@ -30,3 +30,21 @@ bool compareByRezultatas(const Studentas& a, const Studentas& b);
 void rusiuotiStudentus(std::vector<Studentas>& studentai, int pasirinkimas);
 int pasirinktiRusiavimoTipa();
 void isvestiRezultatusIFaila(const std::vector<Studentas>& studentai, int skaiciavimoTipas, const std::string& failoPavadinimas);
+
+//v0.4
+
+void generuotiStudentuFaila(const std::string& failoPavadinimas, int studentuKiekis, int ndKiekis);
+
+void padalintiStudentus(
+	std::vector<Studentas>& studentai,
+	std::vector<Studentas>& nuskriaustieji,
+	std::vector<Studentas>& kietiakiai
+);
+
+void atliktiFailoKurimoTyrima(const std::string& failoPavadinimas, int studentuKiekis, int ndKiekis);
+
+void atliktiDuomenuApdorojimoTyrima(
+	const std::string& failoPavadinimas,
+	int skaiciavimoTipas,
+	int rusiavimoTipas
+);
