@@ -159,7 +159,6 @@ int main()
 
 			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
 			int rusiavimoTipas = pasirinktiRusiavimoTipa();
-
 			auto start = std::chrono::high_resolution_clock::now();
 			skaitytiIsFailo(failas, studentai);
 
@@ -172,9 +171,9 @@ int main()
 	
 			skaicuotiRezultatus(studentai, skaiciavimoTipas);
 			rusiuotiStudentus(studentai, rusiavimoTipas);
-
 			auto end = std::chrono::high_resolution_clock::now();
 			std::chrono::duration<double> diff = end - start;
+
 
 			char pasirinkimasIsvesties;
 			std::cout << "Kur norite isvesti rezultatus?\n";
@@ -197,6 +196,8 @@ int main()
 				{
 					isvestiRezultatusIFaila(studentai, skaiciavimoTipas, "rezultatai.txt");
 				}
+
+				std::cout << "Laikas: " << diff.count() << "sekundes\n";
 			break;
 		}
 		case 5:
