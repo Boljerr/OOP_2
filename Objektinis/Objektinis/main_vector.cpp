@@ -161,6 +161,8 @@ int main()
 			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
 			int rusiavimoTipas = pasirinktiRusiavimoTipa();
 
+			try
+			{
 				auto start = std::chrono::high_resolution_clock::now();
 				skaitytiIsFailo(failas, studentai);
 
@@ -199,6 +201,11 @@ int main()
 				}
 
 				std::cout << "Laikas: " << diff.count() << "sekundes\n";
+			}
+				catch (const std::exception& ex)
+				{
+					std::cout << "Klaida: " << ex.what() << "\n";
+				}
 				break;
 		}
 		case 5:
