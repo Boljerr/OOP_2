@@ -9,7 +9,8 @@
 #include<algorithm>
 #include<iomanip>
 #include<filesystem>
-#include<cLimits>
+#include<climits>
+#include<chrono>
 
 #include "struktura.h"
 #include "Studentas_vector.h"
@@ -263,10 +264,11 @@ int main()
 
 			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
 			int rusiavimoTipas = pasirinktiRusiavimoTipa();
+			int kartu = ivestiIntSuValidacija("Kiek kartu kartoti testa? ", 1, 10);
 
 				try
 				{
-					atliktiDuomenuApdorojimoTyrima(failas, skaiciavimoTipas, rusiavimoTipas);
+					atliktiDuomenuApdorojimoTyrimoVidurki(failas, skaiciavimoTipas, rusiavimoTipas, kartu);
 				}
 				catch (const std::exception& ex)
 				{

@@ -36,7 +36,7 @@ void isvestiRezultatusIFaila(const std::vector<Studentas>& studentai, int skaici
 void generuotiStudentuFaila(const std::string& failoPavadinimas, int studentuKiekis, int ndKiekis);
 
 void padalintiStudentus(
-	std::vector<Studentas>& studentai,
+	const std::vector<Studentas>& studentai,
 	std::vector<Studentas>& nuskriaustieji,
 	std::vector<Studentas>& kietiakiai
 );
@@ -48,3 +48,7 @@ void atliktiDuomenuApdorojimoTyrima(
 	int skaiciavimoTipas,
 	int rusiavimoTipas
 );
+
+void atliktiDuomenuApdorojimoTyrimoVidurki(const std::string& failoPavadinimas, int skaiciavimoTipas, int rusiavimoTipas, int kartu);
+
+std::string gautiFailoVardaBePletinio(const std::string& failoPavadinimas);
