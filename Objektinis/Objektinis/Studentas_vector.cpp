@@ -125,7 +125,7 @@ std::string ivestiVardaArPavarde(const std::string& zinute)
 			
 		for (char c : tekstas)
 		{
-				if (!std::isalpha(c))
+				if (!std::isalpha(static_cast<unsigned char>(c)))
 				{
 					teisingas = false;
 					break;
