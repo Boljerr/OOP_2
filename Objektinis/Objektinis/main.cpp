@@ -236,6 +236,23 @@ int main()
 			}
 		case 6:
 			{
+			std::string failas;
+			int studentuKiekis;
+			int ndKiekis;
+
+			std::cout << "Iveskite failo pavadinima: ";
+			std::cin >> failas;
+
+			studentuKiekis = ivestiIntSuValidacija("Kiek studentu generuoti? ", 1, INT_MAX - 1);
+			ndKiekis = ivestiIntSuValidacija("Kiek namu darbu pazymiu generuoti? ", 1, 20);
+				try
+				{
+					atliktiFailoKurimoTyrima(failas, studentuKiekis, ndKiekis);
+				}
+				catch (const std::exception& ex)
+				{
+					std::cout << "Klaida: " << ex.what() << "\n";
+				}
 			break;
 			}
 		case 7:
