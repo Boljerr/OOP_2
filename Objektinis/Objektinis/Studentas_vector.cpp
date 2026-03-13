@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <stdexcept>
 
 double calculateAverage(const std::vector<int>& grade) // Cia reference tiesiog nes tipo nereikia nieko keisti
 {
@@ -146,8 +147,7 @@ void skaitytiIsFailo(const std::string& failoPavadinimas, std::vector<Studentas>
 
 	if (!in.is_open())
 	{
-		std::cerr << "Nepavyko atidaryti failo: " << failoPavadinimas << "\n";
-		return;
+		throw std::runtime_error("Nepavyko atidaryti failo: " + failoPavadinimas);
 	}
 
 	std::string eilute;
@@ -159,22 +159,31 @@ void skaitytiIsFailo(const std::string& failoPavadinimas, std::vector<Studentas>
 		std::stringstream ss(eilute);
 		Studentas studentas;
 
-		ss >> studentas.vardas >> studentas.pavarde;
+		if (!(ss >> studentas.vardas >> studentas.pavarde))
+		{
+			throw std::runtime_error("Netinkamas duomenu formatas");
+		}
 
 		int paz;
 		std::vector<int> visiPaz;
 
 		while (ss >> paz)
 		{
+			if (paz < 0 || paz > 10)
+			{
+				throw std::runtime_error("Faile rastas netinkamas pazymys");
+			}
 			visiPaz.push_back(paz);
 		}
 
-		if (!visiPaz.empty())
+		if (visiPaz.empty())
 		{
-			studentas.egzaminas = visiPaz.back();
-			visiPaz.pop_back();
-			studentas.pazymiai = visiPaz;
+			throw std::runtime_error("Studentui nerastas nei vienas pazymys ar egzamino rezultatas");
 		}
+		studentas.egzaminas = visiPaz.back();
+		visiPaz.pop_back();
+		studentas.pazymiai = visiPaz;
+		
 		studentai.push_back(studentas);
 	}
 	in.close();

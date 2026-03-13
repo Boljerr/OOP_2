@@ -9,6 +9,7 @@
 #include<algorithm>
 #include<iomanip>
 #include<filesystem>
+#include<cLimits>
 
 #include "struktura.h"
 #include "Studentas_vector.h"
@@ -159,28 +160,28 @@ int main()
 
 			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
 			int rusiavimoTipas = pasirinktiRusiavimoTipa();
-			auto start = std::chrono::high_resolution_clock::now();
-			skaitytiIsFailo(failas, studentai);
 
-			if (studentai.empty())
-			{
-				std::cout << "Nerasta studentu duomenu faile arba failas tuscias.\n";
-				break;
-			}
+				auto start = std::chrono::high_resolution_clock::now();
+				skaitytiIsFailo(failas, studentai);
 
-	
-			skaicuotiRezultatus(studentai, skaiciavimoTipas);
-			rusiuotiStudentus(studentai, rusiavimoTipas);
-			auto end = std::chrono::high_resolution_clock::now();
-			std::chrono::duration<double> diff = end - start;
+				if (studentai.empty())
+				{
+					std::cout << "Nerasta studentu duomenu faile arba failas tuscias.\n";
+					break;
+				}
 
 
-			char pasirinkimasIsvesties;
-			std::cout << "Kur norite isvesti rezultatus?\n";
-			std::cout << "1 - i ekrana\n";
-			std::cout << "2 - i faila\n";
+				skaicuotiRezultatus(studentai, skaiciavimoTipas);
+				rusiuotiStudentus(studentai, rusiavimoTipas);
+				auto end = std::chrono::high_resolution_clock::now();
+				std::chrono::duration<double> diff = end - start;
 
-			int isvestiesTipas = ivestiIntSuValidacija("Pasirinkite: ", 1, 2);
+
+				std::cout << "Kur norite isvesti rezultatus?\n";
+				std::cout << "1 - i ekrana\n";
+				std::cout << "2 - i faila\n";
+
+				int isvestiesTipas = ivestiIntSuValidacija("Pasirinkite: ", 1, 2);
 				if (isvestiesTipas == 1)
 				{
 					if (studentai.size() <= 10000)
@@ -198,7 +199,7 @@ int main()
 				}
 
 				std::cout << "Laikas: " << diff.count() << "sekundes\n";
-			break;
+				break;
 		}
 		case 5:
 		{
