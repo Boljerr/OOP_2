@@ -109,5 +109,5 @@ Testas kartotas 5 kartus, pateikiamas vidurkis.
 Didėjant studentų įrašų kiekiui, programos vykdymo laikas didėja beveik proporcingai. 
 Didžiausią laiko dalį užima duomenų nuskaitymas iš failo ir rezultatų išvedimas į naujus failus.
 
-
+![Rezultatai](Screenshot.png)
 
