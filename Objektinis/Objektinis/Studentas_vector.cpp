@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <stdarg.h>
 #include <stdexcept>
 
 double calculateAverage(const std::vector<int>& grade) // Cia reference tiesiog nes tipo nereikia nieko keisti
@@ -315,4 +316,44 @@ void atliktiFailoKurimoTyrima(const std::string& failoPavadinimas, int studentuK
 	std::chrono::duration<double> diff = end - start;
 
 	std::cout << "Failo " << failoPavadinimas << " kurimo laikas: " << diff.count() << " s\n";
+}
+
+void atliktiDuomenuApdorojimoTyrima(const std::string& failoPavadinimas, int skaiciavimoTipas, int rusiavimoTipas)
+{
+	std::vector<Studentas> studentai;
+	std::vector<Studentas> nuskriaustieji;
+	std::vector<Studentas> kietiakiai;
+
+	auto visoStart = std::chrono::high_resolution_clock::now();
+
+	auto skaitymoStart = std::chrono::high_resolution_clock::now();
+	skaitytiIsFailo(failoPavadinimas, studentai);
+	auto skaitymoEnd = std::chrono::high_resolution_clock::now();
+
+	skaicuotiRezultatus(studentai, skaiciavimoTipas);
+
+	auto skirstymoStart = std::chrono::high_resolution_clock::now();
+	padalintiStudentus(studentai, nuskriaustieji, kietiakiai);
+	auto skirstymoEnd = std::chrono::high_resolution_clock::now();
+
+	rusiuotiStudentus(nuskriaustieji, rusiavimoTipas);
+	rusiuotiStudentus(kietiakiai, rusiavimoTipas);
+
+	auto isvedimoStart = std::chrono::high_resolution_clock::now();
+	isvestiRezultatusIFaila(nuskriaustieji, skaiciavimoTipas, "nuskriaustieji.txt");
+	isvestiRezultatusIFaila(kietiakiai, skaiciavimoTipas, "kietiakiai.txt");
+	auto isvedimoEnd = std::chrono::high_resolution_clock::now();
+
+	auto visoEnd = std::chrono::high_resolution_clock::now();
+		
+	std::chrono::duration<double> skaitymas = skaitymoEnd - skaitymoStart;
+	std::chrono::duration<double> skirstymas = skirstymoEnd - skirstymoStart;
+	std::chrono::duration<double> isvedimas = isvedimoEnd - isvedimoStart;
+	std::chrono::duration<double> visasLaikas = visoEnd - visoStart;
+
+	std::cout << "\nFailas: " << failoPavadinimas << '\n';
+	std::cout << "Nuskaitymas: " << skaitymas.count() << " s\n";
+	std::cout << "Skirstymas: " << skirstymas.count() << " s\n";
+	std::cout << "Isvedimas" << isvedimas.count() << " \n";
+	std::cout << "Bendras laikas: " << visasLaikas.count() << " s\n";
 }
