@@ -257,6 +257,21 @@ int main()
 			}
 		case 7:
 			{
+			std::string failas;
+			std::cout << "Iveskite jauu sugeneruoto failo pavadinima: ";
+			std::cin >> failas;
+
+			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
+			int rusiavimoTipas = pasirinktiRusiavimoTipa();
+
+				try
+				{
+					atliktiDuomenuApdorojimoTyrima(failas, skaiciavimoTipas, rusiavimoTipas);
+				}
+				catch (const std::exception& ex)
+				{
+					std::cout << "Klaida: " << ex.what() << "\n";
+				}
 			break;
 			}
 		case 8:
