@@ -258,7 +258,7 @@ int main()
 		case 7:
 			{
 			std::string failas;
-			std::cout << "Iveskite jauu sugeneruoto failo pavadinima: ";
+			std::cout << "Iveskite jau sugeneruoto failo pavadinima: ";
 			std::cin >> failas;
 
 			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
