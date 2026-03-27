@@ -298,15 +298,15 @@ void generuotiStudentuFaila(const std::string& failoPavadinimas, int studentuKie
 
 void padalintiStudentus(const std::vector<Studentas>& studentai, std::vector<Studentas>& nuskriaustieji, std::vector<Studentas>& kietiakiai)
 {
-	for (int i = 0; i < studentai.size(); i ++)
+	for (auto &z : studentai)
 	{
-		if (studentai[i].rezultatas < 5.0)
+		if (z.rezultatas < 5.0)
 		{
-			nuskriaustieji.push_back(studentai[i]);
+			nuskriaustieji.push_back(z);
 		}
 		else
 		{
-			kietiakiai.push_back(studentai[i]);
+			kietiakiai.push_back(z);
 		}
 	}
 }

@@ -219,7 +219,7 @@ int main()
 			int ndKiekis;
 
 			std::cout << "Iveskite failo pavadinima: ";
-			std::cin >> failas;
+				std::cin >> failas;
 
 			studentuKiekis = ivestiIntSuValidacija("Kiek studentu generuoti? ", 1, INT_MAX - 1);
 			ndKiekis = ivestiIntSuValidacija("Kiek namu darbu pazymiu generuoti? ", 1, 20);
@@ -259,6 +259,7 @@ int main()
 		case 7:
 			{
 			std::string failas;
+			system("dir *.txt");
 			std::cout << "Iveskite jau sugeneruoto failo pavadinima: ";
 			std::cin >> failas;
 
