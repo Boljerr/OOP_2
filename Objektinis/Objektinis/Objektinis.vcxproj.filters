@@ -32,5 +32,8 @@
     <ClInclude Include="Studentas_vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Studentas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
