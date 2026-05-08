@@ -105,3 +105,19 @@ void padalintiStudentus1List(const std::list<Studentas>& studentai, std::list<St
 		}
 	}
 }
+void padalintiStudentus2List(std::list<Studentas>& studentai, std::list<Studentas>& nuskriaustieji)
+{
+	nuskriaustieji.clear();
+	for (auto it = studentai.begin(); it != studentai.end();)
+	{
+		if (it->rezultatas < 5)
+		{
+			nuskriaustieji.push_back(*it);
+			it = studentai.erase(it);
+		}
+		else
+		{
+			++it;
+		}
+	}
+}
