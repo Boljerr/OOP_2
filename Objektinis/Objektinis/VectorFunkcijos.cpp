@@ -93,3 +93,42 @@ void rusiuotiStudentusVector(std::vector<Studentas>& studentai, int pasirinkimas
 	}
 
 }
+
+void isvestiRezultatusVector(const std::vector<Studentas>& studentai, int skaiciavimoTipas)
+{
+	std::string rez = (skaiciavimoTipas == 1) ? "Galutinis (Vid.)" : "Galutinis (Med.)";
+	std::cout << std::left << std::setw(15) << "Pavarde"
+		<< std::setw(15) << "Vardas"
+		<< std::setw(20) << rez << "\n";
+	std::cout << "--------------------------------------------------\n";
+	for (int i = 0; i < studentai.size(); i++)
+	{
+		std::cout << std::setw(15) << studentai[i].pavarde
+			<< std::setw(15) << studentai[i].vardas
+			<< std::fixed << std::setprecision(2) << studentai[i].rezultatas << "\n";
+	}
+}
+
+void isvestiRezultatusIFailaVector(const std::vector<Studentas>& studentai, int skaiciavimoTipas, const std::string& failoPavadinimas)
+{
+	std::ofstream out(failoPavadinimas);
+	if (!out.is_open())
+	{
+		std::cout << " Nepavyko sukurti rezultatu failo.\n";
+		return;
+	}
+	std::string rez = (skaiciavimoTipas == 1) ? "Galutinis (Vid.)" : "Galutinis (Med.)";
+	out << std::left << std::setw(15) << "Pavarde"
+		<< std::setw(15) << "Vardas"
+		<< std::setw(20) << rez << "\n";
+	out << "--------------------------------------------------\n";
+
+	for (int i = 0; i < studentai.size(); i++)
+	{
+		out << std::setw(15) << studentai[i].pavarde
+			<< std::setw(15) << studentai[i].vardas
+			<< std::fixed << std::setprecision(2) << studentai[i].rezultatas << "\n";
+	}
+	out.close();
+	std::cout << "Rezultatai issaugoti faile: " << failoPavadinimas << "\n";
+}
