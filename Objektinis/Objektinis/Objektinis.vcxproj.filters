@@ -36,6 +36,9 @@
     <ClCompile Include="ListFunkcijos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DequeFunkcijos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="struktura.h">
