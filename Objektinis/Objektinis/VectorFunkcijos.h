@@ -19,8 +19,8 @@ void padalintiStudentus1Vector(
 );
 
 void padalintiStudentus2Vector(
-	std::vector<Studentas>& nuskriaustieji,
-	std::vector<Studentas>& kietiakiai
+	std::vector<Studentas>& studentai,
+	std::vector<Studentas>& nuskriaustieji
 );
 void padalintiStudentus3Vector(
 	std::vector<Studentas>& nuskriaustieji,

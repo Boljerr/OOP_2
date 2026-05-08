@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Bendra.cpp" />
     <ClCompile Include="generator.cpp" />
+    <ClCompile Include="ListFunkcijos.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Studentas_vector.cpp" />
     <ClCompile Include="VectorFunkcijos.cpp" />
