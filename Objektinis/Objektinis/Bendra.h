@@ -19,3 +19,4 @@ std::string gautiFailoVardaBePletinio(const std::string& failoPavadinimas);
 bool compareByVardas(const Studentas& a, const Studentas& b);
 bool compareByPavarde(const Studentas& a, const Studentas& b);
 bool compareByRezultatas(const Studentas& a, const Studentas& b);
+bool arKietiakas(const Studentas& studentas);

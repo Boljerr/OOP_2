@@ -41,5 +41,8 @@
     <ClInclude Include="Bendra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VectorFunkcijos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
