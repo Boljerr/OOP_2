@@ -208,3 +208,61 @@ void padalintiStudentus2Vector(std::vector<Studentas>& studentai, std::vector<St
 		}
 	}
 }
+
+void atliktiDuomenuApdorojimoTyrimaVector(const std::string& failoPavadinimas, int skaiciavimoTipas, int rusiavimoTipas)
+{
+	std::vector<Studentas> studentai;
+	std::vector<Studentas> nuskriaustieji;
+	std::vector<Studentas> kietiakiai;
+
+	std::string pagrindinisVardas = gautiFailoVardaBePletinio(failoPavadinimas);
+	std::string bloguFailas = pagrindinisVardas + "_nuskriaustieji.txt";
+	std::string geruFailas = pagrindinisVardas + "_kietiakiai.txt";
+
+
+	auto visoStart = std::chrono::high_resolution_clock::now();
+
+	auto skaitymoStart = std::chrono::high_resolution_clock::now();
+	skaitytiIsFailoVector(failoPavadinimas, studentai);
+	auto skaitymoEnd = std::chrono::high_resolution_clock::now();
+
+	skaiciuotiRezultatusVector(studentai, skaiciavimoTipas);
+
+	auto skirstymoStart = std::chrono::high_resolution_clock::now();
+	padalintiStudentus1Vector(studentai, nuskriaustieji, kietiakiai);
+	auto skirstymoEnd = std::chrono::high_resolution_clock::now();
+
+	auto rusiavimoStart = std::chrono::high_resolution_clock::now();
+	rusiuotiStudentusVector(nuskriaustieji, rusiavimoTipas);
+	rusiuotiStudentusVector(kietiakiai, rusiavimoTipas);
+	auto rusiavimoEnd = std::chrono::high_resolution_clock::now();
+
+	auto isvedimoStart = std::chrono::high_resolution_clock::now();
+	isvestiRezultatusIFailaVector(nuskriaustieji, skaiciavimoTipas, bloguFailas);
+	isvestiRezultatusIFailaVector(kietiakiai, skaiciavimoTipas, geruFailas);
+	auto isvedimoEnd = std::chrono::high_resolution_clock::now();
+
+	auto visoEnd = std::chrono::high_resolution_clock::now();
+
+	std::chrono::duration<double> skaitymas = skaitymoEnd - skaitymoStart;
+	std::chrono::duration<double> skirstymas = skirstymoEnd - skirstymoStart;
+	std::chrono::duration<double> rusiavimas = rusiavimoEnd - rusiavimoStart;
+	std::chrono::duration<double> isvedimas = isvedimoEnd - isvedimoStart;
+	std::chrono::duration<double> visasLaikas = visoEnd - visoStart;
+
+	std::cout << "\nFailas: " << failoPavadinimas << '\n';
+	std::cout << "Nuskaitymas: " << skaitymas.count() << " s\n";
+	std::cout << "Skirstymas: " << skirstymas.count() << " s\n";
+	std::cout << "Rusiavimas: " << rusiavimas.count() << " s\n";
+	std::cout << "Isvedimas: " << isvedimas.count() << " s\n";
+	std::cout << "Bendras laikas: " << visasLaikas.count() << " s\n";
+}
+
+void atliktiDuomenuApdorojimoTyrimoVidurkiVector(const std::string& failoPavadinimas, int skaiciavimoTipas, int rusiavimoTipas, int kartu)
+{
+	for (int i = 0; i < kartu; i++)
+	{
+		std::cout << "\n Bandymas Nr." << i + 1 << "\n";
+		atliktiDuomenuApdorojimoTyrimaVector(failoPavadinimas, skaiciavimoTipas, rusiavimoTipas);
+	}
+}
