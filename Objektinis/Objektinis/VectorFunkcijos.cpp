@@ -209,6 +209,19 @@ void padalintiStudentus2Vector(std::vector<Studentas>& studentai, std::vector<St
 	}
 }
 
+void padalintiStudentus3Vector(std::vector<Studentas>& studentai, std::vector<Studentas>& nuskriaustieji)
+{
+	nuskriaustieji.clear();
+
+	auto riba = std::stable_partition(studentai.begin(), studentai.end(), arKietiakas);
+
+	for (auto it = riba; it != studentai.end(); ++it)
+	{
+		nuskriaustieji.push_back(*it);
+	}
+	studentai.erase(riba, studentai.end());
+}
+
 void atliktiDuomenuApdorojimoTyrimaVector(const std::string& failoPavadinimas, int skaiciavimoTipas, int rusiavimoTipas)
 {
 	std::vector<Studentas> studentai;

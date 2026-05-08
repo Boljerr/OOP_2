@@ -20,6 +20,5 @@ void padalintiStudentus2Deque(
 
 void padalintiStudentus3Deque(
 	std::deque<Studentas>& studentai,
-	std::deque<Studentas>& nuskriaustieji,
-	std::deque<Studentas>& kietiakiai
+	std::deque<Studentas>& nuskriaustieji
 );

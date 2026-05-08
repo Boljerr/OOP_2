@@ -121,3 +121,22 @@ void padalintiStudentus2List(std::list<Studentas>& studentai, std::list<Studenta
 		}
 	}
 }
+
+void padalintiStudentus3List(std::list<Studentas>& studentai, std::list<Studentas>& nuskriaustieji)
+{
+	nuskriaustieji.clear();
+
+	for (auto it = studentai.begin(); it != studentai.end();)
+	{
+		if (it->rezultatas < 5)
+		{
+			auto dabartinis = it;
+			++it;
+			nuskriaustieji.splice(nuskriaustieji.end(), studentai, dabartinis);
+		}
+		else
+		{
+			++it;
+		}
+	}
+}

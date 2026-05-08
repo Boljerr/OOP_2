@@ -116,3 +116,15 @@ void padalintiStudentus2Deque(std::deque<Studentas>& studentai, std::deque<Stude
 	}
 }
 
+void padalintiStudentus3Deque(std::deque<Studentas>& studentai, std::deque<Studentas>& nuskriaustieji)
+{
+	nuskriaustieji.clear();
+	auto riba = std::stable_partition(studentai.begin(), studentai.end(), arKietiakas);
+
+	for (auto it = riba; it != studentai.end(); ++it)
+	{
+		nuskriaustieji.push_back(*it);
+	}
+
+	studentai.erase(riba, studentai.end());
+}
