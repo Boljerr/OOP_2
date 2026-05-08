@@ -98,4 +98,21 @@ void padalintiStudentusDeque(const std::deque<Studentas>& studentai, std::deque<
 	}
 }
 
+void padalintiStudentus2Deque(std::deque<Studentas>& studentai, std::deque<Studentas>& nuskriaustieji)
+{
+	nuskriaustieji.clear();
+
+	for (auto it = studentai.begin(); it != studentai.end();)
+	{
+		if (it->rezultatas < 5)
+		{
+			nuskriaustieji.push_back(*it);
+			it = studentai.erase(it);
+		}
+		else
+		{
+			++it;
+		}
+	}
+}
 
