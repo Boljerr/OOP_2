@@ -35,5 +35,8 @@
     <ClInclude Include="Studentas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Bendra.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

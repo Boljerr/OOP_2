@@ -2,13 +2,7 @@
 #include <vector>
 #include <string>
 
-struct Studentas {
-	std::string vardas;
-	std::string pavarde;
-	std::vector<int> pazymiai;
-	int egzaminas;
-	double rezultatas;
-};
+#include "Studentas.h"
 // function declarations
 
 double calculateAverage(const std::vector<int>& grade);
