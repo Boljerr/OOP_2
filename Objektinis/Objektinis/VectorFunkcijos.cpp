@@ -132,3 +132,43 @@ void isvestiRezultatusIFailaVector(const std::vector<Studentas>& studentai, int 
 	out.close();
 	std::cout << "Rezultatai issaugoti faile: " << failoPavadinimas << "\n";
 }
+
+void generuotiStudentuFailaVector(const std::string& failoPavadinimas, int studentuKiekis, int ndKiekis)
+{
+	std::ofstream out(failoPavadinimas);
+
+	if (!out.is_open())
+	{
+		throw std::runtime_error("Nepavyko sukurti failo: " + failoPavadinimas);
+	}
+	out << std::left << std::setw(15) << "Vardas"
+		<< std::setw(15) << "Pavarde";
+
+	for (int i = 1; i <= ndKiekis; ++i)
+	{
+		out << "ND" << std::to_string(i) << " ";
+	}
+	out << "Egz." << '\n';
+
+	for (int i = 1; i <= studentuKiekis; i++)
+	{
+		out << std::left << std::setw(15) << ("Vardas" + std::to_string(i))
+			<< std::setw(15) << ("Pavarde" + std::to_string(i));
+
+		for (int j = 0; j < ndKiekis; j++)
+		{
+			out << (std::rand() % 10 + 1) << " ";
+		}
+		out << (std::rand() % 10 + 1) << "\n";
+	}
+	out.close();
+}
+
+void atliktiFailoKurimoTyrimaVector(const std::string& failoPavadinimas, int studentuKiekis, int ndKiekis)
+{
+	auto start = std::chrono::high_resolution_clock::now();
+	generuotiStudentuFailaVector(failoPavadinimas, studentuKiekis, ndKiekis);
+	auto end = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double> diff = end - start;
+	std::cout << "Failo " << failoPavadinimas << " kurimo laikas: " << diff.count() << " s\n";
+}
