@@ -172,3 +172,39 @@ void atliktiFailoKurimoTyrimaVector(const std::string& failoPavadinimas, int stu
 	std::chrono::duration<double> diff = end - start;
 	std::cout << "Failo " << failoPavadinimas << " kurimo laikas: " << diff.count() << " s\n";
 }
+
+void padalintiStudentus1Vector(const std::vector<Studentas>& studentai, std::vector<Studentas>& nuskriaustieji, std::vector<Studentas>& kietiakiai)
+{
+	nuskriaustieji.clear();
+	kietiakiai.clear();
+
+	for (int i = 0; i < studentai.size(); ++i)
+	{
+		if (studentai[i].rezultatas < 5)
+		{
+			nuskriaustieji.push_back(studentai[i]);
+		}
+		else
+		{
+			kietiakiai.push_back(studentai[i]);
+		}
+	}
+}
+
+void padalintiStudentus2Vector(std::vector<Studentas>& studentai, std::vector<Studentas>& nuskriaustieji)
+{
+	nuskriaustieji.clear();
+
+	for (auto it = studentai.begin(); it != studentai.end();)
+	{
+		if (it->rezultatas < 5)
+		{
+			nuskriaustieji.push_back(*it);
+			it = studentai.erase(it);
+		}
+		else
+		{
+			++it;
+		}
+	}
+}
