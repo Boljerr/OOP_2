@@ -100,3 +100,76 @@ TyrimoRezultatai atliktiDequeTyrima(const std::string& failoPavadinimas, int ska
     return rezultatai;
 }
 
+StrategijuRezultatai atliktiStrategijuTyrimaVector(const std::string& failoPavadinimas, int skaiciavimoTipas, int rusiavimoTipas)
+{
+	StrategijuRezultatai rezultatai;
+
+    std::vector<Studentas> pradinis;
+	skaitytiIsFailoVector(failoPavadinimas, pradinis);
+	skaiciuotiRezultatusVector(pradinis, skaiciavimoTipas);
+    rusiuotiStudentusVector(pradinis, rusiavimoTipas);
+
+	std::vector<Studentas> s1 = pradinis;
+	std::vector<Studentas> s2 = pradinis;
+	std::vector<Studentas> s3 = pradinis;
+
+	std::vector<Studentas> nuskriaustieji1;
+	std::vector<Studentas> kietiakiai1;
+	std::vector<Studentas> nuskriaustieji2;
+	std::vector<Studentas> nuskriaustieji3;
+
+	auto start1 = std::chrono::high_resolution_clock::now();
+	padalintiStudentus1Vector(s1, nuskriaustieji1, kietiakiai1);
+	auto end1 = std::chrono::high_resolution_clock::now();
+
+	auto start2 = std::chrono::high_resolution_clock::now();
+	padalintiStudentus2Vector(s2, nuskriaustieji2);
+	auto end2 = std::chrono::high_resolution_clock::now();
+    
+	auto start3 = std::chrono::high_resolution_clock::now();
+	padalintiStudentus3Vector(s3, nuskriaustieji3);
+	auto end3 = std::chrono::high_resolution_clock::now();\
+
+	rezultatai.strategija1 = std::chrono::duration<double>(end1 - start1).count();
+	rezultatai.strategija2 = std::chrono::duration<double>(end2 - start2).count();
+	rezultatai.strategija3 = std::chrono::duration<double>(end3 - start3).count();
+
+	return rezultatai;
+}
+
+StrategijuRezultatai atliktiStrategijuTyrimaList(const std::string& failoPavadinimas, int skaiciavimoTipas, int rusiavimoTipas)
+{
+    StrategijuRezultatai rezultatai;
+
+    std::list<Studentas> pradinis;
+    skaitytiIsFailoList(failoPavadinimas, pradinis);
+    skaiciuotiRezultatusList(pradinis, skaiciavimoTipas);
+    rusiuotiStudentusList(pradinis, rusiavimoTipas);
+
+    std::list<Studentas> s1 = pradinis;
+    std::list<Studentas> s2 = pradinis;
+    std::list<Studentas> s3 = pradinis;
+
+    std::list<Studentas> nuskriaustieji1;
+    std::list<Studentas> kietiakiai1;
+    std::list<Studentas> nuskriaustieji2;
+    std::list<Studentas> nuskriaustieji3;
+
+    auto start1 = std::chrono::high_resolution_clock::now();
+    padalintiStudentus1List(s1, nuskriaustieji1, kietiakiai1);
+    auto end1 = std::chrono::high_resolution_clock::now();
+
+    auto start2 = std::chrono::high_resolution_clock::now();
+    padalintiStudentus2List(s2, nuskriaustieji2);
+    auto end2 = std::chrono::high_resolution_clock::now();
+    
+    auto start3 = std::chrono::high_resolution_clock::now();
+    padalintiStudentus3List(s3, nuskriaustieji3);
+    auto end3 = std::chrono::high_resolution_clock::now();
+
+    rezultatai.strategija1 = std::chrono::duration<double>(end1 - start1).count();
+    rezultatai.strategija2 = std::chrono::duration<double>(end2 - start2).count();
+    rezultatai.strategija3 = std::chrono::duration<double>(end3 - start3).count();
+
+    return rezultatai;
+}
