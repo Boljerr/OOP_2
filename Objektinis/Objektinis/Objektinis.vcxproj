@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bendra.h" />
+    <ClInclude Include="DequeFunkcijos.h" />
     <ClInclude Include="struktura.h" />
     <ClInclude Include="Studentas.h" />
     <ClInclude Include="Studentas_vector.h" />
