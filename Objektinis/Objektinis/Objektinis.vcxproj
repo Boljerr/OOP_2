@@ -142,6 +142,7 @@
     <ClInclude Include="struktura.h" />
     <ClInclude Include="Studentas.h" />
     <ClInclude Include="Studentas_vector.h" />
+    <ClInclude Include="Tyrimai.h" />
     <ClInclude Include="VectorFunkcijos.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
