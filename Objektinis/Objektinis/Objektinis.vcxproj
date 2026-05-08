@@ -134,6 +134,7 @@
     <ClCompile Include="ListFunkcijos.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Studentas_vector.cpp" />
+    <ClCompile Include="Tyrimai.cpp" />
     <ClCompile Include="VectorFunkcijos.cpp" />
   </ItemGroup>
   <ItemGroup>

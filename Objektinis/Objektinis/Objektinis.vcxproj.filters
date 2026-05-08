@@ -39,6 +39,9 @@
     <ClCompile Include="DequeFunkcijos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Tyrimai.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="struktura.h">
