@@ -173,3 +173,151 @@ StrategijuRezultatai atliktiStrategijuTyrimaList(const std::string& failoPavadin
 
     return rezultatai;
 }
+
+StrategijuRezultatai atliktiStrategijuTyrimaDeque(const std::string& failoPavadinimas, int skaiciavimoTipas, int rusiavimoTipas)
+{
+    StrategijuRezultatai rezultatai;
+
+    std::deque<Studentas> pradinis;
+    skaitytiIsFailoDeque(failoPavadinimas, pradinis);
+    skaiciuotiRezultatusDeque(pradinis, skaiciavimoTipas);
+    rusiuotiStudentusDeque(pradinis, rusiavimoTipas);
+
+    std::deque<Studentas> s1 = pradinis;
+    std::deque<Studentas> s2 = pradinis;
+    std::deque<Studentas> s3 = pradinis;
+
+    std::deque<Studentas> nuskriaustieji1;
+    std::deque<Studentas> kietiakiai1;
+    std::deque<Studentas> nuskriaustieji2;
+    std::deque<Studentas> nuskriaustieji3;
+
+    auto start1 = std::chrono::high_resolution_clock::now();
+    padalintiStudentus1Deque(s1, nuskriaustieji1, kietiakiai1);
+    auto end1 = std::chrono::high_resolution_clock::now();
+
+    auto start2 = std::chrono::high_resolution_clock::now();
+    padalintiStudentus2Deque(s2, nuskriaustieji2);
+    auto end2 = std::chrono::high_resolution_clock::now();
+    
+    auto start3 = std::chrono::high_resolution_clock::now();
+    padalintiStudentus3Deque(s3, nuskriaustieji3);
+    auto end3 = std::chrono::high_resolution_clock::now();
+
+    rezultatai.strategija1 = std::chrono::duration<double>(end1 - start1).count();
+    rezultatai.strategija2 = std::chrono::duration<double>(end2 - start2).count();
+    rezultatai.strategija3 = std::chrono::duration<double>(end3 - start3).count();
+
+    return rezultatai;
+}
+
+void atliktiKonteineriuTyrimaSuVidurkiu(const std::string& failoPavadinimas, int skaiciavimoTipas, int rusiavimoTipas, int kartu)
+{
+    TyrimoRezultatai vectorVidurkis;
+    TyrimoRezultatai listVidurkis;
+    TyrimoRezultatai dequeVidurkis;
+
+    for (int i = 0; i < kartu; i++)
+    {
+		TyrimoRezultatai v = atliktiVectorTyrima(failoPavadinimas, skaiciavimoTipas, rusiavimoTipas);
+		TyrimoRezultatai l = atliktiListTyrima(failoPavadinimas, skaiciavimoTipas, rusiavimoTipas);
+		TyrimoRezultatai d = atliktiDequeTyrima(failoPavadinimas, skaiciavimoTipas, rusiavimoTipas);
+
+		vectorVidurkis.nuskaitymas += v.nuskaitymas;
+		vectorVidurkis.rusiavimas += v.rusiavimas;
+		vectorVidurkis.skirstymas += v.skirstymas;
+
+		listVidurkis.nuskaitymas += l.nuskaitymas;
+		listVidurkis.rusiavimas += l.rusiavimas;
+		listVidurkis.skirstymas += l.skirstymas;
+
+		dequeVidurkis.nuskaitymas += d.nuskaitymas;
+		dequeVidurkis.rusiavimas += d.rusiavimas;
+		dequeVidurkis.skirstymas += d.skirstymas;
+
+    }
+	vectorVidurkis.nuskaitymas /= kartu;
+	vectorVidurkis.rusiavimas /= kartu;
+	vectorVidurkis.skirstymas /= kartu;
+
+	listVidurkis.nuskaitymas /= kartu;
+	listVidurkis.rusiavimas /= kartu;
+	listVidurkis.skirstymas /= kartu;
+
+	dequeVidurkis.nuskaitymas /= kartu;
+	dequeVidurkis.rusiavimas /= kartu;
+	dequeVidurkis.skirstymas /= kartu;
+
+    std::cout << "\n -------------------KONTEINERIU TYRIMO VIDURKIAI-----------------------------";
+
+	std::cout << "\nVector:\n";
+	std::cout << "Nuskaitymas: " << vectorVidurkis.nuskaitymas << " s\n";
+	std::cout << "Rusiavimas: " << vectorVidurkis.rusiavimas << " s\n";
+	std::cout << "Skirstymas: " << vectorVidurkis.skirstymas << " s\n";
+
+	std::cout << "\nList:\n";
+	std::cout << "Nuskaitymas: " << listVidurkis.nuskaitymas << " s\n";
+	std::cout << "Rusiavimas: " << listVidurkis.rusiavimas << " s\n";
+	std::cout << "Skirstymas: " << listVidurkis.skirstymas << " s\n";
+
+	std::cout << "\nDeque:\n";
+	std::cout << "Nuskaitymas: " << dequeVidurkis.nuskaitymas << " s\n";
+	std::cout << "Rusiavimas: " << dequeVidurkis.rusiavimas << " s\n";
+	std::cout << "Skirstymas: " << dequeVidurkis.skirstymas << " s\n";
+}
+
+void atliktiStrategijuTyrimaSuVidurkiu(const std::string& failoPavadinimas, int skaiciavimoTipas, int rusiavimoTipas, int kartu)
+{
+	StrategijuRezultatai vectorVidurkis;
+	StrategijuRezultatai listVidurkis;
+	StrategijuRezultatai dequeVidurkis;
+
+    for (int i = 0; i < kartu; i++)
+    {
+		StrategijuRezultatai v = atliktiStrategijuTyrimaVector(failoPavadinimas, skaiciavimoTipas, rusiavimoTipas);
+		StrategijuRezultatai l = atliktiStrategijuTyrimaList(failoPavadinimas, skaiciavimoTipas, rusiavimoTipas);
+    	StrategijuRezultatai d = atliktiStrategijuTyrimaDeque(failoPavadinimas, skaiciavimoTipas, rusiavimoTipas);
+
+		vectorVidurkis.strategija1 += v.strategija1;
+		vectorVidurkis.strategija2 += v.strategija2;
+		vectorVidurkis.strategija3 += v.strategija3;
+
+		listVidurkis.strategija1 += l.strategija1;
+		listVidurkis.strategija2 += l.strategija2;
+		listVidurkis.strategija3 += l.strategija3;
+
+		dequeVidurkis.strategija1 += d.strategija1;
+		dequeVidurkis.strategija2 += d.strategija2;
+		dequeVidurkis.strategija3 += d.strategija3;
+    }
+	vectorVidurkis.strategija1 /= kartu;
+	vectorVidurkis.strategija2 /= kartu;
+	vectorVidurkis.strategija3 /= kartu;
+
+	listVidurkis.strategija1 /= kartu;
+	listVidurkis.strategija2 /= kartu;
+	listVidurkis.strategija3 /= kartu;
+
+	dequeVidurkis.strategija1 /= kartu;
+	dequeVidurkis.strategija2 /= kartu;
+	dequeVidurkis.strategija3 /= kartu;
+
+	std::cout << "\n -------------------SKIRSTYMO STRATEGIJU TYRIMO VIDURKIAI-----------------------------";
+    
+	std::cout << "\nVector:\n";
+	std::cout << "Strategija 1: " << vectorVidurkis.strategija1 << " s\n";
+	std::cout << "Strategija 2: " << vectorVidurkis.strategija2 << " s\n";
+	std::cout << "Strategija 3: " << vectorVidurkis.strategija3 << " s\n";
+
+	std::cout << "\nList:\n";
+	std::cout << "Strategija 1: " << listVidurkis.strategija1 << " s\n";
+	std::cout << "Strategija 2: " << listVidurkis.strategija2 << " s\n";
+	std::cout << "Strategija 3: " << listVidurkis.strategija3 << " s\n";
+
+	std::cout << "\nDeque:\n";
+	std::cout << "Strategija 1: " << dequeVidurkis.strategija1 << " s\n";
+	std::cout << "Strategija 2: " << dequeVidurkis.strategija2 << " s\n";
+	std::cout << "Strategija 3: " << dequeVidurkis.strategija3 << " s\n";
+
+
+}

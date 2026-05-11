@@ -81,7 +81,7 @@ void rusiuotiStudentusDeque(std::deque<Studentas>& studentai, int pasirinkimas)
 	}
 }
 
-void padalintiStudentusDeque(const std::deque<Studentas>& studentai, std::deque<Studentas>& nuskriaustieji, std::deque<Studentas>& kietiakiai)
+void padalintiStudentus1Deque(const std::deque<Studentas>& studentai, std::deque<Studentas>& nuskriaustieji, std::deque<Studentas>& kietiakiai)
 {
 	nuskriaustieji.clear();
 	kietiakiai.clear();

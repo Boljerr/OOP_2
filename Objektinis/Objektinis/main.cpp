@@ -13,7 +13,9 @@
 #include<chrono>
 
 #include "struktura.h"
-#include "Studentas_vector.h"
+#include "Bendra.h"
+#include "Tyrimai.h"
+#include "VectorFunkcijos.h"
 
 int main()
 {
@@ -27,8 +29,10 @@ int main()
 		std::cout << "4 - Nuskaityti is failo\n";
 		std::cout << "5 - Generuoti studentu faila\n";
 		std::cout << "6 - Atlikti failo kurimo tyrima\n";
-		std::cout << "7 - Atlikti duomenu apdorojimo tyrima\n";
-		std::cout << "8 - Baigti\n";
+		std::cout << "7 - Atlikti v0.4 duomenu apdorojimo tyrima(vector)\n";
+		std::cout << "8 - Atlikti v1.0 konteineriu tyrima\n";
+		std::cout << "9 - Atlikti v1.0 skirstymo strategiju tyrima\n";
+		std::cout << "10 - Baigti\n";
 		std::cin >> pasirinkimas;
 		if (std::cin.fail())
 		{
@@ -79,8 +83,8 @@ int main()
 
 			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
 
-			skaicuotiRezultatus(studentai, skaiciavimoTipas);
-			isvestiRezultatus(studentai, skaiciavimoTipas);
+			skaiciuotiRezultatusVector(studentai, skaiciavimoTipas);
+			isvestiRezultatusVector(studentai, skaiciavimoTipas);
 
 			break;
 		}
@@ -114,8 +118,8 @@ int main()
 			} while (testi == 't' || testi == 'T');
 
 			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
-			skaicuotiRezultatus(studentai, skaiciavimoTipas);
-			isvestiRezultatus(studentai, skaiciavimoTipas);
+			skaiciuotiRezultatusVector(studentai, skaiciavimoTipas);
+			isvestiRezultatusVector(studentai, skaiciavimoTipas);
 
 			break;
 		}
@@ -144,8 +148,8 @@ int main()
 			}
 			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
 
-			skaicuotiRezultatus(studentai, skaiciavimoTipas);
-			isvestiRezultatus(studentai, skaiciavimoTipas);
+			skaiciuotiRezultatusVector(studentai, skaiciavimoTipas);
+			isvestiRezultatusVector(studentai, skaiciavimoTipas);
 			break;
 		}
 		case 4:
@@ -168,7 +172,7 @@ int main()
 			try
 			{
 				auto start = std::chrono::high_resolution_clock::now();
-				skaitytiIsFailo(failas, studentai);
+				skaitytiIsFailoVector(failas, studentai);
 
 				if (studentai.empty())
 				{
@@ -177,8 +181,8 @@ int main()
 				}
 
 
-				skaicuotiRezultatus(studentai, skaiciavimoTipas);
-				rusiuotiStudentus(studentai, rusiavimoTipas);
+				skaiciuotiRezultatusVector(studentai, skaiciavimoTipas);
+				rusiuotiStudentusVector(studentai, rusiavimoTipas);
 				auto end = std::chrono::high_resolution_clock::now();
 				std::chrono::duration<double> diff = end - start;
 
@@ -192,7 +196,7 @@ int main()
 				{
 					if (studentai.size() <= 10000)
 					{
-						isvestiRezultatus(studentai, skaiciavimoTipas);
+						isvestiRezultatusVector(studentai, skaiciavimoTipas);
 					}
 					else
 					{
@@ -201,42 +205,19 @@ int main()
 				}
 				else
 				{
-					isvestiRezultatusIFaila(studentai, skaiciavimoTipas, "rezultatai.txt");
+					isvestiRezultatusIFailaVector(studentai, skaiciavimoTipas, "rezultatai.txt");
 				}
 
 				std::cout << "Laikas: " << diff.count() << "sekundes\n";
 			}
-				catch (const std::exception& ex)
-				{
-					std::cout << "Klaida: " << ex.what() << "\n";
-				}
-				break;
+			catch (const std::exception& ex)
+			{
+				std::cout << "Klaida: " << ex.what() << "\n";
+			}
+			break;
 		}
 		case 5:
-			{
-			std::string failas;
-			int studentuKiekis;
-			int ndKiekis;
-
-			std::cout << "Iveskite failo pavadinima: ";
-				std::cin >> failas;
-
-			studentuKiekis = ivestiIntSuValidacija("Kiek studentu generuoti? ", 1, INT_MAX - 1);
-			ndKiekis = ivestiIntSuValidacija("Kiek namu darbu pazymiu generuoti? ", 1, 20);
-
-				try
-				{
-					generuotiStudentuFaila(failas, studentuKiekis, ndKiekis);
-					std::cout << "Failas sugeneruotas sekmingai.\n";
-				}
-				catch (const std::exception& ex)
-				{
-					std::cout << "Klaida: " << ex.what() << "\n";
-				}
-			break;
-			}
-		case 6:
-			{
+		{
 			std::string failas;
 			int studentuKiekis;
 			int ndKiekis;
@@ -246,18 +227,41 @@ int main()
 
 			studentuKiekis = ivestiIntSuValidacija("Kiek studentu generuoti? ", 1, INT_MAX - 1);
 			ndKiekis = ivestiIntSuValidacija("Kiek namu darbu pazymiu generuoti? ", 1, 20);
-				try
-				{
-					atliktiFailoKurimoTyrima(failas, studentuKiekis, ndKiekis);
-				}
-				catch (const std::exception& ex)
-				{
-					std::cout << "Klaida: " << ex.what() << "\n";
-				}
-			break;
-			}
-		case 7:
+
+			try
 			{
+				generuotiStudentuFailaVector(failas, studentuKiekis, ndKiekis);
+				std::cout << "Failas sugeneruotas sekmingai.\n";
+			}
+			catch (const std::exception& ex)
+			{
+				std::cout << "Klaida: " << ex.what() << "\n";
+			}
+			break;
+		}
+		case 6:
+		{
+			std::string failas;
+			int studentuKiekis;
+			int ndKiekis;
+
+			std::cout << "Iveskite failo pavadinima: ";
+			std::cin >> failas;
+
+			studentuKiekis = ivestiIntSuValidacija("Kiek studentu generuoti? ", 1, INT_MAX - 1);
+			ndKiekis = ivestiIntSuValidacija("Kiek namu darbu pazymiu generuoti? ", 1, 20);
+			try
+			{
+				atliktiFailoKurimoTyrimaVector(failas, studentuKiekis, ndKiekis);
+			}
+			catch (const std::exception& ex)
+			{
+				std::cout << "Klaida: " << ex.what() << "\n";
+			}
+			break;
+		}
+		case 7:
+		{
 			std::string failas;
 			system("dir *.txt");
 			std::cout << "Iveskite jau sugeneruoto failo pavadinima: ";
@@ -267,21 +271,63 @@ int main()
 			int rusiavimoTipas = pasirinktiRusiavimoTipa();
 			int kartu = ivestiIntSuValidacija("Kiek kartu kartoti testa? ", 1, 10);
 
-				try
-				{
-					atliktiDuomenuApdorojimoTyrimoVidurki(failas, skaiciavimoTipas, rusiavimoTipas, kartu);
-				}
-				catch (const std::exception& ex)
-				{
-					std::cout << "Klaida: " << ex.what() << "\n";
-				}
-			break;
+			try
+			{
+				atliktiDuomenuApdorojimoTyrimoVidurkiVector(failas, skaiciavimoTipas, rusiavimoTipas, kartu);
 			}
-		case 8:
-		{
-			std::cout << "Programa baigiama. \n";
+			catch (const std::exception& ex)
+			{
+				std::cout << "Klaida: " << ex.what() << "\n";
+			}
 			break;
 		}
+		case 8:
+		{
+			std::string failas;
+			system("dir *.txt");
+			std::cout << "Iveskite jau sugeneruoto failo pavadinima: ";
+			std::cin >> failas;
+
+			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
+			int rusiavimoTipas = pasirinktiRusiavimoTipa();
+			int kartu = ivestiIntSuValidacija("Kiek kartu kartoti testa? ", 1, 50);
+
+			try
+			{
+				atliktiKonteineriuTyrimaSuVidurkiu(failas, skaiciavimoTipas, rusiavimoTipas, kartu);
+			}
+			catch (const std::exception& ex)
+			{
+				std::cout << "Klaida: " << ex.what() << "\n";
+			}
+			break;
+		}
+		case 9:
+		{
+			std::string failas;
+			system("dir *.txt");
+			std::cout << "Iveskite jau sugeneruoto failo pavadinima: ";
+			std::cin >> failas;
+
+			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
+			int rusiavimoTipas = pasirinktiRusiavimoTipa();
+			int kartu = ivestiIntSuValidacija("Kiek kartu kartoti testa? ", 1, 50);
+
+			try
+			{
+				atliktiStrategijuTyrimaSuVidurkiu(failas, skaiciavimoTipas, rusiavimoTipas, kartu);
+			}
+			catch (const std::exception& ex)
+			{
+				std::cout << "Klaida: " << ex.what() << "\n";
+			}
+			break;
+		}
+		case 10:
+			{
+			std::cout << "Programa baige darba.\n";
+			break;
+			}
 		default:
 		{
 			std::cout << "Neteisingas pasirinkimas";
@@ -289,7 +335,9 @@ int main()
 		}
 		}
 
-	} while (pasirinkimas != 8);
+	} while (pasirinkimas != 10);
+	
+	return 0;
 }
 
 
