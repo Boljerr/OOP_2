@@ -103,7 +103,7 @@ void padalintiStudentus1List(const std::list<Studentas>& studentai, std::list<St
 
 	for (const auto& studentas : studentai)
 	{
-		if (studentas.rezultatas < 5)
+		if (studentas.getRezultatas() < 5)
 		{
 			nuskriaustieji.push_back(studentas);
 		}
@@ -118,7 +118,7 @@ void padalintiStudentus2List(std::list<Studentas>& studentai, std::list<Studenta
 	nuskriaustieji.clear();
 	for (auto it = studentai.begin(); it != studentai.end();)
 	{
-		if (it->rezultatas < 5)
+		if (it->getRezultatas() < 5)
 		{
 			nuskriaustieji.push_back(*it);
 			it = studentai.erase(it);
@@ -136,7 +136,7 @@ void padalintiStudentus3List(std::list<Studentas>& studentai, std::list<Studenta
 
 	for (auto it = studentai.begin(); it != studentai.end();)
 	{
-		if (it->rezultatas < 5)
+		if (it->getRezultatas() < 5)
 		{
 			auto dabartinis = it;
 			++it;
