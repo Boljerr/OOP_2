@@ -27,6 +27,7 @@ void skaitytiIsFailoVector(const std::string& failoPavadinimas, std::vector<Stud
 	{
 		std::stringstream ss(eilute);
 		Studentas studentas;
+
 		std::string vardas;
 		std::string pavarde;
 
@@ -54,9 +55,9 @@ void skaitytiIsFailoVector(const std::string& failoPavadinimas, std::vector<Stud
 		{
 			throw std::runtime_error("Studentui nerastas nei vienas pazymys ar egzamino rezultatas");
 		}
-		studentas.egzaminas = visiPaz.back();
+		studentas.setEgzaminas(visiPaz.back());
 		visiPaz.pop_back();
-		studentas.pazymiai = visiPaz;
+		studentas.setPazymiai(visiPaz);
 
 		studentai.push_back(studentas);
 	}
@@ -70,13 +71,14 @@ void skaiciuotiRezultatusVector(std::vector<Studentas>& studentai, int skaiciavi
 		double nd;
 		if (skaiciavimoTipas == 1)
 		{
-			nd = calculateAverage(studentai[i].pazymiai);
+			nd = calculateAverage(studentai[i].getPazymiai());
 		}
 		else
 		{
-			nd = calculateMedian(studentai[i].pazymiai);
+			nd = calculateMedian(studentai[i].getPazymiai());
 		}
-		studentai[i].rezultatas = calculateFinal(nd, studentai[i].egzaminas);
+		double galutinis = calculateFinal(nd, studentai[i].getEgzaminas());
+		studentai[i].setRezultatas(galutinis);
 	}
 }
 
