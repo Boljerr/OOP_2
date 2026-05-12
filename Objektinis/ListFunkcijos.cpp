@@ -12,6 +12,7 @@ void skaitytiIsFailoList(const std::string& failoPavadinimas, std::list<Studenta
 	studentai.clear();
 	std::ifstream in(failoPavadinimas);
 
+
 	if (!in.is_open())
 	{
 		throw std::runtime_error("Nepavyko atidaryti failo: " + failoPavadinimas);
@@ -25,10 +26,15 @@ void skaitytiIsFailoList(const std::string& failoPavadinimas, std::list<Studenta
 		std::stringstream ss(eilute);
 		Studentas studentas;
 
-		if (!(ss >> studentas.vardas >> studentas.pavarde))
+		std::string vardas;
+		std::string pavarde;
+
+		if (!(ss >> vardas >> pavarde))
 		{
 			throw std::runtime_error("Netinkamas duomenu formatas");
 		}
+		studentas.setVardas(vardas);
+		studentas.setPavarde(pavarde);
 
 		int paz;
 		std::vector<int> visiPaz;
@@ -45,9 +51,10 @@ void skaitytiIsFailoList(const std::string& failoPavadinimas, std::list<Studenta
 		{
 			throw std::runtime_error("Studentui nerastas nei vienas pazymys ar egzamino rezultatas");
 		}
-		studentas.egzaminas = visiPaz.back();
+		studentas.setEgzaminas(visiPaz.back());
 		visiPaz.pop_back();
-		studentas.pazymiai = visiPaz;
+		studentas.setPazymiai(visiPaz);
+
 		studentai.push_back(studentas);
 	}
 	in.close();
@@ -60,13 +67,14 @@ void skaiciuotiRezultatusList(std::list<Studentas>& studentai, int skaiciavimoTi
 		double nd;
 		if (skaiciavimoTipas == 1)
 		{
-			nd = calculateAverage(studentas.pazymiai);
+			nd = calculateAverage(studentas.getPazymiai());
 		}
 		else
 		{
-			nd = calculateMedian(studentas.pazymiai);
+			nd = calculateMedian(studentas.getPazymiai());
 		}
-		studentas.rezultatas = calculateFinal(nd, studentas.egzaminas);
+		double galutinis =calculateFinal(nd, studentas.getEgzaminas());
+		studentas.setRezultatas(galutinis);
 	}
 }
 
