@@ -94,7 +94,7 @@ void padalintiStudentus1Deque(const std::deque<Studentas>& studentai, std::deque
 	kietiakiai.clear();
 	for (int i = 0; i < studentai.size(); ++i)
 	{
-		if (studentai[i].rezultatas < 5)
+		if (studentai[i].getRezultatas() < 5)
 		{
 			nuskriaustieji.push_back(studentai[i]);
 		}
@@ -111,7 +111,7 @@ void padalintiStudentus2Deque(std::deque<Studentas>& studentai, std::deque<Stude
 
 	for (auto it = studentai.begin(); it != studentai.end();)
 	{
-		if (it->rezultatas < 5)
+		if (it->getRezultatas() < 5)
 		{
 			nuskriaustieji.push_back(*it);
 			it = studentai.erase(it);
