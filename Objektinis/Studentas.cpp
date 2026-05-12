@@ -33,9 +33,9 @@ std::string Studentas::getPavarde() const
 	return pavarde;
 }
 
-const std::vector<int>& Studentas::getNamuDarbai() const
+const std::vector<int>& Studentas::getPazymiai() const
 {
-	return namuDarbai;
+	return pazymiai;
 }
 
 int Studentas::getEgzaminas() const
@@ -58,9 +58,9 @@ void Studentas::setPavarde(std::string& pavarde)
 	this->pavarde = pavarde;
 }
 
-void Studentas::setNamuDarbai(const std::vector<int>& namuDarbai)
+void Studentas::setPazymiai(const std::vector<int>& pazymiai)
 {
-	this->namuDarbai = namuDarbai;
+	this->pazymiai = pazymiai;
 }
 
 void Studentas::setEgzaminas(int egzaminas)
@@ -73,9 +73,9 @@ void Studentas::setRezultatas(double rezultatas)
 	this->rezultatas = rezultatas;
 }
 
-void Studentas::pridetiNamuDarba(int pazymys)
+void Studentas::pridetiPazymi(int pazymys)
 {
-	namuDarbai.push_back(pazymys);
+	pazymiai.push_back(pazymys);
 }
 
 

@@ -11,7 +11,7 @@ class Studentas
 public:
 	std::string vardas;
 	std::string pavarde;
-	std::vector<int> namuDarbai;
+	std::vector<int> pazymiai;
 	int egzaminas;
 	double rezultatas;
 
@@ -22,18 +22,18 @@ public:
 
 	std::string getVardas() const;
 	std::string getPavarde() const;
-	const std::vector<int>& getNamuDarbai() const;
+	std::vector<int>& getPazymiai() const;
 	int getEgzaminas() const;
 	double getRezultatas() const;
 
 
 	void setVardas(std::string& vardas);
 	void setPavarde(std::string& pavarde);
-	void setNamuDarbai(std::vector<int>& namuDarbai);
+	void setPazymiai(const std::vector<int>& namuDarbai);
 	void setEgzaminas(int egzaminas);
 	void setRezultatas(double rezultatas);
 
-	void pridetiNamuDarba(int pazymys);
+	void pridetiPazymi(int pazymys);
 	
 };
 
