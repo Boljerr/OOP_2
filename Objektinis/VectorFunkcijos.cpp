@@ -27,11 +27,16 @@ void skaitytiIsFailoVector(const std::string& failoPavadinimas, std::vector<Stud
 	{
 		std::stringstream ss(eilute);
 		Studentas studentas;
+		std::string vardas;
+		std::string pavarde;
 
-		if (!(ss >> studentas.vardas >> studentas.pavarde))
+		if (!(ss >> vardas >> pavarde))
 		{
 			throw std::runtime_error("Netinkamas duomenu formatas");
 		}
+		studentas.setVardas(vardas);
+		studentas.setPavarde(pavarde);
+
 
 		int paz;
 		std::vector<int> visiPaz;
