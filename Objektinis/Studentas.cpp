@@ -3,20 +3,20 @@
 
 Studentas::Studentas()
 {
-	vardas = "";
-	pavarde = "";
-	egzaminas = 0;
-	rezultatas = 0.0;
+	vardas_ = "";
+	pavarde_ = "";
+	egzaminas_ = 0;
+	rezultatas_ = 0.0;
 }
 
 
 
 Studentas::Studentas(std::string& vardas, std::string& pavarde)
 {
-	this->vardas = vardas;
-	this->pavarde = pavarde;
-	egzaminas = 0;
-	rezultatas = 0.0;
+	vardas_ = vardas;
+	pavarde_ = pavarde;
+	egzaminas_ = 0;
+	rezultatas_ = 0.0;
 }
 
 Studentas::~Studentas()
@@ -25,57 +25,57 @@ Studentas::~Studentas()
 
 std::string Studentas::getVardas() const
 {
-	return vardas;
+	return vardas_;
 }
 
 std::string Studentas::getPavarde() const
 {
-	return pavarde;
+	return pavarde_;
 }
 
 const std::vector<int>& Studentas::getPazymiai() const
 {
-	return pazymiai;
+	return pazymiai_;
 }
 
 int Studentas::getEgzaminas() const
 {
-	return egzaminas;
+	return egzaminas_;
 }
 
 double Studentas::getRezultatas() const
 {
-	return rezultatas;
+	return rezultatas_;
 }
 
 void Studentas::setVardas(std::string& vardas)
 {
-	this->vardas = vardas;
+	vardas_ = vardas;
 }
 
 void Studentas::setPavarde(std::string& pavarde)
 {
-	this->pavarde = pavarde;
+	pavarde_ = pavarde;
 }
 
 void Studentas::setPazymiai(const std::vector<int>& pazymiai)
 {
-	this->pazymiai = pazymiai;
+	pazymiai_ = pazymiai;
 }
 
 void Studentas::setEgzaminas(int egzaminas)
 {
-	this->egzaminas = egzaminas;
+	egzaminas_ = egzaminas;
 }
 
 void Studentas::setRezultatas(double rezultatas)
 {
-	this->rezultatas = rezultatas;
+	rezultatas_ = rezultatas;
 }
 
 void Studentas::pridetiPazymi(int pazymys)
 {
-	pazymiai.push_back(pazymys);
+	pazymiai_.push_back(pazymys);
 }
 
 

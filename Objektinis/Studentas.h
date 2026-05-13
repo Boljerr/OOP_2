@@ -8,13 +8,14 @@
 
 class Studentas
 {
-public:
-	std::string vardas;
-	std::string pavarde;
-	std::vector<int> pazymiai;
-	int egzaminas;
-	double rezultatas;
+private:
+	std::string vardas_;
+	std::string pavarde_;
+	std::vector<int> pazymiai_;
+	int egzaminas_;
+	double rezultatas_;
 
+public:
 
 	Studentas();
 	Studentas(std::string& vardas, std::string& pavarde);
@@ -22,7 +23,7 @@ public:
 
 	std::string getVardas() const;
 	std::string getPavarde() const;
-	std::vector<int>& getPazymiai() const;
+	const std::vector<int>& getPazymiai() const;
 	int getEgzaminas() const;
 	double getRezultatas() const;
 
