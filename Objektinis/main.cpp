@@ -16,6 +16,7 @@
 #include "Bendra.h"
 #include "Tyrimai.h"
 #include "VectorFunkcijos.h"
+#include "Studentas.h"
 
 int main()
 {
@@ -51,8 +52,8 @@ int main()
 
 			do {
 				Studentas studentas;
-				studentas.vardas = ivestiVardaArPavarde("Iveskite varda: ");
-				studentas.pavarde = ivestiVardaArPavarde("Iveskite pavarde: ");
+				studentas.setVardas(ivestiVardaArPavarde("Iveskite varda: "));
+				studentas.setPavarde( ivestiVardaArPavarde("Iveskite pavarde: "));
 
 				std::cout << "Iveskite pazymi (0 - 10). Baigti -1\n";
 
@@ -65,14 +66,14 @@ int main()
 						break;
 					}
 
-					studentas.pazymiai.push_back(temp);
+					studentas.pridetiPazymi(temp);
 				}
-				if (studentas.pazymiai.empty())
+				if (studentas.getPazymiai().empty())
 				{
 					std::cout << "Nerasta pazymiu, galutinis bus skaiciuojamas tik is egzamino\n";
 				}
 
-				studentas.egzaminas = ivestiIntSuValidacija("Iveskite egzamino rezultata (0-10): ", 0, 10);
+				studentas.setEgzaminas(ivestiIntSuValidacija("Iveskite egzamino rezultata (0-10): ", 0, 10));
 
 				studentai.push_back(studentas);
 
@@ -96,8 +97,8 @@ int main()
 			do
 			{
 				Studentas studentas;
-				studentas.vardas = ivestiVardaArPavarde("Iveskite varda: ");
-				studentas.pavarde = ivestiVardaArPavarde("Iveskite pavarde: ");
+				studentas.setVardas(ivestiVardaArPavarde("Iveskite varda: "));
+				studentas.setPavarde(ivestiVardaArPavarde("Iveskite pavarde: "));
 
 				int kiekis = ivestiIntSuValidacija("Kiek generuoti namu darbu pazymiu? ", 1, INT_MAX - 1);
 
@@ -105,10 +106,10 @@ int main()
 				for (int i = 0; i < kiekis; ++i)
 				{
 					int paz = std::rand() % 10 + 1;
-					studentas.pazymiai.push_back(paz);
+					studentas.pridetiPazymi(paz);
 				}
 
-				studentas.egzaminas = std::rand() % 10 + 1;
+				studentas.setEgzaminas(std::rand() % 10 + 1);
 
 				studentai.push_back(studentas);
 
@@ -135,15 +136,15 @@ int main()
 				zmogus z = gen();
 
 				Studentas studentas;
-				studentas.vardas = z.vardas;
-				studentas.pavarde = z.pavarde;
+				studentas.setVardas(z.vardas);
+				studentas.setPavarde(z.pavarde);
 
 				for (int j = 0; j < ndKiekis; ++j)
 				{
-					studentas.pazymiai.push_back(gen().paz);
+					studentas.pridetiPazymi(gen().paz);
 				}
 
-				studentas.egzaminas = std::rand() % 10 + 1;
+				studentas.setEgzaminas(std::rand() % 10 + 1);
 				studentai.push_back(studentas);
 			}
 			int skaiciavimoTipas = pasirinktiSkaiciavimoTipa();
