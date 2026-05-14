@@ -1,5 +1,18 @@
 # Studentų pažymių skaičiavimo programa
 
+## Apie programą
+
+Ši programa skirta studentų duomenims apdoroti.
+
+Programa gali nuskaityti studentų vardus, pavardes, namų darbų pažymius ir egzamino rezultatą. Pagal šiuos duomenis yra apskaičiuojamas galutinis balas.
+
+Galutinis balas gali būti skaičiuojamas pagal:
+
+- namų darbų vidurkį;
+- namų darbų medianą.
+
+---
+
 ## Programos funkcijos
 
 Programa leidžia:
@@ -12,47 +25,67 @@ Programa leidžia:
 - skaičiuoti galutinį balą pagal vidurkį arba medianą;
 - rūšiuoti studentus pagal vardą, pavardę arba rezultatą;
 - skirstyti studentus į dvi grupes;
-- atlikti veikimo spartos tyrimus.
+- atlikti veikimo spartos tyrimus;
+- testuoti `Studentas` klasę;
+- peržiūrėti sugeneruotą Doxygen dokumentaciją.
 
 ---
 
 ## Reikalavimai
 
-- C++ kompiliatorius su C++17 palaikymu;
+Norint paleisti programą, reikia turėti:
+
+- C++ kompiliatorių su C++17 palaikymu;
 - CMake;
-- Git.
+- Git;
+- Visual Studio, jeigu norima paleisti unit testus per `Test Explorer`.
 
 ---
 
-## Programos įdiegimas ir paleidimas
+## Programos atsisiuntimas
 
-Projekto atsisiuntimas:
+Projektą galima atsisiųsti iš GitHub:
 
 ```bash
 git clone https://github.com/Boljerr/OOP_2.git
 cd OOP_2
 ```
 
-Kompiliavimas su CMake:
+---
+
+## Programos kompiliavimas su CMake
+
+Projektas kompiliuojamas naudojant CMake.
+
+Pirmiausia reikia sukurti `build` aplanką:
 
 ```bash
 mkdir build
 cd build
+```
+
+Tada paleisti CMake:
+
+```bash
 cmake ..
+```
+
+Kompiliavimas `Release` režimu:
+
+```bash
 cmake --build . --config Release
 ```
 
-Windows aplinkoje programa paleidžiama, pvz.:
+## Programos paleidimas
+
 
 ```bash
 .\Release\Studentai.exe
 ```
 
-Programa taip pat gali būti paleidžiama iš tos vietos, kurioje CMake sugeneruoja `.exe` failą.
-
 ---
 
-## Meniu
+## Programos meniu
 
 ```text
 1 - Rankinis ivedimas
@@ -67,31 +100,30 @@ Programa taip pat gali būti paleidžiama iš tos vietos, kurioje CMake sugeneru
 10 - Testuoti Studentas klase
 11 - Baigti
 ```
----
 
 ---
 
 ## Unit testai
 
-v2.0 versijoje pridėjau unit testus, kad būtų galima patikrinti, ar pagrindiniai `Studentas` klasės metodai veikia teisingai.
+v2.0 versijoje buvo pridėti unit testai.
 
-Testams naudojau **Visual Studio C++ Unit Test Framework**.  
-Pasirinkau šį variantą, nes projektą darau su Visual Studio, todėl testus patogu paleisti per `Test Explorer`.
+Juos pridėjau tam, kad būtų galima patikrinti, ar pagrindiniai `Studentas` klasės metodai veikia teisingai.
+
+Testams naudojau **Visual Studio C++ Unit Test Framework**, nes projektą darau su Visual Studio ir testus patogu paleisti per `Test Explorer`.
 
 ### Testuojami metodai
 
 | Testas | Ką tikrina |
 |---|---|
-| DefaultConstructorCreatesObject | Patikrina, ar galima sukurti tuščią `Studentas` objektą |
-| CopyConstructorWorks | Patikrina kopijavimo konstruktorių |
-| CopyAssignmentWorks | Patikrina kopijavimo priskyrimo operatorių |
-| MoveConstructorWorks | Patikrina perkėlimo konstruktorių |
-| MoveAssignmentWorks | Patikrina perkėlimo priskyrimo operatorių |
-| InputOperatorWorks | Patikrina įvesties operatorių `>>` |
-| OutputOperatorWorks | Patikrina išvesties operatorių `<<` |
+| `DefaultConstructorCreatesObject` | Patikrina, ar galima sukurti tuščią `Studentas` objektą |
+| `CopyConstructorWorks` | Patikrina kopijavimo konstruktorių |
+| `CopyAssignmentWorks` | Patikrina kopijavimo priskyrimo operatorių |
+| `MoveConstructorWorks` | Patikrina perkėlimo konstruktorių |
+| `MoveAssignmentWorks` | Patikrina perkėlimo priskyrimo operatorių |
+| `InputOperatorWorks` | Patikrina įvesties operatorių `>>` |
+| `OutputOperatorWorks` | Patikrina išvesties operatorių `<<` |
 
-Šie testai padeda įsitikinti, kad `Studentas` klasė veikia taip, kaip tikimasi.  
-Ypač svarbu buvo patikrinti Rule of Five metodus, nes jie susiję su objektų kopijavimu, priskyrimu ir perkėlimu.
+Svarbiausia buvo patikrinti Rule of Five metodus, nes jie parodo, ar `Studentas` objektai teisingai kopijuojami, priskiriami ir perkeliami.
 
 ### Unit testų paleidimas
 
@@ -102,67 +134,137 @@ Testai paleidžiami per Visual Studio:
 3. Atidaryti `Test Explorer`.
 4. Paspausti `Run All Tests`.
 
-Jeigu visi testai pažymėti žaliai, reiškia testuojami metodai veikia teisingai.
+Jeigu visi testai žali, reiškia testuojami metodai veikia gerai.
+
+---
+
+## Doxygen dokumentacija
+
+v2.0 versijoje projektui buvo sugeneruota dokumentacija naudojant **Doxygen**.
+
+Dokumentacijoje aprašyta `Studentas` klasė, jos konstruktoriai, Rule of Five metodai, įvesties ir išvesties operatoriai bei kiti pagrindiniai metodai.
+
+Dokumentacija pateikta šiais formatais:
+
+| Dokumentacijos tipas | Vieta projekte |
+|---|---|
+| HTML | `docs/html/index.html` |
+| LaTeX | `docs/latex/` |
+| PDF | `docs/refman.pdf` |
+
+HTML dokumentaciją galima atidaryti naršyklėje:
+
+```text
+docs/html/index.html
+```
+
+PDF dokumentacija pateikta faile:
+
+```text
+docs/refman.pdf
+```
+
+PDF failas buvo sukompiliuotas naudojant Overleaf.
+
+---
 
 ## Relizų aprašas
 
-## v1.5
+### v2.0
 
-Šioje versijoje programa papildyta paveldėjimu. Sukurta abstrakti bazinė klasė `Zmogus`, iš kurios paveldi `Studentas` klasė.
+Šioje versijoje projektas papildytas unit testais ir Doxygen dokumentacija.
 
-Programa išlaiko v1.2 versijos logiką: veikia `Rule of Five`, įvesties/išvesties operatoriai ir ankstesni testai.
+Pagrindiniai pakeitimai:
 
-## v1.2
+- pridėti unit testai `Studentas` klasei;
+- patikrinti Rule of Five metodai;
+- patikrinti įvesties ir išvesties operatoriai `>>` ir `<<`;
+- sugeneruota Doxygen HTML dokumentacija;
+- sugeneruota Doxygen LaTeX dokumentacija;
+- paruoštas dokumentacijos PDF failas;
+- atnaujintas `README.md` failas;
+- patikrintas projekto kompiliavimas su CMake.
 
-Šioje versijoje `Studentas` klasė papildyta „Rule of Five“ realizacija. Pridėtas destruktorius, kopijavimo konstruktorius, kopijavimo operatorius, perkėlimo konstruktorius ir perkėlimo operatorius.
+---
 
-Taip pat realizuoti įvesties ir išvesties operatoriai `>>` ir `<<`, leidžiantys patogiau nuskaityti ir išvesti studento duomenis. Papildomai parašyti testai, kurie patikrina konstruktorius, operatorius ir kitus pagrindinius klasės metodus.
+### v1.5
+
+Šioje versijoje programa papildyta paveldėjimu.
+
+Buvo sukurta abstrakti bazinė klasė `Zmogus`, iš kurios paveldi `Studentas` klasė.
+
+Programa išlaiko v1.2 versijos logiką: veikia Rule of Five, įvesties ir išvesties operatoriai bei ankstesni testai.
+
+---
+
+### v1.2
+
+Šioje versijoje `Studentas` klasė papildyta Rule of Five realizacija.
+
+Pridėta:
+
+- destruktorius;
+- kopijavimo konstruktorius;
+- kopijavimo priskyrimo operatorius;
+- perkėlimo konstruktorius;
+- perkėlimo priskyrimo operatorius.
+
+Taip pat realizuoti įvesties ir išvesties operatoriai `>>` ir `<<`.
+
+---
 
 ### v1.1
 
-- `Studentas` struktūra pakeista į klasę.
-- Studentų duomenys perkelti į privačius laukus.
-- Pridėti getteriai ir setteriai.
-- Realizuoti konstruktoriai ir destruktorius.
-- Atnaujintos funkcijos, kurios dirba su `Studentas` objektais.
-- Atliktas `struct` ir `class` versijų palyginimas.
-- Atlikta analizė su `O1`, `O2` ir `O3` optimizavimo flag'ais.
-- README faile pateikti greičio ir `.exe` dydžio rezultatai.
+Šioje versijoje `Studentas` struktūra pakeista į klasę.
+
+Pagrindiniai pakeitimai:
+
+- `Studentas` struktūra pakeista į klasę;
+- studentų duomenys perkelti į privačius laukus;
+- pridėti getteriai ir setteriai;
+- realizuoti konstruktoriai ir destruktorius;
+- atnaujintos funkcijos, kurios dirba su `Studentas` objektais;
+- atliktas `struct` ir `class` versijų palyginimas;
+- atlikta analizė su `O1`, `O2` ir `O3` optimizavimo flag'ais.
+
+---
 
 ### v1.0
 
-- Pridėtas darbas su trimis konteineriais:
-  - `std::vector`;
-  - `std::list`;
-  - `std::deque`.
-- Pridėtos trys studentų skirstymo strategijos.
-- Atliktas konteinerių tyrimas.
-- Atliktas skirstymo strategijų tyrimas.
-- Paruoštas `CMakeLists.txt`.
+Šioje versijoje pridėtas darbas su trimis konteineriais:
+
+- `std::vector`;
+- `std::list`;
+- `std::deque`.
+
+Taip pat buvo pridėtos trys studentų skirstymo strategijos, atliktas konteinerių tyrimas ir paruoštas `CMakeLists.txt`.
+
+---
 
 ### v0.4
 
-- Pridėtas studentų failų generavimas.
-- Pridėtas studentų skirstymas į dvi grupes.
-- Atliktas pradinis veikimo spartos tyrimas su `std::vector`.
+Šioje versijoje pridėtas studentų failų generavimas, studentų skirstymas į dvi grupes ir pradinis veikimo spartos tyrimas su `std::vector`.
+
+---
 
 ### v0.3
 
-- Patobulinta įvesties validacija.
-- Pridėtas klaidų tikrinimas.
-- Kodas išskaidytas į `.h` ir `.cpp` failus.
+Šioje versijoje patobulinta įvesties validacija, pridėtas klaidų tikrinimas ir kodas išskaidytas į `.h` ir `.cpp` failus.
+
+---
 
 ### v0.2
 
-- Pridėtas duomenų nuskaitymas iš failo.
-- Pridėtas studentų rūšiavimas.
+Šioje versijoje pridėtas duomenų nuskaitymas iš failo ir studentų rūšiavimas.
+
+---
 
 ### v0.1
 
-- Realizuotas rankinis studentų duomenų įvedimas.
-- Pridėtas galutinio balo skaičiavimas pagal vidurkį arba medianą.
+Šioje versijoje realizuotas rankinis studentų duomenų įvedimas ir galutinio balo skaičiavimas pagal vidurkį arba medianą.
+
+---
 
 ### v.pradinė
 
-- Sukurta pradinė studento duomenų struktūra.
-- Realizuotas pradinis vidurkio ir medianos skaičiavimas.
+Sukurta pradinė studento duomenų struktūra ir realizuotas pradinis vidurkio bei medianos skaičiavimas.

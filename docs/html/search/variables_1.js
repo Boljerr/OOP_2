@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nuskaitymas_0',['nuskaitymas',['../struct_tyrimo_rezultatai.html#a9f4b3d80df11639edf177d1315d7097b',1,'TyrimoRezultatai']]]
+  ['vardas_5f_0',['vardas_',['../class_zmogus.html#a80e72cd553492344884a264a72ce33d2',1,'Zmogus']]]
 ];

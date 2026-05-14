@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tyrimorezultatai_0',['TyrimoRezultatai',['../struct_tyrimo_rezultatai.html',1,'']]]
+  ['zmogus_0',['Zmogus',['../class_zmogus.html',1,'']]]
 ];

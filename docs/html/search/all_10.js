@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['main_0',['main',['../build_2_c_make_files_24_82_83-msvc3_2_compiler_id_c_2_c_make_c_compiler_id_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;CMakeCCompilerId.c'],['../build_2_c_make_files_24_82_83-msvc3_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;CMakeCXXCompilerId.cpp'],['../_objektinis_2build_2_c_make_files_24_82_83-msvc3_2_compiler_id_c_2_c_make_c_compiler_id_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;CMakeCCompilerId.c'],['../_objektinis_2build_2_c_make_files_24_82_83-msvc3_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;CMakeCXXCompilerId.cpp'],['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.cpp']]],
-  ['main_2ecpp_1',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['meniu_2',['Meniu',['../index.html#autotoc_md7',1,'']]],
-  ['metodai_3',['Testuojami metodai',['../index.html#autotoc_md11',1,'']]]
+  ['unit_20testų_20paleidimas_0',['Unit testų paleidimas',['../index.html#autotoc_md12',1,'']]],
+  ['unit_20testai_1',['Unit testai',['../index.html#autotoc_md10',1,'']]]
 ];

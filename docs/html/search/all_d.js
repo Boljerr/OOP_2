@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['hex_0',['HEX',['../build_2_c_make_files_24_82_83-msvc3_2_compiler_id_c_2_c_make_c_compiler_id_8c.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCCompilerId.c'],['../build_2_c_make_files_24_82_83-msvc3_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCXXCompilerId.cpp'],['../_objektinis_2build_2_c_make_files_24_82_83-msvc3_2_compiler_id_c_2_c_make_c_compiler_id_8c.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCCompilerId.c'],['../_objektinis_2build_2_c_make_files_24_82_83-msvc3_2_compiler_id_c_x_x_2_c_make_c_x_x_compiler_id_8cpp.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCXXCompilerId.cpp']]],
-  ['hrclock_1',['hrClock',['../struktura_8h.html#abbd7f6de600381803056a019cf09042a',1,'struktura.h']]]
+  ['read_0',['read',['../class_studentas.html#acd52ae8a7b65354e937ddee975af84ec',1,'Studentas::read()'],['../class_zmogus.html#a9b3d37f05499cb719b465c3b9c76d275',1,'Zmogus::read()']]],
+  ['readme_2emd_1',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['reikalavimai_2',['Reikalavimai',['../index.html#autotoc_md3',1,'']]],
+  ['relizų_20aprašas_3',['Relizų aprašas',['../index.html#autotoc_md13',1,'']]]
 ];
