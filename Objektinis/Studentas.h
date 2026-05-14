@@ -20,7 +20,15 @@ public:
 	Studentas();
 	Studentas(const std::string& vardas, const std::string& pavarde);
 	Studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& pazymiai, int egzaminas);
+
+
 	~Studentas();
+
+	Studentas(const Studentas& kitas);
+	Studentas& operator=(const Studentas& kitas);
+
+	Studentas(Studentas&& kitas) noexcept;
+	Studentas& operator=(Studentas&& kitas) noexcept;
 
 	std::string getVardas() const;
 	std::string getPavarde() const;
