@@ -80,181 +80,75 @@ Programa taip pat gali būti paleidžiama iš tos vietos, kurioje CMake sugeneru
 10 - Baigti
 ```
 
-### Meniu punktų paaiškinimas
-
-**1 punktas** - rankinis studento duomenų įvedimas.
-
-**2 punktas** - įvedamas studento vardas ir pavardė, o pažymiai sugeneruojami automatiškai.
-
-**3 punktas** - automatiškai generuojami studentai ir jų pažymiai.
-
-**4 punktas** - studentai nuskaitomi iš failo, apskaičiuojamas galutinis balas, atliekamas rūšiavimas ir rezultatai išvedami į ekraną arba failą.
-
-**5 punktas** - sugeneruojamas studentų failas.
-
-**6 punktas** - atliekamas failo kūrimo tyrimas.
-
-**7 punktas** - atliekamas ankstesnės versijos tyrimas su `std::vector`.
-
-**8 punktas** - atliekamas konteinerių tyrimas.
-
-**9 punktas** - atliekamas skirstymo strategijų tyrimas.
-
-**10 punktas** - programa baigia darbą.
-
----
-
 ## v1.2
 
-Šioje versijoje buvo praplėsta `Studentas` klasė. Pagrindinis šios versijos tikslas buvo realizuoti penkių metodų taisyklę, įvesties ir išvesties operatorius bei patikrinti šiuos metodus rankiniais testais.
+Šioje versijoje buvo praplėsta `Studentas` klasė. Pridėta penkių metodų taisyklė, įvesties / išvesties operatoriai ir rankiniai testai.
 
 ### Atlikti pakeitimai
 
 | Pakeitimas | Aprašymas |
 |---|---|
-| Rule of five | Realizuotas destruktorius, kopijavimo konstruktorius, kopijavimo priskyrimo operatorius, perkėlimo konstruktorius ir perkėlimo priskyrimo operatorius |
-| Įvesties operatorius `>>` | Leidžia nuskaityti studento duomenis iš įvesties srauto |
-| Išvesties operatorius `<<` | Leidžia išvesti studento duomenis į ekraną arba į failą |
+| Rule of five | Realizuotas destruktorius, kopijavimo konstruktorius, kopijavimo operatorius, perkėlimo konstruktorius ir perkėlimo operatorius |
+| Įvesties operatorius `>>` | Leidžia nuskaityti `Studentas` objektą iš įvesties srauto |
+| Išvesties operatorius `<<` | Leidžia išvesti `Studentas` objektą į ekraną arba failą |
 | `read()` metodas | Naudojamas studento duomenų nuskaitymui |
 | `print()` metodas | Naudojamas studento duomenų išvedimui |
-| Rankiniai testai | Pridėta testavimo funkcija, kuri patikrina pagrindinius `Studentas` klasės metodus |
-
----
+| Testai | Pridėti rankiniai testai `Studentas` klasei |
 
 ### Rule of five
 
-`Studentas` klasėje buvo realizuoti visi penki specialūs metodai:
-
-| Metodas | Paskirtis |
-|---|---|
-| `~Studentas()` | Destruktorius, kuris iškviečiamas sunaikinant objektą |
-| `Studentas(const Studentas& kitas)` | Kopijavimo konstruktorius, kuris sukuria naują objektą kopijuojant kitą objektą |
-| `operator=(const Studentas& kitas)` | Kopijavimo operatorius, kuris priskiria vieno objekto reikšmes kitam jau egzistuojančiam objektui |
-| `Studentas(Studentas&& kitas) noexcept` | Perkėlimo konstruktorius, kuris perkelia duomenis iš kito objekto |
-| `operator=(Studentas&& kitas) noexcept` | Perkėlimo operatorius, kuris perkelia duomenis į jau egzistuojantį objektą |
-
-Nors `Studentas` klasėje naudojami `std::string` ir `std::vector`, kurie patys tvarko atmintį, šie metodai buvo realizuoti rankiniu būdu, nes to reikalauja v1.2 užduotis.
-
----
-
-### Įvesties operatorius
-
-Buvo realizuotas įvesties operatorius:
+`Studentas` klasei buvo realizuoti visi penki metodai:
 
 ```cpp
-std::istream& operator>>(std::istream& in, Studentas& studentas)
+~Studentas();
+Studentas(const Studentas& kitas);
+Studentas& operator=(const Studentas& kitas);
+Studentas(Studentas&& kitas) noexcept;
+Studentas& operator=(Studentas&& kitas) noexcept;
 ```
 
-Operatorius iškviečia `read()` metodą:
+Nors klasėje naudojami `std::string` ir `std::vector`, kurie patys tvarko atmintį, šie metodai buvo realizuoti rankiniu būdu pagal v1.2 užduoties reikalavimus.
+
+### Įvesties ir išvesties operatoriai
+
+Buvo realizuoti šie operatoriai:
 
 ```cpp
-std::istream& operator>>(std::istream& in, Studentas& studentas)
-{
-	studentas.read(in);
-	return in;
-}
+std::istream& operator>>(std::istream& in, Studentas& studentas);
+std::ostream& operator<<(std::ostream& out, const Studentas& studentas);
 ```
 
-Tokiu būdu studento objektą galima nuskaityti iš įvesties srauto.
+Įvesties operatorius naudoja `read()` metodą, o išvesties operatorius naudoja `print()` metodą. Taip `Studentas` objektą galima nuskaityti iš srauto ir išvesti į ekraną arba failą.
 
-Pavyzdinė įvesties eilutė:
+Pavyzdinė įvestis:
 
 ```txt
 Petras Petraitis 6 7 8 9
 ```
 
-Šiuo atveju:
-
-| Duomuo | Reikšmė |
-|---|---|
-| `Petras` | Vardas |
-| `Petraitis` | Pavardė |
-| `6 7 8` | Namų darbų pažymiai |
-| `9` | Egzamino pažymys |
-
-Paskutinis skaičius laikomas egzamino pažymiu, o visi prieš jį esantys skaičiai laikomi namų darbų pažymiais.
-
----
-
-### Išvesties operatorius
-
-Buvo realizuotas išvesties operatorius:
-
-```cpp
-std::ostream& operator<<(std::ostream& out, const Studentas& studentas)
-```
-
-Operatorius iškviečia `print()` metodą:
-
-```cpp
-std::ostream& operator<<(std::ostream& out, const Studentas& studentas)
-{
-	studentas.print(out);
-	return out;
-}
-```
-
-Studento duomenis galima išvesti į ekraną:
-
-```cpp
-std::cout << studentas;
-```
-
-Taip pat tą patį operatorių galima naudoti rašant duomenis į failą.
-
----
+Šiuo atveju paskutinis skaičius yra egzamino pažymys, o prieš jį esantys skaičiai yra namų darbų pažymiai.
 
 ### Duomenų įvestis ir išvestis
 
-| Veiksmas | Kaip realizuota |
+| Veiksmas | Realizacija |
 |---|---|
-| Rankinė įvestis | Studentų duomenys gali būti įvedami per konsolę |
-| Automatinė įvestis | Studentų duomenys gali būti generuojami automatiškai |
-| Įvestis iš failo | Studentų duomenys gali būti nuskaitomi iš failo |
-| Išvestis į ekraną | Studentų duomenys gali būti išvedami į konsolę |
-| Išvestis į failą | Studentų duomenys gali būti rašomi į failą |
-
----
+| Rankinė įvestis | Per konsolę |
+| Automatinė įvestis | Generuojant duomenis |
+| Įvestis iš failo | Skaitant duomenis iš failo |
+| Išvestis į ekraną | Per konsolę |
+| Išvestis į failą | Rašant į failą |
 
 ### Testavimas
 
-Buvo sukurta rankinė testavimo funkcija:
+Buvo pridėti rankiniai testai, kurie patikrina konstruktorius, kopijavimo metodus, perkėlimo metodus, įvesties / išvesties operatorius ir destruktorių.
 
-```cpp
-void testuotiStudentoKlase();
-```
-
-Ji patikrina pagrindinius `Studentas` klasės metodus.
-
-| Testas | Rezultatas |
-|---|---|
-| Default konstruktorius | Pavyko |
-| Konstruktorius su duomenimis | Pavyko |
-| Kopijavimo konstruktorius | Pavyko |
-| Kopijavimo operatorius | Pavyko |
-| Perkėlimo konstruktorius | Pavyko |
-| Perkėlimo operatorius | Pavyko |
-| Įvesties operatorius `>>` | Pavyko |
-| Išvesties operatorius `<<` | Pavyko |
-| Destruktorius | Pavyko |
-
-Destruktorius buvo tikrinamas per lokalų bloką. Sukūrus objektą bloke, jam išėjus iš bloko objektas sunaikinamas automatiškai. Papildomai naudojamas skaitliukas, kuris leidžia patikrinti, ar destruktorius tikrai buvo iškviestas.
-
----
-
-### Testavimo rezultatai
-
-Žemiau pateiktas rankinio testavimo rezultatas:
+Testavimo rezultatai:
 
 ![v1.2 testavimo rezultatai](images/v12_testai.png)
 
----
-
 ### v1.2 išvada
 
-Šioje versijoje `Studentas` klasė tapo pilnesnė ir patogesnė naudoti. Dabar studento objektus galima kopijuoti, perkelti, nuskaityti naudojant `>>` operatorių ir išvesti naudojant `<<` operatorių.
-
-Taip pat buvo pridėti rankiniai testai, kurie parodo, kad pagrindiniai klasės metodai veikia tinkamai.
+Šioje versijoje `Studentas` klasė tapo pilnesnė ir patogesnė naudoti. Objektus galima kopijuoti, perkelti, nuskaityti naudojant `>>` operatorių ir išvesti naudojant `<<` operatorių.
 
 ## Relizų aprašas
 
