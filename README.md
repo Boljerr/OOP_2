@@ -71,59 +71,46 @@ Programa taip pat gali būti paleidžiama iš tos vietos, kurioje CMake sugeneru
 
 ---
 
+## Unit testai
+
+v2.0 versijoje pridėjau unit testus, kad būtų galima patikrinti, ar pagrindiniai `Studentas` klasės metodai veikia teisingai.
+
+Testams naudojau **Visual Studio C++ Unit Test Framework**.  
+Pasirinkau šį variantą, nes projektą darau su Visual Studio, todėl testus patogu paleisti per `Test Explorer`.
+
+### Testuojami metodai
+
+| Testas | Ką tikrina |
+|---|---|
+| DefaultConstructorCreatesObject | Patikrina, ar galima sukurti tuščią `Studentas` objektą |
+| CopyConstructorWorks | Patikrina kopijavimo konstruktorių |
+| CopyAssignmentWorks | Patikrina kopijavimo priskyrimo operatorių |
+| MoveConstructorWorks | Patikrina perkėlimo konstruktorių |
+| MoveAssignmentWorks | Patikrina perkėlimo priskyrimo operatorių |
+| InputOperatorWorks | Patikrina įvesties operatorių `>>` |
+| OutputOperatorWorks | Patikrina išvesties operatorių `<<` |
+
+Šie testai padeda įsitikinti, kad `Studentas` klasė veikia taip, kaip tikimasi.  
+Ypač svarbu buvo patikrinti Rule of Five metodus, nes jie susiję su objektų kopijavimu, priskyrimu ir perkėlimu.
+
+### Unit testų paleidimas
+
+Testai paleidžiami per Visual Studio:
+
+1. Atidaryti projektą su Visual Studio.
+2. Viršutiniame meniu pasirinkti `Test`.
+3. Atidaryti `Test Explorer`.
+4. Paspausti `Run All Tests`.
+
+Jeigu visi testai pažymėti žaliai, reiškia testuojami metodai veikia teisingai.
+
+## Relizų aprašas
+
 ## v1.5
 
 Šioje versijoje programa papildyta paveldėjimu. Sukurta abstrakti bazinė klasė `Zmogus`, iš kurios paveldi `Studentas` klasė.
 
 Programa išlaiko v1.2 versijos logiką: veikia `Rule of Five`, įvesties/išvesties operatoriai ir ankstesni testai.
-
-### Pagrindiniai pakeitimai
-
-| Pakeitimas | Aprašymas |
-|---|---|
-| Sukurta `Zmogus` klasė | Saugo bendrus žmogaus duomenis: vardą ir pavardę |
-| `Zmogus` padaryta abstrakti | Tiesiogiai `Zmogus` objektų kurti negalima |
-| `Studentas` paveldi iš `Zmogus` | `Studentas` perima vardą ir pavardę iš bazinės klasės |
-| Išlaikyta v1.2 logika | Veikia `Rule of Five` ir `>>`, `<<` operatoriai |
-| Atnaujinti testai | Patikrintas paveldėjimas ir v1.2 metodai |
-
-### Abstrakčios klasės patikrinimas
-
-`Zmogus` klasė yra abstrakti, nes turi grynai virtualius metodus:
-
-```cpp
-virtual void read(std::istream& in) = 0;
-virtual void print(std::ostream& out) const = 0;
-```
-
-Bandant sukurti `Zmogus` objektą:
-
-```cpp
-Zmogus zmogus;
-```
-
-gaunama kompiliavimo klaida. Tai parodo, kad bazinės klasės objektų tiesiogiai kurti negalima.
-
-![Abstrakčios klasės klaida](images/zmogus_abstrakti_klaida.png)
-
-### Paveldėjimo patikrinimas
-
-`Studentas` objektą galima naudoti per `Zmogus` rodyklę:
-
-```cpp
-Studentas s1("Jonas", "Jonaitis", pazymiai, 7);
-Zmogus* zmogus = &s1;
-```
-
-Tai parodo, kad `Studentas` yra išvestinė klasė iš `Zmogus`.
-
-### Testų rezultatai
-
-Testų rezultatai pateikti nuotraukoje:
-
-![v1.5 testai](images/v1.5_testai.png)
-
-## Relizų aprašas
 
 ## v1.2
 
