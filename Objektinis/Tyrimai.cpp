@@ -276,7 +276,7 @@ void atliktiStrategijuTyrimaSuVidurkiu(const std::string& failoPavadinimas, int 
     {
 		StrategijuRezultatai v = atliktiStrategijuTyrimaVector(failoPavadinimas, skaiciavimoTipas, rusiavimoTipas);
 		StrategijuRezultatai l = atliktiStrategijuTyrimaList(failoPavadinimas, skaiciavimoTipas, rusiavimoTipas);
-    	StrategijuRezultatai d = atliktiStrategijuTyrimaDeque(failoPavadinimas, skaiciavimoTipas, rusiavimoTipas);
+        StrategijuRezultatai d = atliktiStrategijuTyrimaDeque(failoPavadinimas, skaiciavimoTipas, rusiavimoTipas);
 
 		vectorVidurkis.strategija1 += v.strategija1;
 		vectorVidurkis.strategija2 += v.strategija2;
@@ -285,7 +285,6 @@ void atliktiStrategijuTyrimaSuVidurkiu(const std::string& failoPavadinimas, int 
 		listVidurkis.strategija1 += l.strategija1;
 		listVidurkis.strategija2 += l.strategija2;
 		listVidurkis.strategija3 += l.strategija3;
-
 		dequeVidurkis.strategija1 += d.strategija1;
 		dequeVidurkis.strategija2 += d.strategija2;
 		dequeVidurkis.strategija3 += d.strategija3;

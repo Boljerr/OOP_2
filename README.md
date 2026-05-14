@@ -25,14 +25,15 @@ Buvo matuojamas tik studentų skirstymo į dvi grupes laikas.
 
 Pagal gautus rezultatus matyti, kad perėjimas nuo `struct` prie `class` skirstymo laiko reikšmingai nepakeitė. `class` versija buvo šiek tiek lėtesnė, tačiau skirtumas nėra didelis. Pagrindinis `class` versijos privalumas yra ne greitis, o geresnė duomenų apsauga, nes studento duomenys yra privatūs ir pasiekiami per metodus.
 
-## Kompiliatoriaus optimizavimo flag analizė
+## Kompiliatoriaus optimizavimo flag'ų analizė
 
-Testavimui naudotas `std::vector` konteineris, greičiausia studentų dalijimo strategija ir 1000000 įrašų failas.
+Testavimui naudota v1.1 `class` versija, `std::vector` konteineris, 3 skirstymo strategija ir `studentai1000000.txt` failas.  
+Buvo matuojamas tik studentų skirstymo į dvi grupes laikas.
 
-| Optimizavimo flag'as | Laikas | Exe failo dydis |
+| Optimizavimo flag'as | Skirstymo laikas | Exe failo dydis |
 |---|---:|---:|
-| O1 | ... s | ... KB |
-| O2 | ... s | ... KB |
-| O3 | ... s | ... KB |
+| O1 | 0.19621 s | 461 KB |
+| O2 | 0.191401 s | 440 KB |
+| O3 | 0.197236 s | 465 KB |
 
-Pagal rezultatus matyti, kad kompiliatoriaus optimizavimo lygis turi įtakos programos veikimo laikui. Didesnis optimizavimo lygis dažniausiai leidžia programai veikti greičiau, tačiau exe failo dydis gali skirtis.
+Pagal gautus rezultatus matyti, kad optimizavimo flag'ai šiuo atveju skirstymo laikui didelės įtakos neturėjo. Greičiausias rezultatas gautas su `O2` flag'u. Exe failo dydis taip pat šiek tiek skyrėsi: mažiausias failas buvo sugeneruotas naudojant `O2`, o didžiausias naudojant `O3`.
