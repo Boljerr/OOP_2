@@ -1,0 +1,64 @@
+\doxysection{Objektinis/\+\+List\+Funkcijos.cpp File Reference}
+\hypertarget{_list_funkcijos_8cpp}{}\label{_list_funkcijos_8cpp}\index{Objektinis/ListFunkcijos.cpp@{Objektinis/ListFunkcijos.cpp}}
+{\ttfamily \+\#include "{}List\+Funkcijos.\+h"{}}\newline
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include "{}Bendra.\+h"{}}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$sstream$>$}\newline
+{\ttfamily \+\#include $<$stdexcept$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{_list_funkcijos_8cpp_ad63b1fb2614795b6f49bbf0f610ae6d7}{skaityti\+Is\+Failo\+List}} (const std::\+string \&failo\+Pavadinimas, std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai)
+\item 
+void \doxymbox{\hyperlink{_list_funkcijos_8cpp_a43d1eb552881e64bdc74c5ec9ab78eca}{skaiciuoti\+Rezultatus\+List}} (std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, int skaiciavimo\+Tipas)
+\item 
+void \doxymbox{\hyperlink{_list_funkcijos_8cpp_ac91d97911a6980da2448bd88a18e3753}{rusiuoti\+Studentus\+List}} (std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, int pasirinkimas)
+\item 
+void \doxymbox{\hyperlink{_list_funkcijos_8cpp_ac2a5884fa4cdc232e6534fa2cd1c3c79}{padalinti\+Studentus1\+List}} (const std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nuskriaustieji, std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&kietiakiai)
+\item 
+void \doxymbox{\hyperlink{_list_funkcijos_8cpp_a33c3411be9269724bfb39956cade217c}{padalinti\+Studentus2\+List}} (std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nuskriaustieji)
+\item 
+void \doxymbox{\hyperlink{_list_funkcijos_8cpp_ac6a336cb2689c702f8c78eee9b885bac}{padalinti\+Studentus3\+List}} (std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&studentai, std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nuskriaustieji)
+\end{DoxyCompactItemize}
+
+
+\label{_list_funkcijos_8cpp_doc-func-members}
+\Hypertarget{_list_funkcijos_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_list_funkcijos_8cpp_ac2a5884fa4cdc232e6534fa2cd1c3c79}\index{ListFunkcijos.cpp@{ListFunkcijos.cpp}!padalintiStudentus1List@{padalintiStudentus1List}}
+\index{padalintiStudentus1List@{padalintiStudentus1List}!ListFunkcijos.cpp@{ListFunkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{padalintiStudentus1List()}{padalintiStudentus1List()}}
+{\footnotesize\ttfamily \label{_list_funkcijos_8cpp_ac2a5884fa4cdc232e6534fa2cd1c3c79} 
+void padalinti\+Studentus1\+List (\begin{DoxyParamCaption}\item[{const std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nuskriaustieji}{, }\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{kietiakiai}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_list_funkcijos_8cpp_a33c3411be9269724bfb39956cade217c}\index{ListFunkcijos.cpp@{ListFunkcijos.cpp}!padalintiStudentus2List@{padalintiStudentus2List}}
+\index{padalintiStudentus2List@{padalintiStudentus2List}!ListFunkcijos.cpp@{ListFunkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{padalintiStudentus2List()}{padalintiStudentus2List()}}
+{\footnotesize\ttfamily \label{_list_funkcijos_8cpp_a33c3411be9269724bfb39956cade217c} 
+void padalinti\+Studentus2\+List (\begin{DoxyParamCaption}\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nuskriaustieji}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_list_funkcijos_8cpp_ac6a336cb2689c702f8c78eee9b885bac}\index{ListFunkcijos.cpp@{ListFunkcijos.cpp}!padalintiStudentus3List@{padalintiStudentus3List}}
+\index{padalintiStudentus3List@{padalintiStudentus3List}!ListFunkcijos.cpp@{ListFunkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{padalintiStudentus3List()}{padalintiStudentus3List()}}
+{\footnotesize\ttfamily \label{_list_funkcijos_8cpp_ac6a336cb2689c702f8c78eee9b885bac} 
+void padalinti\+Studentus3\+List (\begin{DoxyParamCaption}\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nuskriaustieji}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_list_funkcijos_8cpp_ac91d97911a6980da2448bd88a18e3753}\index{ListFunkcijos.cpp@{ListFunkcijos.cpp}!rusiuotiStudentusList@{rusiuotiStudentusList}}
+\index{rusiuotiStudentusList@{rusiuotiStudentusList}!ListFunkcijos.cpp@{ListFunkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{rusiuotiStudentusList()}{rusiuotiStudentusList()}}
+{\footnotesize\ttfamily \label{_list_funkcijos_8cpp_ac91d97911a6980da2448bd88a18e3753} 
+void rusiuoti\+Studentus\+List (\begin{DoxyParamCaption}\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{int}]{pasirinkimas}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_list_funkcijos_8cpp_a43d1eb552881e64bdc74c5ec9ab78eca}\index{ListFunkcijos.cpp@{ListFunkcijos.cpp}!skaiciuotiRezultatusList@{skaiciuotiRezultatusList}}
+\index{skaiciuotiRezultatusList@{skaiciuotiRezultatusList}!ListFunkcijos.cpp@{ListFunkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{skaiciuotiRezultatusList()}{skaiciuotiRezultatusList()}}
+{\footnotesize\ttfamily \label{_list_funkcijos_8cpp_a43d1eb552881e64bdc74c5ec9ab78eca} 
+void skaiciuoti\+Rezultatus\+List (\begin{DoxyParamCaption}\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{, }\item[{int}]{skaiciavimo\+Tipas}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_list_funkcijos_8cpp_ad63b1fb2614795b6f49bbf0f610ae6d7}\index{ListFunkcijos.cpp@{ListFunkcijos.cpp}!skaitytiIsFailoList@{skaitytiIsFailoList}}
+\index{skaitytiIsFailoList@{skaitytiIsFailoList}!ListFunkcijos.cpp@{ListFunkcijos.cpp}}
+\doxysubsubsection{\texorpdfstring{skaitytiIsFailoList()}{skaitytiIsFailoList()}}
+{\footnotesize\ttfamily \label{_list_funkcijos_8cpp_ad63b1fb2614795b6f49bbf0f610ae6d7} 
+void skaityti\+Is\+Failo\+List (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{failo\+Pavadinimas}{, }\item[{std::\+list$<$ \doxymbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{studentai}{}\end{DoxyParamCaption})}
+

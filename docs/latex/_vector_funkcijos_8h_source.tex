@@ -1,0 +1,47 @@
+\doxysection{Vector\+Funkcijos.\+h}
+\hypertarget{_vector_funkcijos_8h_source}{}\label{_vector_funkcijos_8h_source}\index{Objektinis/VectorFunkcijos.h@{Objektinis/VectorFunkcijos.h}}
+\doxymbox{\hyperlink{_vector_funkcijos_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_studentas_8h}{Studentas.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a9cfda111a2d9a2a5be3f42ca0c1e142d}{skaitytiIsFailoVector}}(\textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,\ std::vector<Studentas>\&\ studentai);}
+\DoxyCodeLine{00007\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a32064a27b45326e4d8fd504d422477f6}{skaiciuotiRezultatusVector}}(std::vector<Studentas>\&\ studentai,\ \textcolor{keywordtype}{int}\ skaiciavimoTipas);}
+\DoxyCodeLine{00008\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a8e091e92166644fb212b314cf0826df9}{rusiuotiStudentusVector}}(std::vector<Studentas>\&\ studentai,\ \textcolor{keywordtype}{int}\ pasirinkimas);}
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a41e347ea8b5144a8289824755ac7f815}{isvestiRezultatusVector}}(\textcolor{keyword}{const}\ std::vector<Studentas>\&\ studentai,\ \textcolor{keywordtype}{int}\ skaiciavimoTipas);}
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a0b5ab0d46e654947a2a8fbfea2e90cea}{isvestiRezultatusIFailaVector}}(\textcolor{keyword}{const}\ std::vector<Studentas>\&\ studentai,\ \textcolor{keywordtype}{int}\ skaiciavimoTipas,\ \textcolor{keyword}{const}\ std::string\&\ failoPavadinimas);}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a6a587a5d8a227a7026b21d42c58c5035}{generuotiStudentuFailaVector}}(\textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,\ \textcolor{keywordtype}{int}\ studentuKiekis,\ \textcolor{keywordtype}{int}\ ndKiekis);}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a0a499ced53b2309639faeaaed36ee802}{atliktiFailoKurimoTyrimaVector}}(\textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,\ \textcolor{keywordtype}{int}\ studentuKiekis,\ \textcolor{keywordtype}{int}\ ndKiekis);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a338ee4b4d54e00f81ee824918d81028a}{padalintiStudentus1Vector}}(}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Studentas>\&\ studentai,}
+\DoxyCodeLine{00017\ \ \ \ \ std::vector<Studentas>\&\ nuskriaustieji,}
+\DoxyCodeLine{00018\ \ \ \ \ std::vector<Studentas>\&\ kietiakiai}
+\DoxyCodeLine{00019\ );}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a3ec7f102412de7da9b9419ea10c92147}{padalintiStudentus2Vector}}(}
+\DoxyCodeLine{00022\ \ \ \ \ std::vector<Studentas>\&\ studentai,}
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<Studentas>\&\ nuskriaustieji}
+\DoxyCodeLine{00024\ );}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a2dbe62f6a7e1321897ca51a886123848}{padalintiStudentus3Vector}}(}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<Studentas>\&\ studentai,}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<Studentas>\&\ nuskriaustieji}
+\DoxyCodeLine{00028\ );}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a92a5de864989b0539e1141c30c6e87a7}{atliktiDuomenuApdorojimoTyrimaVector}}(}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ skaiciavimoTipas,}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ rusiavimoTipas}
+\DoxyCodeLine{00034\ );}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_vector_funkcijos_8h_a85dda9000f9a44e01703a4c67df5c05c}{atliktiDuomenuApdorojimoTyrimoVidurkiVector}}(}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ skaiciavimoTipas,}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ rusiavimoTipas,}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ kartu}
+\DoxyCodeLine{00041\ );}
+
+\end{DoxyCode}

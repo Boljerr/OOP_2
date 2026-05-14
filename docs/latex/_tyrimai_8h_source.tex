@@ -1,0 +1,68 @@
+\doxysection{Tyrimai.\+h}
+\hypertarget{_tyrimai_8h_source}{}\label{_tyrimai_8h_source}\index{Objektinis/Tyrimai.h@{Objektinis/Tyrimai.h}}
+\doxymbox{\hyperlink{_tyrimai_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_tyrimo_rezultatai}{TyrimoRezultatai}}}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_tyrimo_rezultatai_a9f4b3d80df11639edf177d1315d7097b}{nuskaitymas}}\ =\ 0.0;}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_tyrimo_rezultatai_aac8cbcb685f8879ecfb023986659e3df}{rusiavimas}}\ =\ 0.0;}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_tyrimo_rezultatai_ab5610dacaf4dd167ef426b847ad84dcb}{skirstymas}}\ =\ 0.0;}
+\DoxyCodeLine{00009\ \};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_strategiju_rezultatai}{StrategijuRezultatai}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_strategiju_rezultatai_a7fbab7630017802c37c1d2266bc65afb}{strategija1}}\ =\ 0.0;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_strategiju_rezultatai_ae8dbb8180f5e12576f325e2070d4eba4}{strategija2}}\ =\ 0.0;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_strategiju_rezultatai_ae69b9dc14014b07cb7d60d5981815199}{strategija3}}\ =\ 0.0;}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \doxymbox{\hyperlink{struct_tyrimo_rezultatai}{TyrimoRezultatai}}\ \doxymbox{\hyperlink{_tyrimai_8h_a9b3b72cfc898eadd331fd72329ecca88}{aliktiVectorTyrima}}}
+\DoxyCodeLine{00019\ (}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ skaiciavimoTipas,}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ rusiavimoTipas}
+\DoxyCodeLine{00023\ );}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \doxymbox{\hyperlink{struct_tyrimo_rezultatai}{TyrimoRezultatai}}\ \doxymbox{\hyperlink{_tyrimai_8h_a0055e255816f2eb9d6c8a05b2c12d276}{atliktiListTyrima}}}
+\DoxyCodeLine{00026\ (}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ skaiciavimoTipas,}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ rusiavimoTipas}
+\DoxyCodeLine{00030\ );}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \doxymbox{\hyperlink{struct_tyrimo_rezultatai}{TyrimoRezultatai}}\ \doxymbox{\hyperlink{_tyrimai_8h_a18be09a70f37f304adb3a23e589d76d2}{atliktiDequeTyrima}}}
+\DoxyCodeLine{00033\ (}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ skaiciavimoTipas,}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ rusiavimoTipas}
+\DoxyCodeLine{00037\ );}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \doxymbox{\hyperlink{struct_strategiju_rezultatai}{StrategijuRezultatai}}\ \doxymbox{\hyperlink{_tyrimai_8h_a3fea22ad64d89d631a3fce1ff2e889cc}{atliktiSkirstymoStrategijuTyrimaVector}}}
+\DoxyCodeLine{00040\ (}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ skaiciavimoTipas,}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ rusiavimoTipas}
+\DoxyCodeLine{00044\ );}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \doxymbox{\hyperlink{struct_strategiju_rezultatai}{StrategijuRezultatai}}\ \doxymbox{\hyperlink{_tyrimai_8h_a6d4a4a79414249c802b38cf0b78ebf27}{atliktiSkirstymoStrategijuTyrimaList}}}
+\DoxyCodeLine{00047\ (}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ skaiciavimoTipas,}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ rusiavimoTipas}
+\DoxyCodeLine{00051\ );}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \doxymbox{\hyperlink{struct_strategiju_rezultatai}{StrategijuRezultatai}}\ \doxymbox{\hyperlink{_tyrimai_8h_a1c6d5489015a2d933fbd951ec9744006}{atliktiSkirstymoStrategijuTyrimaDeque}}}
+\DoxyCodeLine{00054\ (}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ skaiciavimoTipas,}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ rusiavimoTipas}
+\DoxyCodeLine{00058\ );}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_tyrimai_8h_a51836380f32de08b5cd821cd19b31fd6}{atliktiKonteineriuTyrimaSuVidurkiu}}(\textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,\ \textcolor{keywordtype}{int}\ skaiciavimoTipas,\ \textcolor{keywordtype}{int}\ rusiavimoTipas,\ \textcolor{keywordtype}{int}\ kartu);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_tyrimai_8h_a581cc9d33cea51fe75a37347dc8846d0}{atliktiStrategijuTyrimaSuVidurkiu}}(\textcolor{keyword}{const}\ std::string\&\ failoPavadinimas,\ \textcolor{keywordtype}{int}\ skaiciavimoTipas,\ \textcolor{keywordtype}{int}\ rusiavimoTipas,\ \textcolor{keywordtype}{int}\ kartu);}
+
+\end{DoxyCode}
