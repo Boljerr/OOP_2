@@ -39,13 +39,13 @@ Kompiliavimas su CMake:
 mkdir build
 cd build
 cmake ..
-cmake --build .
+cmake --build . --config Release
 ```
 
 Windows aplinkoje programa paleidžiama, pvz.:
 
 ```bash
-.\Release\StudentaiV1.exe
+.\Release\Studentai.exe
 ```
 
 Programa taip pat gali būti paleidžiama iš tos vietos, kurioje CMake sugeneruoja `.exe` failą.
