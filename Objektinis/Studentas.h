@@ -1,17 +1,16 @@
 #pragma once
 #ifndef STUDENTAS_H
 #define STUDENTAS_H
+#include "Zmogus.h"
 
 #include <string>
 #include <vector>
 #include <iostream>
 
 
-class Studentas
+class Studentas : public Zmogus
 {
 private:
-	std::string vardas_;
-	std::string pavarde_;
 	std::vector<int> pazymiai_;
 	int egzaminas_;
 	double rezultatas_;
@@ -26,6 +25,7 @@ public:
 
 
 	~Studentas();
+
 	static int getSunaikintuObjektuKiekis();
 
 	Studentas(const Studentas& kitas);
@@ -40,17 +40,14 @@ public:
 	int getEgzaminas() const;
 	double getRezultatas() const;
 
-
-	void setVardas(std::string vardas);
-	void setPavarde(std::string pavarde);
 	void setPazymiai(const std::vector<int>& namuDarbai);
 	void setEgzaminas(int egzaminas);
 	void setRezultatas(double rezultatas);
 
 	void pridetiPazymi(int pazymys);
 
-	void read(std::istream& in);
-	void print(std::ostream& out) const;
+	void read(std::istream& in) override;
+	void print(std::ostream& out) const override;
 
 	friend std::istream& operator>>(std::istream& in, Studentas& studentas);
 	friend std::ostream& operator<<(std::ostream& out, const Studentas& studentas);
