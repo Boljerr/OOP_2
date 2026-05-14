@@ -12,4 +12,5 @@ add_executable(StudentaiV11
 	DequeFunkcijos.cpp
 	Tyrimai.cpp
 	generator.cpp
+	Testai.cpp
 )
