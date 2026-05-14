@@ -7,7 +7,7 @@
 #include <vector>
 #include <utility>
 
-
+Zmogus zmogus;
 
 void spausdintiTestoRezultata(bool pavyko, std::string testoPavadinimas)
 {

@@ -67,69 +67,69 @@ Programa taip pat gali būti paleidžiama iš tos vietos, kurioje CMake sugeneru
 10 - Testuoti Studentas klase
 11 - Baigti
 ```
+---
 
-## v1.2
+---
 
-Šioje versijoje buvo praplėsta `Studentas` klasė. Pridėta penkių metodų taisyklė, įvesties / išvesties operatoriai ir rankiniai testai.
+## v1.5
 
-### Atlikti pakeitimai
+Šioje versijoje programa papildyta paveldėjimu. Sukurta abstrakti bazinė klasė `Zmogus`, iš kurios paveldi `Studentas` klasė.
+
+Programa išlaiko v1.2 versijos logiką: veikia `Rule of Five`, įvesties/išvesties operatoriai ir ankstesni testai.
+
+### Pagrindiniai pakeitimai
 
 | Pakeitimas | Aprašymas |
 |---|---|
-| Rule of five | Realizuotas destruktorius, kopijavimo konstruktorius, kopijavimo operatorius, perkėlimo konstruktorius ir perkėlimo operatorius |
-| Įvesties operatorius `>>` | Leidžia nuskaityti `Studentas` objektą iš įvesties srauto |
-| Išvesties operatorius `<<` | Leidžia išvesti `Studentas` objektą į ekraną arba failą |
-| `read()` metodas | Naudojamas studento duomenų nuskaitymui |
-| `print()` metodas | Naudojamas studento duomenų išvedimui |
-| Testai | Pridėti rankiniai testai `Studentas` klasei |
+| Sukurta `Zmogus` klasė | Saugo bendrus žmogaus duomenis: vardą ir pavardę |
+| `Zmogus` padaryta abstrakti | Tiesiogiai `Zmogus` objektų kurti negalima |
+| `Studentas` paveldi iš `Zmogus` | `Studentas` perima vardą ir pavardę iš bazinės klasės |
+| Išlaikyta v1.2 logika | Veikia `Rule of Five` ir `>>`, `<<` operatoriai |
+| Atnaujinti testai | Patikrintas paveldėjimas ir v1.2 metodai |
 
-### Rule of five
+### Abstrakčios klasės patikrinimas
 
-`Studentas` klasei buvo realizuoti visi penki metodai:
-
-```cpp
-~Studentas();
-Studentas(const Studentas& kitas);
-Studentas& operator=(const Studentas& kitas);
-Studentas(Studentas&& kitas) noexcept;
-Studentas& operator=(Studentas&& kitas) noexcept;
-```
-
-Nors klasėje naudojami `std::string` ir `std::vector`, kurie patys tvarko atmintį, šie metodai buvo realizuoti rankiniu būdu pagal v1.2 užduoties reikalavimus.
-
-### Įvesties ir išvesties operatoriai
-
-Buvo realizuoti šie operatoriai:
+`Zmogus` klasė yra abstrakti, nes turi grynai virtualius metodus:
 
 ```cpp
-std::istream& operator>>(std::istream& in, Studentas& studentas);
-std::ostream& operator<<(std::ostream& out, const Studentas& studentas);
+virtual void read(std::istream& in) = 0;
+virtual void print(std::ostream& out) const = 0;
 ```
 
-Įvesties operatorius naudoja `read()` metodą, o išvesties operatorius naudoja `print()` metodą. Taip `Studentas` objektą galima nuskaityti iš srauto ir išvesti į ekraną arba failą.
+Bandant sukurti `Zmogus` objektą:
 
-Pavyzdinė įvestis:
-
-```txt
-Petras Petraitis 6 7 8 9
+```cpp
+Zmogus zmogus;
 ```
 
-Šiuo atveju paskutinis skaičius yra egzamino pažymys, o prieš jį esantys skaičiai yra namų darbų pažymiai.
+gaunama kompiliavimo klaida. Tai parodo, kad bazinės klasės objektų tiesiogiai kurti negalima.
 
+![Abstrakčios klasės klaida](images/zmogus_abstrakti_klaida.png)
 
-### Testavimas
+### Paveldėjimo patikrinimas
 
-Buvo pridėti rankiniai testai, kurie patikrina konstruktorius, kopijavimo metodus, perkėlimo metodus, įvesties / išvesties operatorius ir destruktorių.
+`Studentas` objektą galima naudoti per `Zmogus` rodyklę:
 
-Testavimo rezultatai:
+```cpp
+Studentas s1("Jonas", "Jonaitis", pazymiai, 7);
+Zmogus* zmogus = &s1;
+```
 
-![v1.2 testavimo rezultatai](images/v12_testai.png)
+Tai parodo, kad `Studentas` yra išvestinė klasė iš `Zmogus`.
 
-### v1.2 išvada
+### Testų rezultatai
 
-Šioje versijoje `Studentas` klasė tapo pilnesnė ir patogesnė naudoti. Objektus galima kopijuoti, perkelti, nuskaityti naudojant `>>` operatorių ir išvesti naudojant `<<` operatorių.
+Testų rezultatai pateikti nuotraukoje:
+
+![v1.5 testai](images/v1.5_testai.png)
 
 ## Relizų aprašas
+
+## v1.2
+
+Šioje versijoje `Studentas` klasė papildyta „Rule of Five“ realizacija. Pridėtas destruktorius, kopijavimo konstruktorius, kopijavimo operatorius, perkėlimo konstruktorius ir perkėlimo operatorius.
+
+Taip pat realizuoti įvesties ir išvesties operatoriai `>>` ir `<<`, leidžiantys patogiau nuskaityti ir išvesti studento duomenis. Papildomai parašyti testai, kurie patikrina konstruktorius, operatorius ir kitus pagrindinius klasės metodus.
 
 ### v1.1
 
