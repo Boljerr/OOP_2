@@ -5,29 +5,23 @@
 
 int Studentas::sunaikintuObjektuKiekis_ = 0;
 
-Studentas::Studentas()
+Studentas::Studentas() : Zmogus()
 {
-	vardas_ = "";
-	pavarde_ = "";
 	egzaminas_ = 0;
 	rezultatas_ = 0.0;
 }
 
 
 
-Studentas::Studentas(const std::string& vardas, const std::string& pavarde)
+Studentas::Studentas(const std::string& vardas, const std::string& pavarde) : Zmogus(vardas, pavarde)
 {
-	vardas_ = vardas;
-	pavarde_ = pavarde;
 	pazymiai_.clear();
 	egzaminas_ = 0;
 	rezultatas_ = 0.0;
 }
 
-Studentas::Studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& pazymiai, int egzaminas)
+Studentas::Studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& pazymiai, int egzaminas) : Zmogus(vardas, pavarde)
 {
-	vardas_ = vardas;
-	pavarde_ = pavarde;
 	pazymiai_ = pazymiai;
 	egzaminas_ = egzaminas;
 	rezultatas_ = 0.0;
@@ -39,20 +33,16 @@ Studentas::~Studentas()
 	sunaikintuObjektuKiekis_++;
 }
 
-Studentas::Studentas(const Studentas& kitas)
+Studentas::Studentas(const Studentas& kitas) : Zmogus(kitas.vardas_, kitas.pavarde_)
 {
-	vardas_ = kitas.vardas_;
-	pavarde_ = kitas.pavarde_;
 	pazymiai_ = kitas.pazymiai_;
 	egzaminas_ = kitas.egzaminas_;
 	rezultatas_ = kitas.rezultatas_;
 }
-Studentas& Studentas::operator=(const Studentas& kitas)
+Studentas& Studentas::operator=(const Studentas& kitas) : Zmogus(kitas.vardas_, kitas.pavarde_)
 {
 	if (this != &kitas)
 	{
-		vardas_ = kitas.vardas_;
-		pavarde_ = kitas.pavarde_;
 		pazymiai_ = kitas.pazymiai_;
 		egzaminas_ = kitas.egzaminas_;
 		rezultatas_ = kitas.rezultatas_;
@@ -60,10 +50,8 @@ Studentas& Studentas::operator=(const Studentas& kitas)
 	return *this;
 }
 
-Studentas::Studentas(Studentas&& kitas) noexcept
+Studentas::Studentas(Studentas&& kitas) noexcept : Zmogus(std::move(kitas.vardas_), std::move(kitas.pavarde_))
 {
-	vardas_ = std::move(kitas.vardas_);
-	pavarde_ = std::move(kitas.pavarde_);
 	pazymiai_ = std::move(kitas.pazymiai_);
 	egzaminas_ = kitas.egzaminas_;
 	rezultatas_ = kitas.rezultatas_;
@@ -88,15 +76,6 @@ Studentas& Studentas::operator=(Studentas&& kitas) noexcept
 	return *this;
 }
 
-std::string Studentas::getVardas() const
-{
-	return vardas_;
-}
-
-std::string Studentas::getPavarde() const
-{
-	return pavarde_;
-}
 
 const std::vector<int>& Studentas::getPazymiai() const
 {
@@ -116,16 +95,6 @@ double Studentas::getRezultatas() const
 int Studentas::getSunaikintuObjektuKiekis()
 {
 	return sunaikintuObjektuKiekis_;
-}
-
-void Studentas::setVardas(std::string vardas)
-{
-	vardas_ = vardas;
-}
-
-void Studentas::setPavarde(std::string pavarde)
-{
-	pavarde_ = pavarde;
 }
 
 void Studentas::setPazymiai(const std::vector<int>& pazymiai)
