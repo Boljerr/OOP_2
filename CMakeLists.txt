@@ -13,4 +13,5 @@ add_executable(StudentaiV11
 	Tyrimai.cpp
 	generator.cpp
 	Testai.cpp
+	Zmogus.cpp
 )

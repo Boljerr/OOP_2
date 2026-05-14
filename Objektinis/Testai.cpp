@@ -1,5 +1,6 @@
 #include "Testai.h"
 #include "Studentas.h"
+#include "Zmogus.h"
 
 #include <iostream>
 #include <sstream>
@@ -38,6 +39,14 @@ void testuotiStudentoKlase()
 
 	Studentas s1("Jonas", "Jonaitis", pazymiai, 7);
 	s1.setRezultatas(8.2);
+
+	Zmogus* zmogus = &s1;
+
+	bool paveldimumasPavyko =
+		zmogus->getVardas() == "Jonas" &&
+		zmogus->getPavarde() == "Jonaitis";
+
+	spausdintiTestoRezultata(paveldimumasPavyko, "Studentas paveldi is Zmogus klases");
 
 	bool konstruktoriaiPavyko = 
 		s1.getVardas() == "Jonas" &&

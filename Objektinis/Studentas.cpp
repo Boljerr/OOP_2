@@ -39,10 +39,12 @@ Studentas::Studentas(const Studentas& kitas) : Zmogus(kitas.vardas_, kitas.pavar
 	egzaminas_ = kitas.egzaminas_;
 	rezultatas_ = kitas.rezultatas_;
 }
-Studentas& Studentas::operator=(const Studentas& kitas) : Zmogus(kitas.vardas_, kitas.pavarde_)
+Studentas& Studentas::operator=(const Studentas& kitas)
 {
 	if (this != &kitas)
 	{
+		vardas_ = kitas.vardas_;
+		pavarde_ = kitas.pavarde_;
 		pazymiai_ = kitas.pazymiai_;
 		egzaminas_ = kitas.egzaminas_;
 		rezultatas_ = kitas.rezultatas_;
@@ -50,8 +52,10 @@ Studentas& Studentas::operator=(const Studentas& kitas) : Zmogus(kitas.vardas_, 
 	return *this;
 }
 
-Studentas::Studentas(Studentas&& kitas) noexcept : Zmogus(std::move(kitas.vardas_), std::move(kitas.pavarde_))
+Studentas::Studentas(Studentas&& kitas) noexcept
 {
+	vardas_ = std::move(kitas.vardas_);
+	pavarde_ = std::move(kitas.pavarde_);
 	pazymiai_ = std::move(kitas.pazymiai_);
 	egzaminas_ = kitas.egzaminas_;
 	rezultatas_ = kitas.rezultatas_;

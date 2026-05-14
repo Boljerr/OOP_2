@@ -34,8 +34,6 @@ public:
 	Studentas(Studentas&& kitas) noexcept;
 	Studentas& operator=(Studentas&& kitas) noexcept;
 
-	std::string getVardas() const;
-	std::string getPavarde() const;
 	const std::vector<int>& getPazymiai() const;
 	int getEgzaminas() const;
 	double getRezultatas() const;
