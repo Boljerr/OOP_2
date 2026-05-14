@@ -160,11 +160,11 @@ StrategijuRezultatai atliktiStrategijuTyrimaList(const std::string& failoPavadin
     auto end1 = std::chrono::high_resolution_clock::now();
 
     auto start2 = std::chrono::high_resolution_clock::now();
-    padalintiStudentus2List(s2, nuskriaustieji2);
+   padalintiStudentus2List(s2, nuskriaustieji2);
     auto end2 = std::chrono::high_resolution_clock::now();
     
     auto start3 = std::chrono::high_resolution_clock::now();
-    padalintiStudentus3List(s3, nuskriaustieji3);
+   padalintiStudentus3List(s3, nuskriaustieji3);
     auto end3 = std::chrono::high_resolution_clock::now();
 
     rezultatai.strategija1 = std::chrono::duration<double>(end1 - start1).count();
@@ -193,15 +193,15 @@ StrategijuRezultatai atliktiStrategijuTyrimaDeque(const std::string& failoPavadi
     std::deque<Studentas> nuskriaustieji3;
 
     auto start1 = std::chrono::high_resolution_clock::now();
-    padalintiStudentus1Deque(s1, nuskriaustieji1, kietiakiai1);
+   padalintiStudentus1Deque(s1, nuskriaustieji1, kietiakiai1);
     auto end1 = std::chrono::high_resolution_clock::now();
 
     auto start2 = std::chrono::high_resolution_clock::now();
-    padalintiStudentus2Deque(s2, nuskriaustieji2);
+   padalintiStudentus2Deque(s2, nuskriaustieji2);
     auto end2 = std::chrono::high_resolution_clock::now();
     
     auto start3 = std::chrono::high_resolution_clock::now();
-    padalintiStudentus3Deque(s3, nuskriaustieji3);
+   padalintiStudentus3Deque(s3, nuskriaustieji3);
     auto end3 = std::chrono::high_resolution_clock::now();
 
     rezultatai.strategija1 = std::chrono::duration<double>(end1 - start1).count();

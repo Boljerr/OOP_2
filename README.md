@@ -13,14 +13,17 @@
 
 ## Struct ir class versijų palyginimas
 
-Testavimui naudotas `std::vector` konteineris ir greičiausia ankstesniame darbe nustatyta studentų dalijimo strategija.
+Lyginimui naudotas `std::vector` konteineris ir 3 skirstymo strategija.  
+Buvo matuojamas tik studentų skirstymo į dvi grupes laikas.
 
-| Versija | Konteineris | Strategija | Failo dydis | Laikas |
-|---|---|---|---:|---:|
-| v1.0 struct | vector | Strategija 3 | 100000 | ... s |
-| v1.1 class | vector | Strategija 3 | 100000 | ... s |
-| v1.0 struct | vector | Strategija 3 | 1000000 | ... s |
-| v1.1 class | vector | Strategija 3 | 1000000 | ... s |
+| Versija | Tipas | Konteineris | Strategija | Failas | Skirstymo laikas |
+|---|---|---|---|---:|---:|
+| v1.0 | struct | vector | 3 | 100000 | 0.0139586 s |
+| v1.1 | class | vector | 3 | 100000 | 0.018759 s |
+| v1.0 | struct | vector | 3 | 1000000 | 0.1751 s |
+| v1.1 | class | vector | 3 | 1000000 | 0.185562 s |
+
+Pagal gautus rezultatus matyti, kad perėjimas nuo `struct` prie `class` skirstymo laiko reikšmingai nepakeitė. `class` versija buvo šiek tiek lėtesnė, tačiau skirtumas nėra didelis. Pagrindinis `class` versijos privalumas yra ne greitis, o geresnė duomenų apsauga, nes studento duomenys yra privatūs ir pasiekiami per metodus.
 
 ## Kompiliatoriaus optimizavimo flag analizė
 

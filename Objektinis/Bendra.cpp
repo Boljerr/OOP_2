@@ -65,7 +65,7 @@ int ivestiIntSuValidacija(const std::string& zinute, int min, int max)
 	}
 }
 
-std::string& ivestiVardaArPavarde(const std::string& zinute)
+std::string ivestiVardaArPavarde(const std::string& zinute)
 {
 	std::string tekstas;
 	while (true)

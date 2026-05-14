@@ -59,12 +59,12 @@ double Studentas::getRezultatas() const
 	return rezultatas_;
 }
 
-void Studentas::setVardas(std::string& vardas)
+void Studentas::setVardas(std::string vardas)
 {
 	vardas_ = vardas;
 }
 
-void Studentas::setPavarde(std::string& pavarde)
+void Studentas::setPavarde(std::string pavarde)
 {
 	pavarde_ = pavarde;
 }

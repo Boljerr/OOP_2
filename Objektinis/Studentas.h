@@ -29,8 +29,8 @@ public:
 	double getRezultatas() const;
 
 
-	void setVardas(std::string& vardas);
-	void setPavarde(std::string& pavarde);
+	void setVardas(std::string vardas);
+	void setPavarde(std::string pavarde);
 	void setPazymiai(const std::vector<int>& namuDarbai);
 	void setEgzaminas(int egzaminas);
 	void setRezultatas(double rezultatas);
