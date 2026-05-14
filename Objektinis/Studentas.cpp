@@ -162,7 +162,7 @@ void Studentas::read(std::istream& in)
 	std::string vardas;
 	std::string pavarde;
 	std::vector<int> pazymiai;
-	int egzaminas;
+	int skaicius;
 
 	ss >> vardas >> pavarde;
 
@@ -172,9 +172,9 @@ void Studentas::read(std::istream& in)
 		return;
 	}
 
-	while (ss >> egzaminas)
+	while (ss >> skaicius)
 	{
-		pazymiai.push_back(egzaminas);
+		pazymiai.push_back(skaicius);
 	}
 
 	if (pazymiai.empty())

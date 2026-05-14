@@ -1,18 +1,5 @@
 # Studentų pažymių skaičiavimo programa
 
-## Apie programą
-
-Ši programa skirta studentų duomenims apdoroti. Programa gali nuskaityti studentus iš failo, apskaičiuoti galutinį balą, surūšiuoti studentus ir padalinti juos į dvi grupes.
-
-Studentai skirstomi į:
-
-- `nuskriaustieji` - studentai, kurių galutinis balas mažesnis nei 5.0;
-- `kietiakiai` - studentai, kurių galutinis balas yra 5.0 arba didesnis.
-
-Programoje naudojamas pavadinimas `nuskriaustieji` atitinka užduotyje minimus „vargšiukus“.
-
----
-
 ## Programos funkcijos
 
 Programa leidžia:
@@ -128,15 +115,6 @@ Petras Petraitis 6 7 8 9
 
 Šiuo atveju paskutinis skaičius yra egzamino pažymys, o prieš jį esantys skaičiai yra namų darbų pažymiai.
 
-### Duomenų įvestis ir išvestis
-
-| Veiksmas | Realizacija |
-|---|---|
-| Rankinė įvestis | Per konsolę |
-| Automatinė įvestis | Generuojant duomenis |
-| Įvestis iš failo | Skaitant duomenis iš failo |
-| Išvestis į ekraną | Per konsolę |
-| Išvestis į failą | Rašant į failą |
 
 ### Testavimas
 
