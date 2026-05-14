@@ -1,5 +1,7 @@
 #include "Studentas.h"
 #include <utility>
+#include <sstream>
+#include <iomanip>
 
 Studentas::Studentas()
 {
@@ -138,6 +140,74 @@ void Studentas::pridetiPazymi(int pazymys)
 	pazymiai_.push_back(pazymys);
 }
 
+void Studentas::read(std::istream& in)
+{
+	std::string eilute;
+
+	if (!std::getline(in >> std::ws, eilute))
+	{
+		return;
+	}
+
+	std::stringstream ss(eilute);
+
+	std::string vardas;
+	std::string pavarde;
+	std::vector<int> pazymiai;
+	int egzaminas;
+
+	ss >> vardas >> pavarde;
+
+	if (vardas.empty() || pavarde.empty())
+	{
+		in.setstate(std::ios::failbit);
+		return;
+	}
+
+	while (ss >> egzaminas)
+	{
+		pazymiai.push_back(egzaminas);
+	}
+
+	if (pazymiai.empty())
+	{
+		in.setstate(std::ios::failbit);
+		return;
+	}
+
+	vardas_ = vardas;
+	pavarde_ = pavarde;
+
+	egzaminas_ = pazymiai.back();
+	pazymiai.pop_back();
+
+	pazymiai_ = pazymiai;
+	rezultatas_ = 0.0;
+}
+
+void Studentas::print(std::ostream& out) const
+{
+	out << vardas_ << " " << pavarde_ << " ";
+
+	for (int i = 0; i < pazymiai_.size(); ++i)
+	{
+		out << pazymiai_[i] << " ";
+	}
+
+	out << egzaminas_<< " ";
+	out << std::fixed << std::setprecision(2) << rezultatas_;
+}
+
+std::istream& operator>>(std::istream& in, Studentas& studentas)
+{
+	studentas.read(in);
+	return in;
+}
+std::ostream& operator<<(std::ostream& out, const Studentas& studentas)
+{
+	studentas.print(out);
+	return out;
+}
 
 
 

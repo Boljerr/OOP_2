@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 
 class Studentas
@@ -44,6 +45,12 @@ public:
 	void setRezultatas(double rezultatas);
 
 	void pridetiPazymi(int pazymys);
+
+	void read(std::istream& in);
+	void print(std::ostream& out) const;
+
+	friend std::istream& operator>>(std::istream& in, Studentas& studentas);
+	friend std::ostream& operator<<(std::ostream& out, const Studentas& studentas);
 	
 };
 
