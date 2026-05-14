@@ -64,7 +64,8 @@ Programa taip pat gali būti paleidžiama iš tos vietos, kurioje CMake sugeneru
 7 - Atlikti v0.4 duomenu apdorojimo tyrima(vector)
 8 - Atlikti v1.1 konteineriu tyrima
 9 - Atlikti v1.1 skirstymo strategiju tyrima
-10 - Baigti
+10 - Testuoti Studentas klase
+11 - Baigti
 ```
 
 ## v1.2
