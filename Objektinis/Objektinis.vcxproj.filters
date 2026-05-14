@@ -45,6 +45,9 @@
     <ClCompile Include="Testai.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Zmogus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="struktura.h">
@@ -66,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Testai.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Zmogus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

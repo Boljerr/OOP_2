@@ -137,6 +137,7 @@
     <ClCompile Include="Testai.cpp" />
     <ClCompile Include="Tyrimai.cpp" />
     <ClCompile Include="VectorFunkcijos.cpp" />
+    <ClCompile Include="Zmogus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bendra.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Testai.h" />
     <ClInclude Include="Tyrimai.h" />
     <ClInclude Include="VectorFunkcijos.h" />
+    <ClInclude Include="Zmogus.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
