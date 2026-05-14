@@ -3,6 +3,7 @@
 #include "Studentas.h"
 #include <utility>
 #include <sstream>
+#include <string>
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace StudentasUnitTests
@@ -94,6 +95,20 @@ namespace StudentasUnitTests
 			Assert::IsTrue(studentas.getPazymiai()[0] == 8);
 			Assert::IsTrue(studentas.getPazymiai()[1] == 9);
 			Assert::IsTrue(studentas.getPazymiai()[2] == 10);
+		}
+		TEST_METHOD(OutputOperatorWorks)
+		{
+			Studentas studentas("Jonas", "Jonaitis", { 8, 9, 10 }, 9);
+			std::stringstream output;
+
+			output << studentas;
+
+			std::string tekstas = output.str();
+
+			Assert::IsTrue(tekstas.find("Jonas") != std::string::npos);
+			Assert::IsTrue(tekstas.find("Jonaitis") != std::string::npos);
+
+
 		}
 	};
 }
