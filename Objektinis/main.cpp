@@ -17,6 +17,7 @@
 #include "Tyrimai.h"
 #include "VectorFunkcijos.h"
 #include "Studentas.h"
+#include "Testai.h"
 
 int main()
 {
@@ -33,7 +34,8 @@ int main()
 		std::cout << "7 - Atlikti v0.4 duomenu apdorojimo tyrima(vector)\n";
 		std::cout << "8 - Atlikti v1.1 konteineriu tyrima\n";
 		std::cout << "9 - Atlikti v1.1 skirstymo strategiju tyrima\n";
-		std::cout << "10 - Baigti\n";
+		std::cout << "10 - Testuoti Studentas klase\n";
+		std::cout << "11 - Baigti\n";
 		std::cin >> pasirinkimas;
 		if (std::cin.fail())
 		{
@@ -324,7 +326,13 @@ int main()
 			}
 			break;
 		}
+
 		case 10:
+			{
+			testuotiStudentoKlase();
+			break;
+			}
+		case 11:
 			{
 			std::cout << "Programa baige darba.\n";
 			break;
@@ -336,7 +344,7 @@ int main()
 		}
 		}
 
-	} while (pasirinkimas != 10);
+	} while (pasirinkimas != 11);
 	
 	return 0;
 }

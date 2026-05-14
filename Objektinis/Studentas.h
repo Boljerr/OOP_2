@@ -16,6 +16,8 @@ private:
 	int egzaminas_;
 	double rezultatas_;
 
+	static int sunaikintuObjektuKiekis_;
+
 public:
 
 	Studentas();
@@ -24,6 +26,7 @@ public:
 
 
 	~Studentas();
+	static int getSunaikintuObjektuKiekis();
 
 	Studentas(const Studentas& kitas);
 	Studentas& operator=(const Studentas& kitas);

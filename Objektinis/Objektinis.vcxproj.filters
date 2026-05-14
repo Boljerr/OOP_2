@@ -42,6 +42,9 @@
     <ClCompile Include="Studentas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Testai.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="struktura.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tyrimai.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Testai.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,6 +3,8 @@
 #include <sstream>
 #include <iomanip>
 
+int Studentas::sunaikintuObjektuKiekis_ = 0;
+
 Studentas::Studentas()
 {
 	vardas_ = "";
@@ -34,6 +36,7 @@ Studentas::Studentas(const std::string& vardas, const std::string& pavarde, cons
 Studentas::~Studentas()
 {
 	pazymiai_.clear();
+	sunaikintuObjektuKiekis_++;
 }
 
 Studentas::Studentas(const Studentas& kitas)
@@ -108,6 +111,11 @@ int Studentas::getEgzaminas() const
 double Studentas::getRezultatas() const
 {
 	return rezultatas_;
+}
+
+int Studentas::getSunaikintuObjektuKiekis()
+{
+	return sunaikintuObjektuKiekis_;
 }
 
 void Studentas::setVardas(std::string vardas)
