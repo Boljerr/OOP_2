@@ -11,7 +11,7 @@ Studentas::Studentas()
 
 
 
-Studentas::Studentas(std::string& vardas, std::string& pavarde)
+Studentas::Studentas(const std::string& vardas, const std::string& pavarde)
 {
 	vardas_ = vardas;
 	pavarde_ = pavarde;
@@ -20,7 +20,7 @@ Studentas::Studentas(std::string& vardas, std::string& pavarde)
 	rezultatas_ = 0.0;
 }
 
-Studentas::Studentas(std::string& vardas, std::string& pavarde, std::vector<int>& pazymiai, int egzaminas)
+Studentas::Studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& pazymiai, int egzaminas)
 {
 	vardas_ = vardas;
 	pavarde_ = pavarde;

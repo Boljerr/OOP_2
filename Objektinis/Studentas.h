@@ -18,8 +18,8 @@ private:
 public:
 
 	Studentas();
-	Studentas(std::string& vardas, std::string& pavarde);
-	Studentas(std::string& vardas, std::string& pavarde, std::vector<int>& pazymiai, int egzaminas);
+	Studentas(const std::string& vardas, const std::string& pavarde);
+	Studentas(const std::string& vardas, const std::string& pavarde, const std::vector<int>& pazymiai, int egzaminas);
 	~Studentas();
 
 	std::string getVardas() const;
