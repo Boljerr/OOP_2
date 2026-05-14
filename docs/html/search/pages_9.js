@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['klasės_20patikrinimas_0',['Abstrakčios klasės patikrinimas',['../index.html#autotoc_md12',1,'']]]
+  ['meniu_0',['Meniu',['../index.html#autotoc_md7',1,'']]],
+  ['metodai_1',['Testuojami metodai',['../index.html#autotoc_md11',1,'']]]
 ];

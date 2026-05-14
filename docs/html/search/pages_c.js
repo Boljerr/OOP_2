@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['reikalavimai_0',['Reikalavimai',['../index.html#autotoc_md3',1,'']]],
-  ['relizų_20aprašas_1',['Relizų aprašas',['../index.html#autotoc_md15',1,'']]],
-  ['rezultatai_2',['Testų rezultatai',['../index.html#autotoc_md14',1,'']]]
+  ['skaičiavimo_20programa_0',['Studentų pažymių skaičiavimo programa',['../index.html',1,'']]],
+  ['studentų_20pažymių_20skaičiavimo_20programa_1',['Studentų pažymių skaičiavimo programa',['../index.html',1,'']]]
 ];

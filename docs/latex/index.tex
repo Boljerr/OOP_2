@@ -46,7 +46,7 @@ Kompiliavimas su CMake:\+
 \DoxyCodeLine{mkdir\ build}
 \DoxyCodeLine{cd\ build}
 \DoxyCodeLine{cmake\ ..}
-\DoxyCodeLine{cmake\ -\/-\/build\ .}
+\DoxyCodeLine{cmake\ -\/-\/build\ .\ -\/-\/config\ Release}
 
 \end{DoxyCode}
 
@@ -55,7 +55,7 @@ Windows aplinkoje programa paleidžiama, pvz.:\+
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{.\(\backslash\)Release\(\backslash\)StudentaiV1.exe}
+\DoxyCodeLine{.\(\backslash\)Release\(\backslash\)Studentai.exe}
 
 \end{DoxyCode}
 
@@ -83,60 +83,44 @@ Programa taip pat gali būti paleidžiama iš tos vietos, kurioje CMake sugeneru
 
 
 \DoxyHorRuler{0}
-\hypertarget{index_autotoc_md10}{}\doxysection{\texorpdfstring{v1.\+5}{v1.\+5}}\label{index_autotoc_md10}
-Šioje versijoje programa papildyta paveldėjimu. Sukurta abstrakti bazinė klasė {\ttfamily \doxylink{class_zmogus}{Zmogus}}, iš kurios paveldi {\ttfamily \doxylink{class_studentas}{Studentas}} klasė.
+\hypertarget{index_autotoc_md10}{}\doxysection{\texorpdfstring{Unit testai}{Unit testai}}\label{index_autotoc_md10}
+v2.\+0 versijoje pridėjau unit testus, kad būtų galima patikrinti, ar pagrindiniai {\ttfamily \doxylink{class_studentas}{Studentas}} klasės metodai veikia teisingai.
 
-Programa išlaiko v1.\+2 versijos logiką:\+ veikia {\ttfamily Rule of Five}, įvesties/\+išvesties operatoriai ir ankstesni testai.\hypertarget{index_autotoc_md11}{}\doxysubsection{\texorpdfstring{Pagrindiniai pakeitimai}{Pagrindiniai pakeitimai}}\label{index_autotoc_md11}
+Testams naudojau {\bfseries{Visual Studio C++ Unit Test Framework}}. ~\newline
+ Pasirinkau šį variantą, nes projektą darau su Visual Studio, todėl testus patogu paleisti per {\ttfamily Test Explorer}.\hypertarget{index_autotoc_md11}{}\doxysubsection{\texorpdfstring{Testuojami metodai}{Testuojami metodai}}\label{index_autotoc_md11}
 
 \begin{DoxyTable}{2}{}{}{1}
-\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Pakeitimas  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Aprašymas  \\
-Sukurta {\ttfamily \doxylink{class_zmogus}{Zmogus}} klasė  &Saugo bendrus žmogaus duomenis:\+ vardą ir pavardę  \\
-{\ttfamily \doxylink{class_zmogus}{Zmogus}} padaryta abstrakti  &Tiesiogiai {\ttfamily \doxylink{class_zmogus}{Zmogus}} objektų kurti negalima  \\
-{\ttfamily \doxylink{class_studentas}{Studentas}} paveldi iš {\ttfamily \doxylink{class_zmogus}{Zmogus}}  &{\ttfamily \doxylink{class_studentas}{Studentas}} perima vardą ir pavardę iš bazinės klasės  \\
-Išlaikyta v1.\+2 logika  &Veikia {\ttfamily Rule of Five} ir {\ttfamily \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}, {\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}} operatoriai  \\
-Atnaujinti testai  &Patikrintas paveldėjimas ir v1.\+2 metodai  \\
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Testas  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Ką tikrina  \\
+Default\+Constructor\+Creates\+Object  &Patikrina, ar galima sukurti tuščią {\ttfamily \doxylink{class_studentas}{Studentas}} objektą  \\
+Copy\+Constructor\+Works  &Patikrina kopijavimo konstruktorių  \\
+Copy\+Assignment\+Works  &Patikrina kopijavimo priskyrimo operatorių  \\
+Move\+Constructor\+Works  &Patikrina perkėlimo konstruktorių  \\
+Move\+Assignment\+Works  &Patikrina perkėlimo priskyrimo operatorių  \\
+Input\+Operator\+Works  &Patikrina įvesties operatorių {\ttfamily \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}  \\
+Output\+Operator\+Works  &Patikrina išvesties operatorių {\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}  \\
 \end{DoxyTable}
-\hypertarget{index_autotoc_md12}{}\doxysubsection{\texorpdfstring{Abstrakčios klasės patikrinimas}{Abstrakčios klasės patikrinimas}}\label{index_autotoc_md12}
-{\ttfamily \doxylink{class_zmogus}{Zmogus}} klasė yra abstrakti, nes turi grynai virtualius metodus:\+
 
 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ read(std::istream\&\ in)\ =\ 0;}
-\DoxyCodeLine{\textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ print(std::ostream\&\ out)\ \textcolor{keyword}{const}\ =\ 0;}
-
-\end{DoxyCode}
+Šie testai padeda įsitikinti, kad {\ttfamily \doxylink{class_studentas}{Studentas}} klasė veikia taip, kaip tikimasi. ~\newline
+ Ypač svarbu buvo patikrinti Rule of Five metodus, nes jie susiję su objektų kopijavimu, priskyrimu ir perkėlimu.\hypertarget{index_autotoc_md12}{}\doxysubsection{\texorpdfstring{Unit testų paleidimas}{Unit testų paleidimas}}\label{index_autotoc_md12}
+Testai paleidžiami per Visual Studio:\+
 
 
-Bandant sukurti {\ttfamily \doxylink{class_zmogus}{Zmogus}} objektą:\+
+\begin{DoxyEnumerate}
+\item Atidaryti projektą su Visual Studio.
+\item Viršutiniame meniu pasirinkti {\ttfamily Test}.
+\item Atidaryti {\ttfamily Test Explorer}.
+\item Paspausti {\ttfamily Run All Tests}.
+\end{DoxyEnumerate}
 
+Jeigu visi testai pažymėti žaliai, reiškia testuojami metodai veikia teisingai.\hypertarget{index_autotoc_md13}{}\doxysection{\texorpdfstring{Relizų aprašas}{Relizų aprašas}}\label{index_autotoc_md13}
+\hypertarget{index_autotoc_md14}{}\doxysection{\texorpdfstring{v1.\+5}{v1.\+5}}\label{index_autotoc_md14}
+Šioje versijoje programa papildyta paveldėjimu. Sukurta abstrakti bazinė klasė {\ttfamily \doxylink{class_zmogus}{Zmogus}}, iš kurios paveldi {\ttfamily \doxylink{class_studentas}{Studentas}} klasė.
 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\doxymbox{\hyperlink{class_zmogus}{Zmogus}}\ \doxymbox{\hyperlink{structzmogus}{zmogus}};}
-
-\end{DoxyCode}
-
-
-gaunama kompiliavimo klaida. Tai parodo, kad bazinės klasės objektų tiesiogiai kurti negalima.
-
-\hypertarget{index_autotoc_md13}{}\doxysubsection{\texorpdfstring{Paveldėjimo patikrinimas}{Paveldėjimo patikrinimas}}\label{index_autotoc_md13}
-{\ttfamily \doxylink{class_studentas}{Studentas}} objektą galima naudoti per {\ttfamily \doxylink{class_zmogus}{Zmogus}} rodyklę:\+
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\doxymbox{\hyperlink{class_studentas}{Studentas}}\ s1(\textcolor{stringliteral}{"{}Jonas"{}},\ \textcolor{stringliteral}{"{}Jonaitis"{}},\ pazymiai,\ 7);}
-\DoxyCodeLine{\doxymbox{\hyperlink{class_zmogus}{Zmogus}}*\ \doxymbox{\hyperlink{structzmogus}{zmogus}}\ =\ \&s1;}
-
-\end{DoxyCode}
-
-
-Tai parodo, kad {\ttfamily \doxylink{class_studentas}{Studentas}} yra išvestinė klasė iš {\ttfamily \doxylink{class_zmogus}{Zmogus}}.\hypertarget{index_autotoc_md14}{}\doxysubsection{\texorpdfstring{Testų rezultatai}{Testų rezultatai}}\label{index_autotoc_md14}
-Testų rezultatai pateikti nuotraukoje:\+
-
-\hypertarget{index_autotoc_md15}{}\doxysection{\texorpdfstring{Relizų aprašas}{Relizų aprašas}}\label{index_autotoc_md15}
-\hypertarget{index_autotoc_md16}{}\doxysection{\texorpdfstring{v1.\+2}{v1.\+2}}\label{index_autotoc_md16}
+Programa išlaiko v1.\+2 versijos logiką:\+ veikia {\ttfamily Rule of Five}, įvesties/\+išvesties operatoriai ir ankstesni testai.\hypertarget{index_autotoc_md15}{}\doxysection{\texorpdfstring{v1.\+2}{v1.\+2}}\label{index_autotoc_md15}
 Šioje versijoje {\ttfamily \doxylink{class_studentas}{Studentas}} klasė papildyta „\+Rule of Five“ realizacija. Pridėtas destruktorius, kopijavimo konstruktorius, kopijavimo operatorius, perkėlimo konstruktorius ir perkėlimo operatorius.
 
-Taip pat realizuoti įvesties ir išvesties operatoriai {\ttfamily \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} ir {\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}, leidžiantys patogiau nuskaityti ir išvesti studento duomenis. Papildomai parašyti testai, kurie patikrina konstruktorius, operatorius ir kitus pagrindinius klasės metodus.\hypertarget{index_autotoc_md17}{}\doxysubsection{\texorpdfstring{v1.\+1}{v1.\+1}}\label{index_autotoc_md17}
+Taip pat realizuoti įvesties ir išvesties operatoriai {\ttfamily \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} ir {\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}, leidžiantys patogiau nuskaityti ir išvesti studento duomenis. Papildomai parašyti testai, kurie patikrina konstruktorius, operatorius ir kitus pagrindinius klasės metodus.\hypertarget{index_autotoc_md16}{}\doxysubsection{\texorpdfstring{v1.\+1}{v1.\+1}}\label{index_autotoc_md16}
 
 \begin{DoxyItemize}
 \item {\ttfamily \doxylink{class_studentas}{Studentas}} struktūra pakeista į klasę.
@@ -147,7 +131,7 @@ Taip pat realizuoti įvesties ir išvesties operatoriai {\ttfamily \texorpdfstri
 \item Atliktas {\ttfamily struct} ir {\ttfamily class} versijų palyginimas.
 \item Atlikta analizė su {\ttfamily O1}, {\ttfamily O2} ir {\ttfamily O3} optimizavimo flag\textquotesingle{}ais.
 \item README faile pateikti greičio ir {\ttfamily .exe} dydžio rezultatai.
-\end{DoxyItemize}\hypertarget{index_autotoc_md18}{}\doxysubsection{\texorpdfstring{v1.\+0}{v1.\+0}}\label{index_autotoc_md18}
+\end{DoxyItemize}\hypertarget{index_autotoc_md17}{}\doxysubsection{\texorpdfstring{v1.\+0}{v1.\+0}}\label{index_autotoc_md17}
 
 \begin{DoxyItemize}
 \item Pridėtas darbas su trimis konteineriais:\+
@@ -160,29 +144,29 @@ Taip pat realizuoti įvesties ir išvesties operatoriai {\ttfamily \texorpdfstri
 \item Atliktas konteinerių tyrimas.
 \item Atliktas skirstymo strategijų tyrimas.
 \item Paruoštas {\ttfamily CMake\+Lists.\+txt}.
-\end{DoxyItemize}\hypertarget{index_autotoc_md19}{}\doxysubsection{\texorpdfstring{v0.\+4}{v0.\+4}}\label{index_autotoc_md19}
+\end{DoxyItemize}\hypertarget{index_autotoc_md18}{}\doxysubsection{\texorpdfstring{v0.\+4}{v0.\+4}}\label{index_autotoc_md18}
 
 \begin{DoxyItemize}
 \item Pridėtas studentų failų generavimas.
 \item Pridėtas studentų skirstymas į dvi grupes.
 \item Atliktas pradinis veikimo spartos tyrimas su {\ttfamily std::\+vector}.
-\end{DoxyItemize}\hypertarget{index_autotoc_md20}{}\doxysubsection{\texorpdfstring{v0.\+3}{v0.\+3}}\label{index_autotoc_md20}
+\end{DoxyItemize}\hypertarget{index_autotoc_md19}{}\doxysubsection{\texorpdfstring{v0.\+3}{v0.\+3}}\label{index_autotoc_md19}
 
 \begin{DoxyItemize}
 \item Patobulinta įvesties validacija.
 \item Pridėtas klaidų tikrinimas.
 \item Kodas išskaidytas į {\ttfamily .h} ir {\ttfamily .cpp} failus.
-\end{DoxyItemize}\hypertarget{index_autotoc_md21}{}\doxysubsection{\texorpdfstring{v0.\+2}{v0.\+2}}\label{index_autotoc_md21}
+\end{DoxyItemize}\hypertarget{index_autotoc_md20}{}\doxysubsection{\texorpdfstring{v0.\+2}{v0.\+2}}\label{index_autotoc_md20}
 
 \begin{DoxyItemize}
 \item Pridėtas duomenų nuskaitymas iš failo.
 \item Pridėtas studentų rūšiavimas.
-\end{DoxyItemize}\hypertarget{index_autotoc_md22}{}\doxysubsection{\texorpdfstring{v0.\+1}{v0.\+1}}\label{index_autotoc_md22}
+\end{DoxyItemize}\hypertarget{index_autotoc_md21}{}\doxysubsection{\texorpdfstring{v0.\+1}{v0.\+1}}\label{index_autotoc_md21}
 
 \begin{DoxyItemize}
 \item Realizuotas rankinis studentų duomenų įvedimas.
 \item Pridėtas galutinio balo skaičiavimas pagal vidurkį arba medianą.
-\end{DoxyItemize}\hypertarget{index_autotoc_md23}{}\doxysubsection{\texorpdfstring{v.\+pradinė}{v.\+pradinė}}\label{index_autotoc_md23}
+\end{DoxyItemize}\hypertarget{index_autotoc_md22}{}\doxysubsection{\texorpdfstring{v.\+pradinė}{v.\+pradinė}}\label{index_autotoc_md22}
 
 \begin{DoxyItemize}
 \item Sukurta pradinė studento duomenų struktūra.

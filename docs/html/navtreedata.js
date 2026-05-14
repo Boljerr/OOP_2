@@ -26,6 +26,13 @@ var NAVTREE =
 [
   [ "Studentu pazymiu skaiciavimo programa", "index.html", [
     [ "Studentų pažymių skaičiavimo programa", "index.html", "index" ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ]
+      ] ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -53,7 +60,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_bendra_8cpp.html",
-"struct_tyrimo_rezultatai.html#ab5610dacaf4dd167ef426b847ad84dcb"
+"dir_d7873ab5f963b4183177bd29e58396d0.html"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';
