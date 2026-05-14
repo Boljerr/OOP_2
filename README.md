@@ -104,140 +104,157 @@ Programa taip pat gali būti paleidžiama iš tos vietos, kurioje CMake sugeneru
 
 ---
 
-## Studentas klasė
+## v1.2
 
-Šioje versijoje `Studentas` struktūra buvo pakeista į klasę.
+Šioje versijoje buvo praplėsta `Studentas` klasė. Pagrindinis šios versijos tikslas buvo realizuoti penkių metodų taisyklę, įvesties ir išvesties operatorius bei patikrinti šiuos metodus rankiniais testais.
 
-Klasėje studento duomenys laikomi privačiuose laukuose:
+### Atlikti pakeitimai
 
-- vardas;
-- pavardė;
-- pažymiai;
-- egzamino rezultatas;
-- galutinis rezultatas.
-
-Duomenims pasiekti ir pakeisti naudojami getteriai ir setteriai. Taip pat realizuoti konstruktoriai ir destruktorius.
-
-Pagrindinis pakeitimo tikslas buvo geriau pritaikyti programą objektinio programavimo principams ir apsaugoti studento duomenis nuo tiesioginio keitimo kitose programos vietose.
-
----
-
-## Tyrimo nustatymai
-
-Tyrime buvo lyginama `struct` tipo realizacija su `class` tipo realizacija.
-
-Lyginimui naudotas vienas konteineris:
-
-- `std::vector`
-
-Tyrimui naudota 3 skirstymo strategija, kurioje su `std::vector` naudojamas `std::stable_partition`.
-
-Testuoti failai:
-
-- `studentai100000.txt`
-- `studentai1000000.txt`
-
-Testai atlikti su kompiliatoriaus optimizavimo flag'ais:
-
-- `O1`
-- `O2`
-- `O3`
-
-Buvo matuojama:
-
-- nuskaitymo laikas;
-- rūšiavimo laikas;
-- skirstymo laikas;
-- bendras laikas;
-- `.exe` failo dydis.
-
-Papildomi nustatymai:
-
-- galutinis balas skaičiuotas pagal vidurkį;
-- studentai rūšiuoti pagal vardą;
-- kiekvienas testas kartotas 5 kartus;
-- lentelėse pateikiamas vidutinis laikas sekundėmis.
+| Pakeitimas | Aprašymas |
+|---|---|
+| Rule of five | Realizuotas destruktorius, kopijavimo konstruktorius, kopijavimo priskyrimo operatorius, perkėlimo konstruktorius ir perkėlimo priskyrimo operatorius |
+| Įvesties operatorius `>>` | Leidžia nuskaityti studento duomenis iš įvesties srauto |
+| Išvesties operatorius `<<` | Leidžia išvesti studento duomenis į ekraną arba į failą |
+| `read()` metodas | Naudojamas studento duomenų nuskaitymui |
+| `print()` metodas | Naudojamas studento duomenų išvedimui |
+| Rankiniai testai | Pridėta testavimo funkcija, kuri patikrina pagrindinius `Studentas` klasės metodus |
 
 ---
 
-## Testavimo sistema
+### Rule of five
 
-- **CPU:** 13th Gen Intel(R) Core(TM) i7-13650HX, 2.60 GHz
-- **RAM:** 24 GB
-- **Diskas:** SSD
-- **OS:** Windows 11
-- **Aplinka:** Visual Studio 2026 / terminalas su `g++`
+`Studentas` klasėje buvo realizuoti visi penki specialūs metodai:
 
----
+| Metodas | Paskirtis |
+|---|---|
+| `~Studentas()` | Destruktorius, kuris iškviečiamas sunaikinant objektą |
+| `Studentas(const Studentas& kitas)` | Kopijavimo konstruktorius, kuris sukuria naują objektą kopijuojant kitą objektą |
+| `operator=(const Studentas& kitas)` | Kopijavimo operatorius, kuris priskiria vieno objekto reikšmes kitam jau egzistuojančiam objektui |
+| `Studentas(Studentas&& kitas) noexcept` | Perkėlimo konstruktorius, kuris perkelia duomenis iš kito objekto |
+| `operator=(Studentas&& kitas) noexcept` | Perkėlimo operatorius, kuris perkelia duomenis į jau egzistuojantį objektą |
 
-## Testavimo failai
-
-Naudoti failai:
-
-- `studentai100000.txt`
-- `studentai1000000.txt`
+Nors `Studentas` klasėje naudojami `std::string` ir `std::vector`, kurie patys tvarko atmintį, šie metodai buvo realizuoti rankiniu būdu, nes to reikalauja v1.2 užduotis.
 
 ---
 
-# Tyrimo rezultatai
+### Įvesties operatorius
 
-## 100000 studentų
+Buvo realizuotas įvesties operatorius:
 
-| Tipas | Flag'as | Nuskaitymas (s) | Rūšiavimas (s) | Skirstymas (s) | Bendras laikas (s) | Exe dydis |
-|---|---|---:|---:|---:|---:|---:|
-| struct | O1 | 0.128871 | 0.0214705 | 0.00965262 | 0.159994 | 477 KB |
-| class | O1 | 0.141192 | 0.0727069 | 0.0187958 | 0.232695 | 461 KB |
-| struct | O2 | 0.127751 | 0.024143 | 0.0100833 | 0.161977 | 445 KB |
-| class | O2 | 0.140951 | 0.0677228 | 0.0176268 | 0.226301 | 439 KB |
-| struct | O3 | 0.135141 | 0.0242252 | 0.00967596 | 0.169042 | 501 KB |
-| class | O3 | 0.148007 | 0.071053 | 0.0213828 | 0.240443 | 465 KB |
+```cpp
+std::istream& operator>>(std::istream& in, Studentas& studentas)
+```
 
----
+Operatorius iškviečia `read()` metodą:
 
-## 1000000 studentų
+```cpp
+std::istream& operator>>(std::istream& in, Studentas& studentas)
+{
+	studentas.read(in);
+	return in;
+}
+```
 
-| Tipas | Flag'as | Nuskaitymas (s) | Rūšiavimas (s) | Skirstymas (s) | Bendras laikas (s) | Exe dydis |
-|---|---|---:|---:|---:|---:|---:|
-| struct | O1 | 1.29387 | 0.311969 | 0.108226 | 1.714065 | 477 KB |
-| class | O1 | 1.39 | 0.959227 | 0.181107 | 2.530334 | 461 KB |
-| struct | O2 | 1.27606 | 0.343802 | 0.104341 | 1.724203 | 445 KB |
-| class | O2 | 1.36695 | 0.882767 | 0.183637 | 2.433354 | 439 KB |
-| struct | O3 | 1.30262 | 0.327598 | 0.103798 | 1.733016 | 501 KB |
-| class | O3 | 1.37412 | 0.842216 | 0.175483 | 2.391819 | 465 KB |
+Tokiu būdu studento objektą galima nuskaityti iš įvesties srauto.
 
----
+Pavyzdinė įvesties eilutė:
 
-## Rezultatų aptarimas
+```txt
+Petras Petraitis 6 7 8 9
+```
 
-Pagal gautus rezultatus matyti, kad šiame tyrime `class` versija veikė lėčiau negu `struct` versija. Didžiausias skirtumas matomas rūšiavimo dalyje.
+Šiuo atveju:
 
-Taip galėjo nutikti dėl to, kad `class` versijoje studento duomenys pasiekiami per getterius, o ne tiesiogiai per viešus laukus. Taip pat rūšiavimo metu studentai daug kartų lyginami tarpusavyje, todėl skirtumas labiau pasimato.
+| Duomuo | Reikšmė |
+|---|---|
+| `Petras` | Vardas |
+| `Petraitis` | Pavardė |
+| `6 7 8` | Namų darbų pažymiai |
+| `9` | Egzamino pažymys |
 
-Nors `class` versija šiame tyrime buvo lėtesnė, ji yra tvarkingesnė objektinio programavimo požiūriu. Studentų duomenys yra privatūs, todėl jų negalima keisti tiesiogiai iš kitų programos vietų.
-
-Optimizavimo flag'ai turėjo įtakos tiek programos veikimo laikui, tiek `.exe` failo dydžiui. Didesnis optimizavimo lygis ne visada reiškė geriausią rezultatą.
-
-Šiame tyrime `class` versijoje geriausias bendras laikas su 1000000 studentų buvo gautas naudojant `O3` flag'ą, o mažiausias `.exe` failas buvo gautas naudojant `O2` flag'ą.
+Paskutinis skaičius laikomas egzamino pažymiu, o visi prieš jį esantys skaičiai laikomi namų darbų pažymiais.
 
 ---
 
-## v1.1 išvados
+### Išvesties operatorius
 
-1. `Studentas` struktūrą pakeitus į klasę, programa tapo tvarkingesnė objektinio programavimo požiūriu.
+Buvo realizuotas išvesties operatorius:
 
-2. `class` versijoje studento duomenys yra privatūs ir pasiekiami tik per metodus.
+```cpp
+std::ostream& operator<<(std::ostream& out, const Studentas& studentas)
+```
 
-3. Po perėjimo prie klasės reikėjo atnaujinti funkcijas, kurios dirba su studento duomenimis.
+Operatorius iškviečia `print()` metodą:
 
-4. Tyrime `class` versija veikė lėčiau negu `struct` versija.
+```cpp
+std::ostream& operator<<(std::ostream& out, const Studentas& studentas)
+{
+	studentas.print(out);
+	return out;
+}
+```
 
-5. Didžiausias skirtumas matomas rūšiavimo dalyje.
+Studento duomenis galima išvesti į ekraną:
 
-6. Optimizavimo flag'ai `O1`, `O2` ir `O3` turėjo įtakos veikimo laikui ir `.exe` failo dydžiui.
+```cpp
+std::cout << studentas;
+```
 
-7. Nors `struct` versija buvo greitesnė, `class` versija yra geresnė programos struktūros ir duomenų apsaugos prasme.
+Taip pat tą patį operatorių galima naudoti rašant duomenis į failą.
 
 ---
+
+### Duomenų įvestis ir išvestis
+
+| Veiksmas | Kaip realizuota |
+|---|---|
+| Rankinė įvestis | Studentų duomenys gali būti įvedami per konsolę |
+| Automatinė įvestis | Studentų duomenys gali būti generuojami automatiškai |
+| Įvestis iš failo | Studentų duomenys gali būti nuskaitomi iš failo |
+| Išvestis į ekraną | Studentų duomenys gali būti išvedami į konsolę |
+| Išvestis į failą | Studentų duomenys gali būti rašomi į failą |
+
+---
+
+### Testavimas
+
+Buvo sukurta rankinė testavimo funkcija:
+
+```cpp
+void testuotiStudentoKlase();
+```
+
+Ji patikrina pagrindinius `Studentas` klasės metodus.
+
+| Testas | Rezultatas |
+|---|---|
+| Default konstruktorius | Pavyko |
+| Konstruktorius su duomenimis | Pavyko |
+| Kopijavimo konstruktorius | Pavyko |
+| Kopijavimo operatorius | Pavyko |
+| Perkėlimo konstruktorius | Pavyko |
+| Perkėlimo operatorius | Pavyko |
+| Įvesties operatorius `>>` | Pavyko |
+| Išvesties operatorius `<<` | Pavyko |
+| Destruktorius | Pavyko |
+
+Destruktorius buvo tikrinamas per lokalų bloką. Sukūrus objektą bloke, jam išėjus iš bloko objektas sunaikinamas automatiškai. Papildomai naudojamas skaitliukas, kuris leidžia patikrinti, ar destruktorius tikrai buvo iškviestas.
+
+---
+
+### Testavimo rezultatai
+
+Žemiau pateiktas rankinio testavimo rezultatas:
+
+![v1.2 testavimo rezultatai](images/v12_testai.png)
+
+---
+
+### v1.2 išvada
+
+Šioje versijoje `Studentas` klasė tapo pilnesnė ir patogesnė naudoti. Dabar studento objektus galima kopijuoti, perkelti, nuskaityti naudojant `>>` operatorių ir išvesti naudojant `<<` operatorių.
+
+Taip pat buvo pridėti rankiniai testai, kurie parodo, kad pagrindiniai klasės metodai veikia tinkamai.
 
 ## Relizų aprašas
 
