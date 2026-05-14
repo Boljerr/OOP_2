@@ -19,6 +19,7 @@ public:
 
 	Studentas();
 	Studentas(std::string& vardas, std::string& pavarde);
+	Studentas(std::string& vardas, std::string& pavarde, std::vector<int>& pazymiai, int egzaminas);
 	~Studentas();
 
 	std::string getVardas() const;

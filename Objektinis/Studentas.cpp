@@ -15,12 +15,23 @@ Studentas::Studentas(std::string& vardas, std::string& pavarde)
 {
 	vardas_ = vardas;
 	pavarde_ = pavarde;
+	pazymiai_.clear();
 	egzaminas_ = 0;
+	rezultatas_ = 0.0;
+}
+
+Studentas::Studentas(std::string& vardas, std::string& pavarde, std::vector<int>& pazymiai, int egzaminas)
+{
+	vardas_ = vardas;
+	pavarde_ = pavarde;
+	pazymiai_ = pazymiai;
+	egzaminas_ = egzaminas;
 	rezultatas_ = 0.0;
 }
 
 Studentas::~Studentas()
 {
+	pazymiai_.clear();
 }
 
 std::string Studentas::getVardas() const

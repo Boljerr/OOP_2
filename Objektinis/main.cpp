@@ -31,8 +31,8 @@ int main()
 		std::cout << "5 - Generuoti studentu faila\n";
 		std::cout << "6 - Atlikti failo kurimo tyrima\n";
 		std::cout << "7 - Atlikti v0.4 duomenu apdorojimo tyrima(vector)\n";
-		std::cout << "8 - Atlikti v1.0 konteineriu tyrima\n";
-		std::cout << "9 - Atlikti v1.0 skirstymo strategiju tyrima\n";
+		std::cout << "8 - Atlikti v1.1 konteineriu tyrima\n";
+		std::cout << "9 - Atlikti v1.1 skirstymo strategiju tyrima\n";
 		std::cout << "10 - Baigti\n";
 		std::cin >> pasirinkimas;
 		if (std::cin.fail())
