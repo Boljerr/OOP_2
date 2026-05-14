@@ -27,9 +27,8 @@ TyrimoRezultatai atliktiVectorTyrima(const std::string& failoPavadinimas, int sk
 
     std::vector<Studentas> studentaiSkirstymui = studentai;
     std::vector<Studentas> nuskriaustieji;
-    std::vector<Studentas> kietiakiai;
     auto startSplit = std::chrono::high_resolution_clock::now();
-    padalintiStudentus1Vector(studentaiSkirstymui, nuskriaustieji, kietiakiai);
+    padalintiStudentus3Vector(studentaiSkirstymui, nuskriaustieji);
     auto endSplit = std::chrono::high_resolution_clock::now();
 
     rezultatai.nuskaitymas = std::chrono::duration<double>(endRead - startRead).count();
