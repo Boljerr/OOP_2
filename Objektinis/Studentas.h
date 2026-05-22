@@ -69,7 +69,13 @@ public:
 	 *
 	 * Sunaikinus objekta padidinamas sunaikintu objektu skaicius.
 	 */
-	~Studentas();
+	~Studentas()
+	{
+		pazymiai_.clear();
+		egzaminas_ = 0;
+		rezultatas_ = 0.0;
+
+	}
 
 	/**
 	 * @brief Grazina sunaikintu Studentas objektu kieki.
