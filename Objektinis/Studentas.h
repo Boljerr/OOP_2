@@ -67,13 +67,13 @@ public:
 	/**
 	 * @brief Destruktorius.
 	 *
-	 * Sunaikinus objekta padidinamas sunaikintu objektu skaicius.
 	 */
 	~Studentas()
 	{
 		pazymiai_.clear();
 		egzaminas_ = 0;
 		rezultatas_ = 0.0;
+		sunaikintuObjektuKiekis_++;
 
 	}
 
