@@ -84,6 +84,10 @@ TyrimoRezultatai atliktiVectorTyrima(const std::string& failoPavadinimas, int sk
     rezultatai.rusiavimas = std::chrono::duration<double>(endSort - startSort).count();
     rezultatai.skirstymas = std::chrono::duration<double>(endSplit - startSplit).count();
 
+    rusiuotiStudentusVector(studentaiSkirstymui, rusiavimoTipas);
+    rusiuotiStudentusVector(nuskriaustieji, rusiavimoTipas);
+    isvestiRezultatusIFailaVector(studentaiSkirstymui, skaiciavimoTipas, "rusiuoti_studentai_vector.txt");
+	isvestiRezultatusIFailaVector(nuskriaustieji, skaiciavimoTipas, "nuskriaustieji_vector.txt");
     return rezultatai;
 }
 

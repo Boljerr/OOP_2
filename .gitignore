@@ -450,7 +450,12 @@ studentai1000_nuskriaustieji.txt
 studentai100_kietiakiai.txt
 studentai100_nuskriaustieji.txt
 
-
+V1.0_nuskriausieji.txt
+V1.0_studentai.txt
+V1.1_nuskriausieji.txt
+V1.1_studentai.txt
+nuskriaustieji_vector.txt
+rusiuoti_studentai_vector.txt
 .vs/
 x64/
 Debug/
