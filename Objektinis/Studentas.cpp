@@ -27,11 +27,6 @@ Studentas::Studentas(const std::string& vardas, const std::string& pavarde, cons
 	rezultatas_ = 0.0;
 }
 
-Studentas::~Studentas()
-{
-	pazymiai_.clear();
-	sunaikintuObjektuKiekis_++;
-}
 
 Studentas::Studentas(const Studentas& kitas) : Zmogus(kitas.vardas_, kitas.pavarde_)
 {
